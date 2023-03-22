@@ -39,6 +39,7 @@ import {AngularFireAuthModule} from   '@angular/fire/auth';
 import { DataService } from './services/data.service';
 import { ApiService } from './services/api.service';
 import {firebase} from '../environments/firebase';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import {firebase} from '../environments/firebase';
     AngularFireModule.initializeApp(firebase),
     AngularFireAuthModule ,
     AngularFireStorageModule,
+    NgOtpInputModule
   ],
   providers: [
     DataService, ApiService
