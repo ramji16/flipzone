@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class BlogcontentComponent implements OnInit {
   ind:number;
+  dummy="hi"
   content=[];
   comments=[];
   cont:any;
