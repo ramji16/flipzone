@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- <app-business-navbar class="fixed-top"></app-business-navbar> -->
+    <div class="col-6 business-main-back"></div>
+    <div class="col-6 main-back-2 text-center">
+      <div class="cardd d-flex flex-column justify-content-center min-vh-90">
+        <h1 class="cont-heading">Sign in</h1>
+        <form [formGroup]="bLoginForm">
+        <input
+          type="text"
+          formControlName="email"
+          [ngClass]="{
+            'is-invalid': add.email.touched && add.email.errors
+          }"
+          class="mt-4 p-3 form-control"
+          placeholder="Business Email"
+        />
+        <span
+          *ngIf="add.email.errors && add.email.touched"
+          class="text-danger"
+          >Email ID Required</span
+        ><br />
+        <input
+          type="password"
+          class="mt-3 p-3 form-control"
+          formControlName="password"
+          pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
+          [ngClass]="{
+            'is-invalid': add.password.touched && add.password.errors
+          }"
+          placeholder="Password"
+        />
+        <span
+            *ngIf="add.password.errors && add.password.touched"
+            class="text-danger"
+            >Password Required</span
+          ><br />
+        <button type="submit" (click)="signInBtn()" class="mt-3 btn button form-control">Sign In</button>
+      </form>
+        <a class="mt-4">Forget Password?</a>
+        <p class="cont-heading">
+          Don't have an account?
+          <a class="text-primary" (click)="BusinesssignUpNavigate()">Sign up</a>
+        </p>
+        <!-- <p class="cont-heading">For Business <a class="text-primary" (click)="UsersignInNavigate()">Sign in</a></p> -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+[
+    {
+        "ProductName":"SunGlasses",
+        "imageurl":"assets/images/sunglass.png",
+        "price":999
+
+    },
+    {
+        "ProductName":"watch",
+        "imageurl":"assets/images/watch.png",
+        "price":999
+
+    },
+    {
+        "ProductName":"shirt",
+        "imageurl":"assets/images/shirt.png",
+        "price":399
+
+    },
+    {
+        "ProductName":"axe",
+        "imageurl":"assets/images/axe.png",
+        "price":249
+
+    },
+    {
+        "ProductName":"Handbag",
+        "imageurl":"assets/images/handbag.png",
+        "price":999
+
+    },
+    {
+        "ProductName":"Socks",
+        "imageurl":"assets/images/socks.png",
+        "price":999
+
+    },
+    {
+        "ProductName":"Wallet",
+        "imageurl":"assets/images/wallett.png",
+        "price":999
+
+    },
+    {
+        "ProductName":"Watch",
+        "imageurl":"assets/images/watch.png",
+        "price":999
+
+    },
+    {
+        "ProductName":"Shoes",
+        "imageurl":"assets/images/shoe.png",
+        "price":999
+
+    },
+    {
+        "ProductName":"Ironbox",
+        "imageurl":"assets/images/t-shirt.jpg",
+        "price":999
+
+    }
+]

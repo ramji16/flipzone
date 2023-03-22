@@ -1,0 +1,42 @@
+.home-back{
+  background-image: url('src/assets/images/home-back.jpg');
+  height:100vh;
+  background-size: 110% 100%;
+  background-repeat: no-repeat;
+  color:wheat;
+}
+.min-vh-90{
+  height:85vh;
+}
+
+.cont-heading{
+  color:wheat;
+}
+.button{
+  background-color:#6029B9;
+  color:white;
+  height:50px;
+  border-radius:15px;
+}
+.Product-section{
+  background-color:#E1EDF2;
+}
+.product-heading{
+  font-family: 'PT Serif', serif;
+
+}
+.cardd{
+  background-image:linear-gradient(45deg,#6F8FAF,#DAE7EF);
+  color:black;
+  width:20vw;
+  border-radius: 20px;
+}
+.chip{
+  background-color:#DAE7EF;
+  height:5vh;
+  width: 5vw;
+  border-radius:30px;
+}
+.aboutus{
+  background-color:#6F8FAF;
+}

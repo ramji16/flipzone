@@ -1,0 +1,35 @@
+body{
+    background-color:#E2F4FB ;
+    min-height: 100vh;
+    height: auto;
+}
+p,.comment-box{
+    font-family:'roboto';
+    font-size: 1.1em;
+}
+.button{
+    background-color:#6029B9;
+    color:white;
+    height:50px;
+    border-radius:15px;
+}
+.cbox{
+    border-radius: 30px !important;
+    overflow-y: scroll;
+    height:55vh;
+}
+.profile{
+    color:white;
+    background-color: #6029B9;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+}
+textarea:focus{
+padding-left: 2%;
+padding-top: 2%;
+}
+.cb{
+    border:2px solid black;
+    border-radius: 20px;
+}

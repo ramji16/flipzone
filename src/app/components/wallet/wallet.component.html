@@ -1,0 +1,27 @@
+<div class="wallet d-flex flex-column text-center pt-3">
+    <h2>Payment</h2>
+    <h4>aathireguraj@gmail.com</h4>
+</div>
+<div class=" d-flex flex-row justify-content-center">
+    <div class="mr-5 cardd shadow p-2 mt-3 mb-3">
+        <h6 (click)="cardActivate()"><b>credit card</b></h6>
+    </div>
+    <div class="ml-5 cardd shadow p-2 mt-3 mb-3">
+        <h6 (click)="cardActivate()"><b>debit card</b></h6>
+    </div>
+</div>
+<div *ngIf="flag==true" class="mt-3 d-flex flex-column">
+    <div class="ml-2 mr-2 m-3">
+        <input type="text" class="form-control" placeholder="card number">
+    </div>
+    <div class="m-3 ml-2 mr-2 d-flex flex-row">
+        <input type="text" class="form-control col-md-6 mr-1 " placeholder="first name">
+        <input type="text" class="form-control col-md-6 ml-1" placeholder="last name">
+    </div>
+    <div class="m-3 ml-2 mr-2 d-flex flex-row">
+        <input type="text" class="form-control col-md-6 mr-1" placeholder="Expiry Date MM/YYYY">
+        <input type="text" class="form-control col-md-4 ml-1" placeholder="cvv">
+        <i class="col-md-2 mt-2 text-center fa-solid fa-question"></i>
+    </div>
+    <button class="btn button mt-2 ml-5 mr-5 mb-2">Add To Wallet</button>
+</div>

@@ -1,0 +1,31 @@
+body{
+    /* background-image: linear-gradient(to right,rgb(0,0,0),rgba(22,2,2,0.67)); */
+    background-color: #DAE7EF;
+    width: 100%;
+}
+.container{
+    /* background-color: #41118f; */
+    background-image:linear-gradient(150deg,#6F8FAF,#DAE7EF,#6F8FAF);
+    border-radius: 15px;
+}
+label{
+    color: black;
+    font-family: sans-serif;
+    font-size: larger;
+}
+/* input{
+    border: none!important;
+} */
+
+.img-tag{
+    color: wheat;
+    width: 100%;
+}
+
+@media only screen and (max-width : 600px){
+    label{
+        color: wheat;
+        font-family: sans-serif;
+        font-size: small;
+    }
+}

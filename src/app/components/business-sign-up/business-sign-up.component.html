@@ -1,0 +1,97 @@
+<div class="container-fluid min-vh-100">
+  <div class="row">
+    <!-- <app-business-navbar class="fixed-top"></app-business-navbar> -->
+    <div class="col-6 main-back min-vh-100" style="height: auto;"></div>
+    <div class="col-6 main-back-2 text-center min-vh-100" style="height: auto;">
+      <div class="cardd d-flex flex-column justify-content-start">
+        <h1 class="cont-heading">Sign up</h1>
+        <form [formGroup]="bSigninForm">
+          <input
+            type="text"
+            class="mt-4 p-3 form-control"
+            pattern="^[a-zA-z-']+$"
+            formControlName="bCompanyName"
+            [ngClass]="{
+              'is-invalid': add.bCompanyName.touched && add.bCompanyName.errors
+            }"
+            placeholder="Company Name"
+          />
+          <span
+            *ngIf="add.bCompanyName.errors && add.bCompanyName.touched"
+            class="text-danger"
+            >First Name Required</span
+          >
+          <input
+            type="text"
+            class="mt-2 p-3 form-control"
+            pattern="^[a-zA-z-']+$"
+            formControlName="bOwnerName"
+            [ngClass]="{
+              'is-invalid': add.bOwnerName.touched && add.bOwnerName.errors
+            }"
+            placeholder="Owner Name"
+          />
+          <span
+            *ngIf="add.bCompanyName.errors && add.bCompanyName.touched"
+            class="text-danger"
+            >First Name Required</span
+          >
+          <input
+            type="text"
+            class="mt-2 p-3 form-control"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': add.email.touched && add.email.errors }"
+            placeholder="Business Email"
+          />
+          <span
+            *ngIf="add.email.errors && add.email.touched"
+            class="text-danger"
+            >Email ID Required</span
+          >
+          <input
+            type="tel"
+            class="mt-2 p-3 form-control"
+            pattern="^\d{10}$"
+            formControlName="bmobile"
+            [ngClass]="{
+              'is-invalid': add.bmobile.touched && add.bmobile.errors
+            }"
+            placeholder="Phone Number"
+          />
+          <span
+            *ngIf="add.bmobile.errors && add.bmobile.touched"
+            class="text-danger"
+            >Phone Number Required</span
+          >
+          <input
+            type="password"
+            class="mt-2 p-3 form-control"
+            formControlName="password"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
+            [ngClass]="{
+              'is-invalid':
+                add.password.touched && add.password.errors
+            }"
+            placeholder="Password"
+          />
+          <span
+            *ngIf="add.password.errors && add.password.touched"
+            class="text-danger"
+            >Password Required</span
+          >
+          <button
+            type="submit"
+            (click)="RegisterBtn()"
+            class="mt-3 btn button form-control"
+          >
+            Sign Up
+          </button>
+        </form>
+        <p class="mt-4 cont-heading">
+          Already have an account?
+          <a class="text-primary" (click)="back()">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

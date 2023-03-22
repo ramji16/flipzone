@@ -1,0 +1,62 @@
+a {
+  color: #41118f !important;
+}
+.dropdown-item {
+  color: #dbf2fb !important;
+}
+.dropdown-item:hover {
+  color: #41118f !important;
+}
+.dropdown-menu {
+  transition: ease-in-out !important;
+  background-color: #41118f !important;
+}
+.account {
+  color: #00ddc0 !important;
+}
+
+.animatecart {
+  width: 100px;
+  height: 100px;
+  top: 25px;
+  font-size: 30px;
+  position: relative;
+  animation: example 4s ease-in-out;
+}
+
+@keyframes example {
+  0% {
+    left: -50px;
+    opacity: 0;
+  }
+  50% {
+    left: 120px;
+    opacity: 1;
+  }
+  100% {
+    left: 0px;
+  }
+}
+
+.animatebusiness {
+  width: 100px;
+  height: 100px;
+  top: 25px;
+  font-size: 25px;
+  position: relative;
+  animation: example1 4s ease-in-out;
+}
+
+@keyframes example1 {
+  0% {
+    right: -50px;
+    opacity: 0;
+  }
+  50% {
+    right: 120px;
+    opacity: 1;
+  }
+  100% {
+    right: 0px;
+  }
+}

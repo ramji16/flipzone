@@ -1,0 +1,66 @@
+body{
+    min-height: 100vh;
+    height: auto;
+    background-color: #E2F4FB;
+}
+.row{
+    border-radius: 10px;
+}
+.form{
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+i{
+    font-size: 30px;
+    color: #6029B9;
+    line-height: 1.5em;
+}
+.fa-brands{
+    font-size: 40px;
+    /* border-radius: 20px; */
+}
+label{
+    line-height: 2.5em;
+    position: relative;
+    top: 3px;
+}
+input{
+    border-radius: 20px;
+    height: 3em;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+input:focus{
+    background: transparent;
+    border-color: white;
+    color: white;
+}
+input:focus:hover{
+    box-shadow:none;
+}
+input[type=text],[type=email],[type=tel]{
+    padding-left:4% ;
+    color: white;
+}
+textarea{
+    border-radius: 20px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+}
+textarea:focus{
+    background: transparent;
+    border-color: white;  
+    color: white;
+    padding-left: 4%;
+}
+textarea:focus:hover{
+    box-shadow: none;
+}
+button{
+    background-color:#6029B9;
+    color:white;
+    height:40px;
+    border-radius:15px;
+}

@@ -1,0 +1,45 @@
+<body>
+    <app-usernavbar></app-usernavbar>
+    <div class="container min-vh-100" style="height: auto;">
+        <div class="row shadow w3-animate-zoom" style="position: relative;top:3em;">
+            <div class="col-6 pt-4 pl-5 bg-white" style="border-top-left-radius: 10px;border-bottom-left-radius: 10px;">
+                <h2><b>Let's get in touch</b></h2>
+                <p class="pt-3">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore fugit doloremque optio dicta modi est illo, explicabo iure aut voluptatibus, quaerat repudiandae debitis molestiae fugiat vitae aliquid fuga id sit</p>
+                <div class="d-flex flex-row align-items-center">
+                    <div class="">
+                        <i class="fa-solid fa-envelope"></i><br>
+                        <i class="fa-solid fa-phone"></i><br>
+                        <i class="fa-sharp fa-solid fa-location-dot"></i> 
+                    </div>
+                    <div class="ml-4">
+                        <label for="" >flipzone@gmail.com</label><br>
+                        <label for="" >(+111-8765-8765)</label><br>
+                        <label for="" >India</label><br>
+                    </div>
+                </div>
+                <div class="pt-3 pb-3">
+                    <h3><b>Contact with us</b></h3>
+                    <i class="fa-brands fa-square-twitter"></i>
+                    <i class="fa-brands fa-square-instagram pl-3"></i>
+                    <i class="fa-brands fa-square-facebook pl-3"></i>
+                    <i class="fa-brands fa-linkedin pl-3"></i>
+                </div>
+            </div>
+            <div class="col-6 form" style="background-color: #6F8FAF;">
+                <div class="p-4 text-white">
+                   <form [formGroup]="contact">
+                   <label for="">Name</label>
+                   <input type="text" class="form-control" formControlName="name" required>
+                   <label for="">Email</label>
+                   <input type="email" class="form-control" formControlName="email" required>
+                   <label for="">Phone</label>
+                   <input type="tel" class="form-control" formControlName="phone" minlength="10" required>
+                   <label for="">Message</label>
+                   <textarea cols="30" rows="3" class="form-control" formControlName="message" required></textarea>
+                   <button type="submit" class="btn col-3 text-light mt-3">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

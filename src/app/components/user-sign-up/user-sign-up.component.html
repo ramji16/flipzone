@@ -1,0 +1,73 @@
+<div class="container-fluid">
+  <div class="row">
+    <app-usernavbar class="fixed-top"></app-usernavbar>
+    <div class="col-6 main-back min-vh-100" style="height: auto;"></div>
+    <div class="col-6 main-back-2 text-center min-vh-100" style="height: auto;">
+      <div class="cardd d-flex flex-column justify-content-center min-vh-100">
+        <h1 class="cont-heading">Sign up</h1>
+        <form [formGroup]="uSigninForm">
+          <input
+            type="text"
+            class="mt-4 p-3 form-control"
+            pattern="^[a-zA-z-']+$"
+            formControlName="ufname"
+            [ngClass]="{
+              'is-invalid': add.ufname.touched && add.ufname.errors
+            }"
+            placeholder="First Name"
+          />
+          <span
+            *ngIf="add.ufname.errors && add.ufname.touched"
+            class="text-danger"
+            >First Name Required</span
+          ><br />
+          <input
+            type="text"
+            class="mt-2 p-3 form-control"
+            pattern="^[a-zA-z-']+$"
+            formControlName="ulname"
+            [ngClass]="{
+              'is-invalid': add.ulname.touched && add.ulname.errors
+            }"
+            placeholder="Last Name"
+          />
+          <span
+            *ngIf="add.ulname.errors && add.ulname.touched"
+            class="text-danger"
+            >Last Name Required</span
+          ><br />
+          <input
+            type="text"
+            formControlName="email"
+            [ngClass]="{ 'is-invalid': add.email.touched && add.email.errors }"
+            class="mt-2 p-3 form-control"
+            placeholder="Email"
+          />
+          <span
+            *ngIf="add.email.errors && add.email.touched"
+            class="text-danger"
+            >Email ID Required</span
+          ><br />
+          <input
+            type="text"
+            class="mt-2 p-3 form-control"
+            placeholder="Phone Number"
+            value="{{this.pno}}"
+            readonly
+          />
+          <button
+            type="submit"
+            (click)="onSignup()"
+            class="mt-3 btn button form-control"
+          >
+            Sign Up
+          </button>
+        </form>
+        <p class="mt-4 cont-heading">
+          Already have an account?
+          <a class="text-primary" (click)="back()">Sign up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

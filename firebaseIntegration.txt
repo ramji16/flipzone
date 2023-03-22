@@ -1,0 +1,165 @@
+/** signup code **/
+ RegisterBtn() {
+    if (this.addForm.invalid) {
+      this.addForm.markAllAsTouched()
+      return;
+    } else {
+      var registerdata = this.addForm.value      
+      this.makeapi.registerItem(registerdata).then(UserCredential => {      
+        debugger  
+        this.newuser = registerdata 
+        registerdata.uid=UserCredential.user.uid
+        this.addForm.patchValue(registerdata)
+        debugger
+        sessionStorage.setItem('uid',UserCredential.user.uid)   
+        UserCredential.user.updateProfile({
+          displayName: registerdata.firstName + ' ' + registerdata.lastName
+        })     
+        debugger   
+        this.makeapi.insertuserdata(UserCredential, registerdata).then(() => {
+          this.router.navigate(['/admin'])
+          this.resetForm();
+        }).catch(error => {
+          this.eventautherror.next(error);
+          this.notify.notifyError(error.message)
+        })
+      }).catch(error => {
+        this.eventautherror.next(error);
+        this.notify.notifyError(error.message)
+      })
+    }
+  }
+
+/**signin code**/
+signInBtn() {
+    if (this.addForm.invalid) {
+      this.addForm.markAllAsTouched()
+      this.notify.notifyError('Form is Invaild')    
+      return;
+    } else {
+      var loginval = this.addForm.value
+      this.makeapi.login(loginval.email, loginval.password).then(UserCredential => {
+        
+        if (UserCredential) {          
+          this.router.navigate(['/admin'])
+          this.resetForm();
+        }
+      }).catch(error => {
+        this.eventautherror.next(error);
+        this.notify.notifyError(error.message)        
+      })
+    }
+  }
+/**Get User Code**/
+getUserData(){
+	this.makeapi.getUser().subscribe(currentUser => {      
+      		if (currentUser !== null) {
+        	this.user=currentUser       
+        	sessionStorage.setItem('uid',currentUser.uid)  
+      		}	
+    	});
+}
+
+/**list code**?
+  studentList = []
+  myData = []
+  getAllStudents() {
+    this.makeapi.listItem('student').subscribe(res => {      
+      this.studentList = res.map((e: any) => {
+        const data = e.payload.doc.data();
+        data.id = e.payload.doc.id;
+        return data;
+      })      
+      this.myData=[]
+      this.studentList.forEach(element => {
+        if ( sessionStorage.getItem('uid') == element.uid) {          
+          this.myData.push(element)
+        }
+      }); 
+      console.log(this.studentList)
+    }, err => {
+      alert('Error while fetching student data');
+    })
+  }
+
+/**delete code**/
+deleteBtn(id, url) {    
+    this.makeapi.deleteItem('student', id)    
+}
+
+/**get code**/
+getValue: any = []
+  getApi(id) {
+    this.makeapi.getItem('student', id).subscribe(res => {     
+      this.getValue = res      
+      this.addForm.patchValue(res)  
+	if (this.getValue.url == null) {
+        this.getValue.url = 'assets/images/user.png'
+      }    
+    })
+  }
+
+/**images upload code**/
+selectedFile: File = null;
+  downloadURL: Observable<string>;
+  fsb;
+  onFileSelected(event) {
+    this.selectedFile = event.target.files[0];
+    debugger
+    if (event.target.files && this.selectedFile) {
+      var reader = new FileReader();
+      var imagetype = this.selectedFile.type
+      var imagedatatype = imagetype.split("/")
+      var img_crt_type = imagedatatype[1]
+      if (img_crt_type == "jpeg" || img_crt_type == "jpg" || img_crt_type == "png") {
+        reader.readAsDataURL(this.selectedFile);
+        reader.onload = () => {
+          this.getValue.url = reader.result;
+          debugger
+        }
+      }
+    }
+  }
+/**save images**/
+  filePath: string
+  uploadSaveFile() {
+    if (this.selectedFile != null) {
+      var n = Date.now();
+      this.filePath = `studentImages/${this.selectedFile.name.split('.')}_${n}`;
+      this.makeapi.imageUpload(this.filePath, this.selectedFile).snapshotChanges().pipe(
+        finalize(() => {
+          this.makeapi.getImage(this.filePath).getDownloadURL().subscribe(url => {
+            if (url) {
+              this.fsb = url;
+              var getform = this.addForm.value
+              getform.url = this.fsb
+              this.addForm.patchValue(getform)
+              this.saveData()
+            }
+          });
+        })
+      ).subscribe(url => { });
+    } else {
+      this.saveData()
+    }
+
+  }
+/**delete Image**/
+deleteImage(url){
+	this.makeapi.deleteImage(url)
+}
+/**save code**/
+ saveData() {
+    var getform = this.addForm.value  
+    getform.uid= sessionStorage.getItem('uid')
+    this.addForm.patchValue(getform)
+    var req = this.addForm.value 
+    this.makeapi.addItem('student' , req)
+      .then(data => {        
+        sessionStorage.removeItem('id')
+        this.closeBtn()
+      })
+      .catch(res => {        
+        this.notify.notifyError('Can not save student data')
+      })
+  }

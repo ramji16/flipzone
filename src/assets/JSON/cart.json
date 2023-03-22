@@ -1,0 +1,18 @@
+[
+    {
+        "image":"assets/212.jpg",
+        "pname":"Soccer jersey",
+        "ename":"Sold by Flipzone enterprises",
+        "cont": "Sports T-shirt",
+        "rupees":"₹500",
+        "offer":"₹1000"
+    },
+    {
+        "image":"assets/dslr.jpg",
+        "pname":"Nikon 500D",
+         "ename":"Sold by Flipzone enterprises",
+        "cont": " nikon 500D 24.2MP avail with gimbal",
+        "rupees":"₹1,00,00",
+        "offer":"₹1,10,000"
+    }
+]

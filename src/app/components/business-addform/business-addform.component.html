@@ -1,0 +1,281 @@
+<body class="pb-5">
+  <app-business-navbar></app-business-navbar>
+  <div class="container shadow pt-4 mx-auto" style="width: auto;">
+    <div class="min-vh-100 d-flex flex-column justify-content-center">
+      <form [formGroup]="productForm">
+      <div class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Product Name :</label>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <input type="text" class="form-control" formControlName="productName" pattern="^[a-zA-z-']+$" [ngClass]="{'is-invalid': add.productName.touched && add.productName.errors}" placeholder="Product Name"/>
+          <span *ngIf="add.productName.errors && add.productName.touched" class="text-danger">Name Required</span>
+        </div>
+      <!-- </div>
+      <div class="row m-3"> -->
+        <div class="col-md-2 col-6 text-right">
+          <label>Dealer Email :</label>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <input type="email" class="form-control" formControlName="dealerMail" placeholder="Dealer Email" />
+          <span *ngIf="add.dealerMail.errors && add.dealerMail.touched" class="text-danger">Dealer Email Required</span>
+        </div>
+      </div>
+      <div class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Price :</label>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <input type="text" class="form-control" pattern="^\d{10}$" [ngClass]="{'is-invalid': add.price.touched && add.price.errors}" formControlName="price" placeholder="Price" />
+          <span *ngIf="add.price.errors && add.price.touched" class="text-danger">Price Required</span>
+        </div>
+      <!-- </div>
+      <div class="row m-3"> -->
+        <div class="col-md-2 col-6 text-right">
+          <label>Product Photo :</label>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <input type="file" class="form-control" formControlName="photo" [ngClass]="{'is-invalid': add.photo.touched && add.photo.errors}" placeholder="Image url" />
+          <span *ngIf="add.photo.errors && add.photo.touched" class="text-danger">Product Photo Required</span>
+        </div>
+      </div>
+      <div class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Discount :</label>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <select #negotation (change)="onSelected(negotation.value)" [ngClass]="{'is-invalid': add.discount.touched && add.discount.errors}" formControlName="discount" class="form-control" style="color: black; text-align: center">
+            <!-- <option default>Choose an option</option> -->
+            <option>Available</option>
+            <option>Not Available</option>
+          </select>
+          <span *ngIf="add.discount.errors && add.discount.touched" class="text-danger">Discount Required</span>
+        </div>
+      <!-- </div>
+      <div class="row m-3"> -->
+        <div class="col-md-2 col-6 text-right">
+          <label>Category :</label>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <!-- <select #product (change)="onCategory(product.value)" formControlName="category" class="form-control" style="color: black; text-align: center">
+            <option default>Choose an option</option>
+            <option>Fashion</option>
+            <option>Electronics</option>
+            <option>Furniture</option>
+            <option>Others</option>
+          </select> -->
+          <!-- <input type="text" class="form-control" value="{{ category }}" formControlName="category"  readonly> -->
+          <input
+                      type="text"
+                      readonly
+                      class="pl-2 form-control"
+                      id="staticEmail"
+                      value="{{ category }}"
+                    />
+        </div>
+      </div>
+      <div *ngIf="selectedTeam=='Available'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Lower Price :</label>
+        </div>
+        <div class="col-md-4 col-6 text-center">
+          <input type="text" pattern="^\d{10}$" [ngClass]="{'is-invalid': add.lowerPrice.touched && add.lowerPrice.errors}" class="form-control" formControlName="lowerPrice" placeholder="Lower Price for Negotation" />
+          <span *ngIf="add.lowerPrice.errors && add.lowerPrice.touched" class="text-danger">Lower Price Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Electronics' || selectedCategory=='Others' || selectedCategory=='Fashion' || selectedCategory=='Furniture'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Brand Name :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': add.brandName.touched && add.brandName.errors}" formControlName="brandName" placeholder="Brand Name" />
+          <span *ngIf="add.brandName.errors && add.brandName.touched" class="text-danger">Brand Name Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Electronics' || selectedCategory=='Others' || selectedCategory=='Fashion'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Model Number :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <input type="text" class="form-control" formControlName="modelNumber" [ngClass]="{'is-invalid': add.modelNumber.touched && add.modelNumber.errors}" placeholder="Model Number" />
+          <span *ngIf="add.modelNumber.errors && add.modelNumber.touched" class="text-danger">Model Number Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Fashion'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Type :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <select #fashion (change)="onFashionType(fashion.value)" [ngClass]="{'is-invalid': add.fashionType.touched && add.fashionType.errors}" formControlName="fashionType" class="form-control" style="color: black; text-align: center">
+            <option default>Choose an option</option>
+            <option>Shirt</option>
+            <option>T-Shirt</option>
+            <option>Polo-Shirt</option>
+            <option>Hoodie</option>
+            <option>Kurta</option>
+            <option>Pants</option>
+            <option>Shorts</option>
+            <option>Three-Fourth</option>
+            <option>Jogger</option>
+            <option>Shoe</option>
+            <option>Slipper</option>
+            <option>Acceceries</option>
+          </select>
+          <span *ngIf="add.fashionType.errors && add.fashionType.touched" class="text-danger">Type Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Electronics' || selectedCategory=='Others' || selectedCategory=='Fashion' || selectedCategory=='Furniture'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Material :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': add.material.touched && add.material.errors}" formControlName="material" placeholder="Material Name" />
+          <span *ngIf="add.material.errors && add.material.touched" class="text-danger">Material Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Furniture'|| selectedCategory=='Others'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Height :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': add.height.touched && add.height.errors}" formControlName="height" placeholder="Height in feet" />
+          <span *ngIf="add.height.errors && add.height.touched" class="text-danger">Height Required</span>
+        </div>
+      </div>
+        <div *ngIf="selectedCategory=='Furniture'|| selectedCategory=='Others'" class="row m-3">
+          <div class="col-md-2 col-6 text-right">
+            <label>Weight :</label>
+          </div>
+          <div class="col-md-10 col-6 text-center">
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': add.weight.touched && add.weight.errors}" formControlName="weight" placeholder="Weight in Grams" />
+            <span *ngIf="add.weight.errors && add.weight.touched" class="text-danger">Weight Required</span>
+          </div>
+        </div>
+        <div *ngIf="selectedCategory=='Furniture'|| selectedCategory=='Others'" class="row m-3">
+          <div class="col-md-2 col-6 text-right">
+            <label>Breadth :</label>
+          </div>
+          <div class="col-md-10 col-6 text-center">
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': add.breadth.touched && add.breadth.errors}" formControlName="breadth" placeholder="Breadth in feet" />
+            <span *ngIf="add.breadth.errors && add.breadth.touched" class="text-danger">Breadth Required</span>
+          </div>
+        </div>
+      <!-- <div *ngIf="'" > -->
+        <div *ngIf=" selectedCategory=='Fashion'" class="row m-3">
+          <div class="col-md-2 col-6 text-right">
+            <label>Gender :</label>
+          </div>
+          <div class="col-md-10 col-6 text-center">
+            <input type="text" class="form-control" [ngClass]="{'is-invalid': add.gender.touched && add.gender.errors}" formControlName="gender" placeholder="Gender" />
+            <span *ngIf="add.gender.errors && add.gender.touched" class="text-danger">Gender Required</span>
+          </div>
+        </div>
+      <div  *ngIf="selectedCategory=='Fashion' &&(fashionType=='Shirt' || fashionType=='T-Shirt' || fashionType=='Polo-Shirt' || fashionType=='Hoodie' || fashionType=='Kurta' || fashionType=='Pants' || fashionType=='Shorts' || fashionType=='Jogger' || fashionType=='Three-Fourth')" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Size :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <select #fashionTop (change)="onFashionTopSize(fashionTop.value)" [ngClass]="{'is-invalid': add.dressSize.touched && add.dressSize.errors}" formControlName="dressSize" class="form-control" style="color: black; text-align: center">
+            <option default>Choose an option</option>
+            <option>Kid</option>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+            <option>XL</option>
+            <option>XXL</option>
+            <option>XXL</option>
+          </select>
+          <span *ngIf="add.dressSize.errors && add.dressSize.touched" class="text-danger">Size Required</span>
+        </div>
+      </div>
+      <div  *ngIf="selectedCategory=='Fashion' &&( fashionType=='Shoe' || fashionType=='Slipper')" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Size :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <select #fashionTop (change)="onFashionTopSize(fashionTop.value)" [ngClass]="{'is-invalid': add.footwearSize.touched && add.footwearSize.errors}" formControlName="footwearSize" class="form-control" style="color: black; text-align: center">
+            <option default>Choose an option</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+            <option>11</option>
+            <option>12</option>
+          </select>
+          <span *ngIf="add.footwearSize.errors && add.footwearSize.touched" class="text-danger">Gender Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Electronics' || selectedCategory=='Others' || selectedCategory=='Fashion' || selectedCategory=='Furniture'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Tag :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': add.tag.touched && add.tag.errors}" formControlName="tag" placeholder="Tag Name Based on the Product" />
+          <span *ngIf="add.tag.errors && add.tag.touched" class="text-danger">Tag Name Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Electronics' || selectedCategory=='Others' || selectedCategory=='Fashion' || selectedCategory=='Furniture'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Colour :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': add.colour.touched && add.colour.errors}" formControlName="colour" placeholder="Colour" />
+          <span *ngIf="add.colour.errors && add.colour.touched" class="text-danger">Colour Name Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Electronics' || selectedCategory=='Others' || selectedCategory=='Fashion' || selectedCategory=='Furniture'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Stocks :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <input type="number" class="form-control" [ngClass]="{'is-invalid': add.stocks.touched && add.stocks.errors}" formControlName="stocks" placeholder="Stocks Count" />
+          <span *ngIf="add.stocks.errors && add.stocks.touched" class="text-danger">Stocks Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Electronics' || selectedCategory=='Others' || selectedCategory=='Fashion' || selectedCategory=='Furniture'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Manufacture On :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <input type="date" class="form-control" [ngClass]="{'is-invalid': add.manufactureDate.touched && add.manufactureDate.errors}" formControlName="manufactureDate" placeholder="MFD" />
+          <span *ngIf="add.manufactureDate.errors && add.manufactureDate.touched" class="text-danger">Manufacture Date Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Electronics' || selectedCategory=='Others' || selectedCategory=='Fashion' || selectedCategory=='Furniture'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Warranty Till :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': add.warrantyDate.touched && add.warrantyDate.errors}" formControlName="warrantyDate" placeholder="Warranty Validity" />
+          <span *ngIf="add.warrantyDate.errors && add.warrantyDate.touched" class="text-danger">Warranty Required</span>
+        </div>
+      </div>
+      <div *ngIf="selectedCategory=='Electronics' || selectedCategory=='Others' || selectedCategory=='Fashion' || selectedCategory=='Furniture'" class="row m-3">
+        <div class="col-md-2 col-6 text-right">
+          <label>Description :</label>
+        </div>
+        <div class="col-md-10 col-6 text-center">
+          <!-- <input type="textarea"  class="form-control" placeholder="Colour" /> -->
+          <textarea class="form-control" [ngClass]="{'is-invalid': add.description.touched && add.description.errors}" cols="30" formControlName="description" rows="4" placeholder="Add Product Description"></textarea>
+          <span *ngIf="add.description.errors && add.description.touched" class="text-danger">Description Required</span>
+        </div>
+      </div>
+      <div class="row m-3">
+        <div class="col-md-6 col-6 text-right">
+          <input type="button" class="btn btn-info" value="Preview" />
+        </div>
+        <div class="col-md-6 col-6 text-left">
+          <input type="submit" class="btn btn-success" (submit)="onProductValues()" value="Add Product" />
+        </div>
+      </div>
+    <!-- </div> -->
+      </form>
+    </div>
+  </div>
+</body>

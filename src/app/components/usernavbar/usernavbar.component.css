@@ -1,0 +1,56 @@
+.common-navbar{
+    color:black;
+    /* From https://css.glass */
+    background: rgba(255, 255, 255, 0.01);
+    border-radius: 16px;
+    backdrop-filter: blur(1.3px);
+    -webkit-backdrop-filter: blur(1.3px);
+}
+.cardd{
+    background-color:rgb(167, 167, 174) ;
+    width:40px;
+    height:40px;
+    border-radius: 50%;
+}
+.min-vw-100{
+    width:90vw;
+}
+.navbar-brand{
+    font-family: 'Pacifico', cursive;
+}
+a{
+    font-family: Roboto;
+}
+.cardd-cart{
+    background-color:#6029B9;
+    color:white;
+    border-radius: 20px;
+    height: 40px;
+    width: 80px;
+}
+.cardd-cart:hover{
+    background-color:#2888A9;
+    color:white;
+    border-radius: 20px;
+    height: 40px;
+    width: 80px;
+}
+.nav-link:hover{
+    text-align:center;
+    background-color:#6029B9;
+    color:whitesmoke !important;
+    border-radius: 20px;
+    height: 40px;
+    transition: ease-in-out;
+}
+.nav-link{
+    color:black !important;
+    font-weight: bold;
+}
+.Profile-letter{
+    color:white;
+    background-color: #6029B9;
+    border-radius: 20px;
+    height: 40px;
+    width: 40px;
+}

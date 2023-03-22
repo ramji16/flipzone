@@ -1,0 +1,402 @@
+<div class="body">
+  <app-business-navbar></app-business-navbar>
+  <div class="container-fluid">
+    <!--ROW-1 -->
+    <div class="row p-2 m-auto justify-content-between" style="color: black">
+      <!--Profile-col-->
+      <div
+        class="col-lg-2 pt-4 mt-3 w3-animate-top w3-hover-shadow box text-center "
+        (click)="profilenav()"
+      >
+        <div
+          class="d-flex flex-row justify-content-around align-items-center p-3"
+        >
+          <i class="fa-solid fa-address-card pb-2"></i>
+          <div class="ml-4" style="text-align: right;"><h4>Profile</h4></div>
+        </div>
+      </div>
+      <!--Products-col-->
+      <div
+        class="col-lg-2 p-3 mt-3 box w3-animate-bottom w3-hover-shadow"
+        (click)="businessproduct()"
+      >
+        <div class="d-flex flex-row justify-content-between mt-3">
+          <div class="mt-1">
+            <i class="fa-solid fa-bag-shopping"></i>
+          </div>
+          <div style="line-height: 1em" class="d-flex flex-column justify-content-end mt-2">
+            <div></div>
+            <div style="text-align: right;"><h4>Products :10</h4></div>
+          </div>
+        </div>
+      </div>
+      <!--orders-col-->
+      <div
+        class="col-lg-2 p-3 mt-3 box w3-animate-left w3-hover-shadow"
+        (click)="businessorder()"
+      >
+        <div class="d-flex flex-row justify-content-around mt-3">
+          <div class="mt-1">
+            <i class="fas fa-truck-loading"></i>
+          </div>
+          <div style="line-height: 1em" class="d-flex flex-column justify-content-end mt-2">
+            <div></div>
+            <div><h4 style="text-align: right;">Orders :10</h4></div>
+          </div>
+        </div>
+      </div>
+      <!--customers-col-->
+      <div class="col-lg-2 p-3 mt-3 box w3-animate-right w3-hover-shadow">
+        <div class="d-flex flex-row justify-content-between mt-3">
+          <div class="mb-1">
+            <!-- <i class="fa-solid fa-user-tie"></i> -->
+            <i class="fas fa-users"></i>
+          </div>
+          <div style="line-height: 1em" class="d-flex flex-column justify-content-end mt-2">
+            <div></div>
+            <div><h4 style="text-align: right;">Customers :10</h4></div>
+          </div>
+        </div>
+      </div>
+      <!--add-product-col-->
+      <div class="col-lg-2 p-3 mt-3 box w3-animate-zoom w3-hover-shadow dropdown">
+        <div class="d-flex flex-row justify-content-between p-1 pt-3">
+          <i class="fas fa-shopping-cart"></i>
+          <!-- <div class="dropdown"> -->
+            <a
+              style="font-size: 25px;text-align: right;"
+              type="button"
+              data-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Add Product
+            </a>
+            <div class="dropdown-menu" >
+              <a class="dropdown-item" (click)="businessadd('Fashion')"
+                >Fashion</a
+              >
+              <a class="dropdown-item" (click)="businessadd('Furniture')"
+                >Furniture</a
+              >
+              <a class="dropdown-item" (click)="businessadd('Electronics')"
+                >Electronics</a
+              >
+              <a class="dropdown-item" (click)="businessadd('Others')"
+                >Others</a
+              >
+            </div>
+          <!-- </div> -->
+        </div>
+      </div>
+    </div>
+
+    <!--ROW-2 -->
+    <div class="row p-2 m-auto justify-content-between">
+      <!--Sales overview-col-->
+      <div class="col-lg-5 col-12 p-1 mt-3 box w3-hover-shadow w3-animate-left">
+        <h5 class="p-3"><b>Sales Overview</b></h5>
+        <!--cutomer-totalProfit-Transcation-row-->
+        <div class="row p-3">
+          <!--customer-col-->
+          <div class="col-lg-4 col-12 mt-2">
+            <div class="d-flex flex-row">
+              <div class="">
+                <i class="fa-regular fa-user w3-badge p-3" style="background-color: #845ec2;"></i>
+              </div>
+              <div style="line-height: 0.5em" class="ml-2 mt-2">
+                <p class="text-muted">8000</p>
+                <p>Customers</p>
+              </div>
+            </div>
+          </div>
+          <!--profit-col-->
+          <div class="col-lg-4 col-12 mt-2">
+            <div class="d-flex flex-row">
+              <div>
+                <!-- <i
+                  class="fa-solid fa-money-bill-transfer"
+                ></i> -->
+                <i class="fas fa-chart-line  w3-badge p-3" style="background-color: #845ec2;"></i>
+              </div>
+              <div style="line-height: 0.5em" class="ml-2 mt-2">
+                <p class="text-muted"><b>$20.8K</b></p>
+                <p>Profit</p>
+              </div>
+            </div>
+          </div>
+          <!--trasnaction-col-->
+          <div class="col-lg-4 col-12 mt-2">
+            <div class="d-flex flex-row">
+              <div>
+                <!-- <i
+                  class="fa-solid fa-money-bill-trend-up "
+                ></i> -->
+                <!-- <i class="far fa-money-check-edit w3-badge w3-red p-3"></i> -->
+                <i class="fas fa-business-time w3-badge p-3" style="background-color: #845ec2;"></i>
+                <!-- <i class="fas fa-money-check-edit-alt"></i> -->
+              </div>
+              <div style="line-height: 0.5em" class="ml-2 mt-2">
+                <p class="text-muted">$3000K</p>
+                <p>transaction</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--rating-col-->
+      <div class="col-lg-3 col-12 p-3 mt-3 box w3-animate-zoom w3-hover-shadow">
+        <div class="d-flex flex-row justify-content-between">
+          <div>
+            <h5 class="p-1"><b>Ratings</b></h5>
+            <div class="mb-3" style="width: 90px">
+              <small
+                style="font-size: 10px;background-color: #845ec2;"
+                class="rounded-pill p-2 text-white"
+                >Years of 2023</small
+              >
+            </div>
+            <div style="color: white;"><h2 class="mt-2 text-dark">10K</h2></div>
+          </div>
+          <div>
+            <img
+              src="assets/images/men.png"
+              height="auto"
+              width="150px"
+              style="position: absolute; left: 50%; bottom: 1%"
+            />
+          </div>
+        </div>
+      </div>
+      <!--session-col-->
+      <div
+        class="col-lg-3 col-12 p-3 mt-3 box w3-animate-right w3-hover-shadow"
+      >
+        <div class="d-flex flex-row justify-content-between">
+          <div>
+            <h5 class="p-1"><b>Customers</b></h5>
+            <div class="mb-3" style="width: 90px">
+              <small
+                style="font-size: 10px;background-color: #845ec2;"
+                class="rounded-pill p-2 text-white"
+                >Last month</small
+              >
+            </div>
+            <h2 class="mt-2 text-dark">9.6K</h2>
+          </div>
+          <div>
+            <img
+              src="assets/images/peter.png"
+              height="auto"
+              width="150px"
+              style="position: absolute; left: 50%; bottom: 1%"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ROW -3 -->
+    <div class="row p-2 m-auto justify-content-between">
+      <div class="col-lg-5 co-12 p-1 mt-3 shadow box w3-hover-shadow w3-animate-left">
+        <div
+          id="carouselExampleControls"
+          class="carousel slide p-3 text-white"
+          style="border-radius: 10px;background-image:linear-gradient(45deg,#6F8FAF,#DAE7EF);"
+          data-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="text-center row d-flex justify-content-between">
+                <div class="col-lg-6 col-12">
+                  <h3 class="text-bold"><b>Weekly sales</b></h3>
+                  <small class="text-bold"><b>Total $13.7k earnings</b></small>
+                </div>
+                <div class="col-lg-6 col-12 pt-3">
+                  <img
+                    src="assets/images/iphone.png"
+                    class="w3-card-4"
+                    alt=""
+                    height="100px"
+                    width="50px"
+                  />
+                </div>
+              </div>
+              <h5 class="ml-5 p-3">Mobiles & Accessories</h5>
+              <div class="row justify-content-around">
+                <div class="col-4">
+                  <p>
+                    <small class="w3-round-large w3-blue p-2"> 16</small>
+                    Mobiles
+                  </p>
+                  <p>
+                    <small class="w3-round-large w3-blue p-2">10</small>
+                    Accessories
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p>
+                    <small class="w3-round-large w3-blue p-2">12</small> Tablets
+                  </p>
+                  <p>
+                    <small class="w3-round-large w3-blue p-2">10</small>
+                    Computers
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="text-center row d-flex justify-content-between">
+                <div class="col-lg-6 col-12">
+                  <h3 class="text-bold"><b>Weekly sales</b></h3>
+                  <small class="text-white">Total $13.7k earnings</small>
+                </div>
+                <div class="col-lg-6 col-12 pt-3">
+                  <img
+                    src="assets/images/iwatch.png"
+                    class="w3-shadow"
+                    alt=""
+                    height="100px"
+                    width="150px"
+                  />
+                </div>
+              </div>
+              <h5 class="ml-5 p-3">Fashion</h5>
+              <div class="row justify-content-around">
+                <div class="col-4">
+                  <p>
+                    <small class="w3-round-large w3-blue p-2"> 16</small>
+                    T-shirts
+                  </p>
+                  <p>
+                    <small class="w3-round-large w3-blue p-2">10</small> Shirts
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p>
+                    <small class="w3-round-large w3-blue p-2">12</small> Watches
+                  </p>
+                  <p>
+                    <small class="w3-round-large w3-blue p-2">10</small> Glasses
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="text-center row d-flex justify-content-between">
+                <div class="col-lg-6 col-12">
+                  <h3 class="text-bold"><b>Weekly sales</b></h3>
+                  <small class="text-white">Total $13.7k earnings</small>
+                </div>
+                <div class="col-lg-6 col-12 pt-3">
+                  <img
+                    src="assets/images/joystick.png"
+                    alt=""
+                    height="100px"
+                    width="100px"
+                  />
+                </div>
+              </div>
+              <h5 class="ml-5 p-3">Appliances & Electronics</h5>
+              <div class="row justify-content-around">
+                <div class="col-4">
+                  <p>
+                    <small class="w3-round-large w3-blue p-2"> 16</small> TV's
+                  </p>
+                  <p>
+                    <small class="w3-round-large w3-blue p-2">10</small>
+                    Speakers
+                  </p>
+                </div>
+                <div class="col-4">
+                  <p>
+                    <small class="w3-round-large w3-blue p-2">12</small> Cameras
+                  </p>
+                  <p>
+                    <small class="w3-round-large w3-blue p-2">10</small> Remotes
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-target="#carouselExampleControls"
+            data-slide="prev"
+          >
+            <i class="fa-solid fa-chevron-left" style="color: white"></i>
+            <span class="sr-only">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-target="#carouselExampleControls"
+            data-slide="next"
+          >
+            <i class="fa-solid fa-chevron-right" style="color: white"></i>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+      </div>
+      <div
+        class="col-lg-3 co-12 p-1 mt-3 box w3-hover-shadow w3-animate-bottom"
+      >
+        <div class="p-3 " style="color: white;">
+          <h5 class="text-muted" style="line-height: 0.6em;">Total visits</h5>
+          <h4 class=""><b>35.7K</b></h4>
+        </div>
+        <div class="p-2 d-flex flex-row justify-content-between">
+          <p>
+            <i
+              class="fa-solid fa-mobile-screen p-2"
+              style="
+                color: #f91717;
+                background-color: #ff8c0065;
+                border-radius: 6px;
+              "
+            ></i>
+            &nbsp; Mobile
+          </p>
+          <p>
+            Desktop &nbsp;
+            <i
+              class="fa-solid fa-desktop p-2"
+              style="
+                color: #f91717;
+                background-color: #ff8c0065;
+                border-radius: 6px;
+              "
+            ></i>
+          </p>
+        </div>
+        <div class="p-2 d-flex flex-row justify-content-between">
+          <div>
+            <h5 class="" style="line-height: 0.6em">47.4%</h5>
+            <p>50,000</p>
+          </div>
+          <div class="text-white">
+            <p><small class="w3-round-large w3-blue p-2">Vs</small></p>
+          </div>
+          <div>
+            <h5 class="" style="line-height: 0.6em">50.2%</h5>
+            <p>50,000</p>
+          </div>
+        </div>
+        <div class="p-3">
+          <div class="bg-secondary w3-round-xlarge" style="height: 10px">
+            <div
+              class="bg-warning col-6 w3-round-xlarge"
+              style="height: 10px"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 co-12 p-1 mt-3 box w3-hover-shadow w3-animate-right">
+        <h4 class="p-3"><b>Sales this month</b></h4>
+        <div class="p-3" style="line-height: 0.2em">
+          <h4 class="mt-3 text-muted">Total sales this month</h4>
+          <h3><b>$12,456</b></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+body{
+    min-height: 100vh;
+    height: auto;
+    background-color: #E2F4FB;
+}
+p{
+    font-family:'roboto';
+    font-size: 1.1em;
+}
+.button{
+    background-color:#6029B9;
+    color:white;
+    height:50px;
+    border-radius:15px;
+}

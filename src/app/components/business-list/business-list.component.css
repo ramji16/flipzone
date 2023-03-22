@@ -1,0 +1,15 @@
+.dropdown-item {
+  color: #dbf2fb !important;
+}
+.dropdown-item:hover {
+  color: #41118f !important;
+}
+.dropdown-menu {
+  transition: ease-in-out !important;
+  background-color: #41118f !important;
+}
+/* @media only screen and (max-width:100%){
+  body{
+    height: auto;
+  }
+} */

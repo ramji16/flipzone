@@ -1,0 +1,44 @@
+[
+    {
+        "image":"assets/212.jpg",
+        "pname":"Soccer jersey",
+        "cont": "Sports T-shirt",
+        "rupees":"₹500",
+        "offer":"₹1000"
+    },
+    {
+        "image":"assets/shirt.jpg",
+        "pname":"Roadstar",
+        "cont": "Men's shirt",
+        "rupees":"₹500",
+        "offer":"₹700"
+    },
+    {
+        "image":"assets/ip-14.jpg",
+        "pname":"iPhone 14 pro max",
+        "cont": "iphone 14 pro max 512GB",
+        "rupees":"₹1,20,000",
+        "offer":"₹1,30,000"
+    },
+    {
+        "image":"assets/dslr.jpg",
+        "pname":"Nikon 500D",
+        "cont": " nikon 500D 24.2MP avail with 300 mm lens",
+        "rupees":"₹1,00,00",
+        "offer":"₹1,10,000"
+    },
+    {
+        "image":"assets/wdress.jpg",
+        "pname":"Red dress",
+        "cont": "Pure cotton dress",
+        "rupees":"₹800",
+        "offer":"₹1000"
+    },
+    {
+        "image":"assets/mac.jpg",
+        "pname":"Mac book pro",
+        "cont": "imac",
+        "rupees":"₹1,20,000",
+        "offer":"₹1,50,000"
+    }
+]

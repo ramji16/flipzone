@@ -1,0 +1,33 @@
+.main-back{
+    background-image: url('src/assets/images/main-login-pics.jpeg');
+    height:100vh;
+    background-size: cover;
+  }
+  .business-main-back{
+    background-image: url('src/assets/images/business-sign.jpg');
+    height:100vh;
+    background-size: cover;
+  }
+  .main-back-2{
+    background-color:#D7EFFB;
+    height:100vh;
+  }
+  .cont-heading{
+    color:#2888A9;
+  }
+  .min-vh-90{
+    height:100vh;
+  }
+  .cardd{
+    padding:6em;
+  }
+  input{
+    height:50px;
+    border-radius:15px;
+  }
+  .button{
+    background-color:#6029B9;
+    color:white;
+    height:50px;
+    border-radius:15px;
+  }

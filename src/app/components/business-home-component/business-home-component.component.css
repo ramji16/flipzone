@@ -1,0 +1,74 @@
+.box{
+    /* background-color:#008ccc !important; */
+    background-image:linear-gradient(45deg,#6F8FAF,#DAE7EF);
+    /* background-image: linear-gradient(45deg,#a1d4e7,#00a6e1); */
+    border-radius:10px;
+    color: black;
+    /* border:3px solid #F99417; */
+    /* border: 3px solid #00a6e1; */
+    position: relative;
+}
+.dropdown-item {
+    color: #dbf2fb !important;
+  }
+  .dropdown-item:hover {
+    color: #41118f !important;
+  }
+  .dropdown-menu {
+    transition: ease-in-out !important;
+    background-color: #41118f !important;
+  }
+p{
+    font-family: 'Rubik', sans-serif;
+}
+i.fa-address-card{
+    font-size: 50px;
+    color: black;
+}
+i.fa-shopping-cart{
+    font-size: 40px;
+    color: black;
+}
+i.fa-bag-shopping{
+    font-size: 50px;
+    color: black;
+}
+i.fa-truck-loading{
+    font-size: 50px;
+    color: black;
+}
+i.fa-users{
+    font-size: 30px;
+    color: black;
+}
+.rating{
+    /* background-image: url("/assets/images/men.png"); */
+    background-repeat: no-repeat;
+    background-size: 300px 300px;
+    background-position: 160% -6%;
+    background-attachment:local;
+}
+.session{
+    background-image: url("/assets/images/peter.png");
+    background-repeat: no-repeat;
+    background-size: 300px 300px;
+    background-position: 160% -6%;
+    background-attachment:local;
+}
+h5,h4,p,h2,b{
+    color: black!important;
+}
+@media only screen and (max-width:400px){
+    .rating{
+        background-position: 2em -6%;
+    }
+    .session{
+        background-position: 2em -6%;
+    }
+}
+.body{
+    min-height: 100vh;
+    height:auto;
+    background-color: #ddf1f8;
+    /* background-image: linear-gradient(45deg,#a1d4e7,#00a6e1); */
+}

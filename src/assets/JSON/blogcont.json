@@ -1,0 +1,23 @@
+[
+    {
+        "imageurl":"assets/images/fashion-1.png",
+        "heading":"Fashion",
+        "content":"Fashion forecasting is the prediction of mood, behavior and buying habits of theconsumer that focuses on upcoming trends.It is very important part of fashion scene because when a new garment is designed by a designer and worn,it will not create fashion by itself. It needs to spread fashion with different media.Fashion forecasting is commonly done by many communicating media, such as, fashion shows, cinema,newspapers, press, fashion magazines and window display."
+    },
+    {
+        "imageurl":"assets/images/electronics.jpg",
+        "heading":"Electronics",
+        "content":" It is very important part of fashion scene because when a new garment is designed by a designer and worn,  it will not create fashion by itself. It needs to spread fashion with different media.  Fashion forecasting is commonly done by many communicating media, such as, fashion shows, cinema, newspapers, press, fashion magazines and window display"
+    },
+    {
+        "imageurl":"assets/images/furnitures.jpg",
+        "heading":"Furnitires",
+        "content":" It is very important part of fashion scene because when a new garment is designed by a designer and worn,  it will not create fashion by itself. It needs to spread fashion with different media.  Fashion forecasting is commonly done by many communicating media, such as, fashion shows, cinema, newspapers, press, fashion magazines and window display"
+    },
+    {
+        "imageurl":"assets/images/tools.jpg",
+        "heading":"Home appliances",
+        "content":" It is very important part of fashion scene because when a new garment is designed by a designer and worn,  it will not create fashion by itself. It needs to spread fashion with different media.  Fashion forecasting is commonly done by many communicating media, such as, fashion shows, cinema, newspapers, press, fashion magazines and window display"
+    }
+    
+]

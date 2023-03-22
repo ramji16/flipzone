@@ -1,0 +1,225 @@
+<body class="min-vh-100"
+  style="
+    background-color: #DAE7EF;
+    height: auto;
+  "
+>
+  <app-business-navbar></app-business-navbar>
+  <div class="dropdown d-flex flex-row justify-content-end mr-5">
+    <button
+      class="btn m-1"
+      type="button"
+      data-toggle="dropdown"
+      aria-expanded="false"
+      style="background-color: #41118f; color: #dbf2fb; font-size: large"
+    >
+      FILTER
+    </button>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" (click)="filter('All')">ALL</a>
+      <a class="dropdown-item" (click)="filter('Fashion')">Fashion</a>
+      <a class="dropdown-item" (click)="filter('Furniture')">Furniture</a>
+      <a class="dropdown-item" (click)="filter('Electronics')">Electronics</a>
+      <a class="dropdown-item" (click)="filter('Others')">Others</a>
+    </div>
+  </div>
+
+  <div
+    *ngIf="filterValue == 'Fashion'"
+    class="table-responsive-md m-5"
+    style="color: #41118f"
+  >
+    <h2>Fashion : {{ fashionProduct.length }}</h2>
+    <table
+      *ngIf="fashionProduct.length != 0"
+      class="table table-hover"
+      border="2"
+     
+    >
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Price</th>
+          <th scope="col">Stocks</th>
+        </tr>
+      </thead>
+      <tbody class="bg-light">
+        <tr *ngFor="let item of fashionProduct; let i = index">
+          <td scope="row">{{ i + 1 }}</td>
+          <td><img src="{{ item.photo }}" height="100vh" /></td>
+          <td>{{ item.productName }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.brandName }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.stocks }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    *ngIf="filterValue == 'Furniture'"
+    class="table-responsive-md m-5"
+    style="color: #41118f"
+  >
+    <h3>Furniture : {{ furnitureProduct.length }}</h3>
+    <table
+      *ngIf="furnitureProduct.length != 0"
+      class="table table-hover"
+      border="2"
+    >
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Price</th>
+          <th scope="col">Stocks</th>
+        </tr>
+      </thead>
+      <tbody class="bg-light">
+        <tr *ngFor="let item of furnitureProduct; let i = index">
+          <td scope="row">{{ i + 1 }}</td>
+          <td><img src="{{ item.photo }}" height="100vh" /></td>
+          <td>{{ item.productName }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.brandName }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.stocks }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    *ngIf="filterValue == 'Electronics'"
+    class="table-responsive-md m-5"
+    style="color: #41118f"
+  >
+    <h3>Electronics : {{ electronicsProduct.length }}</h3>
+    <table
+      *ngIf="electronicsProduct.length != 0"
+      class="table table-hover"
+      border="2"
+    >
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Price</th>
+          <th scope="col">Stocks</th>
+        </tr>
+      </thead>
+      <tbody class="bg-light">
+        <tr *ngFor="let item of electronicsProduct; let i = index">
+          <td scope="row">{{ i + 1 }}</td>
+          <td><img src="{{ item.photo }}" height="100vh" /></td>
+          <td>{{ item.productName }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.brandName }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.stocks }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div
+    *ngIf="filterValue == 'Others'"
+    class="table-responsive-md m-5"
+    style="color: #41118f"
+  >
+    <h3>Others : {{ othersProduct.length }}</h3>
+    <table
+      *ngIf="othersProduct.length != 0"
+      class="table table-hover"
+      border="2"
+    >
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Price</th>
+          <th scope="col">Stocks</th>
+        </tr>
+      </thead>
+      <tbody class="bg-light">
+        <tr *ngFor="let item of othersProduct; let i = index">
+          <td scope="row">{{ i + 1 }}</td>
+          <td><img src="{{ item.photo }}" height="100vh" /></td>
+          <td>{{ item.productName }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.brandName }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.stocks }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="filterValue == 'All'" class="table-responsive-md ml-5 mr-5 pb-5" style="color: #41118f">
+    <h3>Product Count : {{ productDetails.length }}</h3>
+    <table class="table table-hover" border="2">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Image</th>
+          <th scope="col">Product Name</th>
+          <th scope="col">Category</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Price</th>
+          <th scope="col">Stocks</th>
+        </tr>
+      </thead>
+      <tbody class="bg-light">
+        <tr *ngFor="let item of productDetails; let i = index">
+          <td scope="row">{{ i + 1 }}</td>
+          <td><img src="{{ item.photo }}" height="100vh" /></td>
+          <td>{{ item.productName }}</td>
+          <td>{{ item.category }}</td>
+          <td>{{ item.brandName }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.stocks }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="productDetails.length==0" class="mx-auto" style="width: 400px;text-align: center;">
+      <h4>It's Time to Add your Product in Market</h4>
+      <div class="dropdown">
+        <button
+          class="btn m-1"
+          style="background-color: #41118f; color: #dbf2fb; font-size: large"
+          type="button"
+          data-toggle="dropdown"
+          aria-expanded="false"
+        >
+          Add Product
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" (click)="businessadd('Fashion')"
+            >Fashion</a
+          >
+          <a class="dropdown-item" (click)="businessadd('Furniture')"
+            >Furniture</a
+          >
+          <a class="dropdown-item" (click)="businessadd('Electronics')"
+            >Electronics</a
+          >
+          <a class="dropdown-item" (click)="businessadd('Others')">Others</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

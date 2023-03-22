@@ -1,0 +1,50 @@
+.body{
+    background-color:white;
+    min-height: 100vh;
+    height: auto;
+}
+.fa-shield{
+   font-size: 40px;
+   color: darkgreen;
+}
+.logo{
+    border-bottom: 2px solid rgba(231, 223, 223, 0.608);
+}
+.items{
+    border-right: 2px solid rgba(231, 223, 223, 0.608) !important;
+}
+.box{
+    background-color:white;
+    border-radius:5px;
+    border:3px solid #F99417;
+}
+.box:hover{
+  box-shadow: 0 0 10px #ccc;
+}
+.content{
+    position: absolute;
+    left:28%;
+}
+.size{
+    border:none;
+    background-color: darkred;
+    border-radius: 5px;
+    color: azure;
+    font-size: small;
+    width:min-content;
+    font-weight: 400;
+}
+.order{
+    border:2px solid #DF2E38;
+    background: transparent;
+    font-weight:500;
+    box-shadow: none; 
+}
+.order:hover{
+    background-color:#DF2E38 ;
+    color: white;
+    box-shadow: 0 0 8px #605c5c;
+}
+.order:active{
+    transform: translateY(2px);
+}

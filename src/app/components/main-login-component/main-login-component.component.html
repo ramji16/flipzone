@@ -1,0 +1,104 @@
+<div class="container-fluid">
+  <div class="row">
+    <app-usernavbar class="fixed-top"></app-usernavbar>
+    <div class="col-6 main-back"></div>
+    <div class="col-6 main-back-2 text-center">
+      <div class="cardd d-flex flex-column justify-content-center min-vh-90">
+        <h1 class="cont-heading">Sign in</h1>
+        <form *ngIf="flag==false" [formGroup]="uLoginForm">
+          <!-- <input
+            type="text"
+            class="mt-4 p-3 form-control"
+            formControlName="uwmail"
+            [ngClass]="{
+              'is-invalid': add.uwmail.touched && add.uwmail.errors
+            }"
+            placeholder="Email"
+          />
+          <span
+            *ngIf="add.uwmail.errors && add.uwmail.touched"
+            class="text-danger"
+            >Email ID Required</span
+          ><br /> -->
+          <input 
+            type="text"
+            formControlName="phoneNumber"
+            class="mt-3 p-3 form-control"
+            placeholder="Phone"
+          />
+          
+          <!-- <span
+            *ngIf="add.uloginPassword.errors && add.uloginPassword.touched"
+            class="text-danger"
+            >Password Required</span
+          ><br /> -->
+          <button type="submit" (click)="getOTP()" class="mt-3 btn button form-control">
+            Get OTP
+          </button>         
+          <div id="sign-in-button"></div>
+        </form>
+        <form *ngIf="flag==true" [formGroup]="uLoginForm">
+          <!-- <input
+            type="text"
+            class="mt-4 p-3 form-control"
+            formControlName="uwmail"
+            [ngClass]="{
+              'is-invalid': add.uwmail.touched && add.uwmail.errors
+            }"
+            placeholder="Email"
+          />
+          <span
+            *ngIf="add.uwmail.errors && add.uwmail.touched"
+            class="text-danger"
+            >Email ID Required</span
+          ><br /> -->
+         
+          <input 
+          type="text"
+          formControlName="otp"
+          class="mt-3 p-3 form-control"
+          placeholder="otp"
+        />
+          <!-- <span
+            *ngIf="add.uloginPassword.errors && add.uloginPassword.touched"
+            class="text-danger"
+            >Password Required</span
+          ><br /> -->
+          <button type="submit" (click)="home()" class="mt-3 btn button form-control">
+            verify OTP
+          </button>
+          <div id="sign-in-button"></div>
+        </form>
+        <a class="mt-4">Forget Password?</a>
+        <p class="cont-heading">
+          Don't have an account?
+          <a class="text-primary" (click)="UsersignInNavigate()">Sign up</a>
+        </p>
+        <p class="cont-heading">
+          For Business
+          <a class="text-primary" (click)="BusinessSignInNavigate()">Sign in</a>
+        </p>
+      </div>
+
+      <!-- Business -->
+      <!-- <div
+        *ngIf="businessSignInnav == 'businessSignIn'"
+        class="cardd d-flex flex-column justify-content-center min-vh-90"
+      >
+        <h1 class="cont-heading">Sign in</h1>
+        <input type="text" class="mt-4 p-3 form-control" placeholder="Business Email" />
+        <input
+          type="password"
+          class="mt-3 p-3 form-control"
+          placeholder="Password"
+        />
+        <button class="mt-3 btn button form-control">Sign In</button>
+        <a class="mt-4">forget Password?</a>
+        <p class="cont-heading">
+          Don't have an account?
+          <a class="text-primary" (click)="BusinesssignUpNavigate()">Sign up</a>
+        </p>
+        <p class="cont-heading">For Business <a class="text-primary" (click)="UsersignInNavigate()">Sign in</a></p> -->
+    </div>
+  </div>
+</div>
