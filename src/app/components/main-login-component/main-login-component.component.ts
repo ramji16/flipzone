@@ -118,15 +118,22 @@ export class MainLoginComponentComponent implements OnInit {
         if (this.uid == newUid) {
           debugger;
           this.router.navigate(['/userhome']);
-        }else {
+        } 
+        else {
           debugger;
           this.router.navigate(['/userSignUp']);
         }
       } 
-      // else {
-      //   debugger;
-      //   this.router.navigate(['/userSignUp']);
-      // }
+      else if (this.udata[1] != undefined) {
+        if (this.uid == newUid) {
+          debugger;
+          this.router.navigate(['/userhome']);
+        } 
+      } 
+      else {
+        debugger;
+        this.router.navigate(['/userSignUp']);
+      }
     });
   }
   home() {
@@ -143,7 +150,7 @@ export class MainLoginComponentComponent implements OnInit {
       .then((response) => {
         console.log(typeof response);
         // sessionStorage.setItem('uid',response.user.uid)
-        // localStorage.setItem('pno', JSON.stringify(this.pno));
+        localStorage.setItem('pno', JSON.stringify(this.pno));
         debugger;
         localStorage.setItem('user_data', JSON.stringify(response));
         // this.router.navigate(['/userSignUp']);
