@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-business-addform',
@@ -10,17 +11,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BusinessAddformComponent implements OnInit {
   productForm: FormGroup;
   productDetails = [];
+  path : string
   selectedTeam = '';
   category : any;
   selectedCategory = '';
   fashionType = '';
   fashionTop = '';
-  constructor(private formBuilder: FormBuilder,private route:ActivatedRoute,private router: Router) {}
+  constructor(private formBuilder: FormBuilder,private route:ActivatedRoute,private router: Router,private makeApi : ApiService) {}
 
   ngOnInit(): void {
       this.productForm = this.formBuilder.group({
+        uid : [''],
       productName: ['', Validators.required],
-      dealerMail: ['', [Validators.required,Validators.email]],
+      email: ['', [Validators.required,Validators.email]],
       price: ['',Validators.required],
       photo: ['', Validators.required],
       discount: ['', Validators.required],
@@ -63,10 +66,31 @@ export class BusinessAddformComponent implements OnInit {
   get add(){
     return this.productForm.controls
   }
+  upload($event){
+    this.path = $event.target.files[0]
+    console.log(this.path)
+    if(this.path!=""){
+      debugger
+      this.makeApi.imageUpload("/files"+Math.random()+this.path,this.path)
+    }
+    debugger
+  }
   onSubmit(){
+    debugger
     if(this.productForm.invalid){
-      this.productForm.markAllAsTouched();
-      return
+      debugger
+      var bid = JSON.parse(localStorage.getItem('businessId'))
+      if(bid!= null){
+        debugger
+        var getdata = this.productForm.value
+        var data =  getdata.uid = bid
+        // getdata.photo = this.path
+        this.productForm.patchValue(data)
+        // console.log(getdata.photo)
+        this.makeApi.insertproductdata(bid,getdata)
+        this.router.navigate(['/businesslist'])
+        // this.makeApi.imageUpload('product_images',)
+      }
     }
   }
   onSelected(value: string): void {
@@ -74,11 +98,7 @@ export class BusinessAddformComponent implements OnInit {
     debugger;
     console.log(this.selectedTeam);
   }
-  // onCategory(): void {
-  //   this.selectedCategory = this.category;
-  //   debugger;
-  //   console.log(this.selectedCategory);
-  // }
+
   onFashionType(value: string): void {
     this.fashionType = value;
     debugger;

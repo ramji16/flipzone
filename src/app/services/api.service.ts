@@ -30,9 +30,15 @@ export class ApiService {
     this.filePath = `Business/${userCredential.user.uid}`;
     return this.Afs.doc(this.filePath).set(registerdata)
   }
+  insertproductdata(UserCredential, registerdata) {
+    this.filePath = `Products/${UserCredential}`;
+    debugger
+    return this.Afs.doc(this.filePath).set(registerdata)
+  }
    //instertcustomerdata
    insertuserdata(userCredential: firebase.default.auth.UserCredential, registerdata) {
     this.filePath = `Users/${userCredential.user.uid}`;
+    debugger
     return this.Afs.doc(this.filePath).set(registerdata)
   }
   //loginuser
@@ -73,9 +79,11 @@ export class ApiService {
   deleteItem(url, id) {
     return this.Afs.collection('/' + url).doc(id).delete();
   }
+
   // image upload
   imageUpload(url, data) {
-    return this.storage.upload(url, data)
+    debugger
+    return this.storage.upload(url, data);
   }
   // get Image
   getImage(url) {

@@ -21,7 +21,7 @@ a {
   top: 25px;
   font-size: 30px;
   position: relative;
-  animation: example 4s ease-in-out;
+  animation: example 2s ease-in-out;
 }
 
 @keyframes example {
@@ -44,7 +44,7 @@ a {
   top: 25px;
   font-size: 25px;
   position: relative;
-  animation: example1 4s ease-in-out;
+  animation: example1 2s ease-in-out;
 }
 
 @keyframes example1 {

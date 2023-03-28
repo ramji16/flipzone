@@ -8,7 +8,7 @@
           <label>Product Name :</label>
         </div>
         <div class="col-md-4 col-6 text-center">
-          <input type="text" class="form-control" formControlName="productName" pattern="^[a-zA-z-']+$" [ngClass]="{'is-invalid': add.productName.touched && add.productName.errors}" placeholder="Product Name"/>
+          <input type="text" class="form-control" formControlName="productName" pattern="^[a-zA-z- ']+$" [ngClass]="{'is-invalid': add.productName.touched && add.productName.errors}" placeholder="Product Name"/>
           <span *ngIf="add.productName.errors && add.productName.touched" class="text-danger">Name Required</span>
         </div>
       <!-- </div>
@@ -17,8 +17,8 @@
           <label>Dealer Email :</label>
         </div>
         <div class="col-md-4 col-6 text-center">
-          <input type="email" class="form-control" formControlName="dealerMail" placeholder="Dealer Email" />
-          <span *ngIf="add.dealerMail.errors && add.dealerMail.touched" class="text-danger">Dealer Email Required</span>
+          <input type="email" class="form-control" formControlName="email" placeholder="Dealer Email" />
+          <span *ngIf="add.email.errors && add.email.touched" class="text-danger">Dealer Email Required</span>
         </div>
       </div>
       <div class="row m-3">
@@ -26,7 +26,7 @@
           <label>Price :</label>
         </div>
         <div class="col-md-4 col-6 text-center">
-          <input type="text" class="form-control" pattern="^\d{10}$" [ngClass]="{'is-invalid': add.price.touched && add.price.errors}" formControlName="price" placeholder="Price" />
+          <input type="text" class="form-control" [ngClass]="{'is-invalid': add.price.touched && add.price.errors}" formControlName="price" placeholder="Price" />
           <span *ngIf="add.price.errors && add.price.touched" class="text-danger">Price Required</span>
         </div>
       <!-- </div>
@@ -79,7 +79,7 @@
           <label>Lower Price :</label>
         </div>
         <div class="col-md-4 col-6 text-center">
-          <input type="text" pattern="^\d{10}$" [ngClass]="{'is-invalid': add.lowerPrice.touched && add.lowerPrice.errors}" class="form-control" formControlName="lowerPrice" placeholder="Lower Price for Negotation" />
+          <input type="text" [ngClass]="{'is-invalid': add.lowerPrice.touched && add.lowerPrice.errors}" class="form-control" formControlName="lowerPrice" placeholder="Lower Price for Negotation" />
           <span *ngIf="add.lowerPrice.errors && add.lowerPrice.touched" class="text-danger">Lower Price Required</span>
         </div>
       </div>
@@ -271,7 +271,7 @@
           <input type="button" class="btn btn-info" value="Preview" />
         </div>
         <div class="col-md-6 col-6 text-left">
-          <input type="submit" class="btn btn-success" (submit)="onProductValues()" value="Add Product" />
+          <button type="submit" class="btn btn-success" (click)="onSubmit()">Add Product</button>
         </div>
       </div>
     <!-- </div> -->
