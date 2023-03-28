@@ -66,16 +66,16 @@
           <input
             type="password"
             class="mt-2 p-3 form-control"
-            formControlName="password"
+            formControlName="Password"
             pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
             [ngClass]="{
               'is-invalid':
-                add.password.touched && add.password.errors
+                add.Password.touched && add.Password.errors
             }"
             placeholder="Password"
           />
           <span
-            *ngIf="add.password.errors && add.password.touched"
+            *ngIf="add.Password.errors && add.Password.touched"
             class="text-danger"
             >Password Required</span
           >

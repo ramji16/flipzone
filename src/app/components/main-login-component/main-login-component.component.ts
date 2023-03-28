@@ -53,6 +53,7 @@ export class MainLoginComponentComponent implements OnInit {
     var phone = this.uLoginForm.value;
     var phoneNumber = phone.phoneNumber;
     this.pno = phone.phoneNumber
+    debugger
     console.log(typeof phoneNumber);
    
     var reCaptchaVerifier = new firebase.auth.RecaptchaVerifier(

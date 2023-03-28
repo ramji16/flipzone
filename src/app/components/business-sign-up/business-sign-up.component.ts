@@ -23,9 +23,10 @@ export class BusinessSignUpComponent implements OnInit {
       bCompanyName: ['', Validators.required],
       bOwnerName: ['', Validators.required],
       bmobile: ['', Validators.required],
-      password: ['', Validators.required],
+      Password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
+    
   }
   get add(){
     return this.bSigninForm.controls
