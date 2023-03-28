@@ -28,12 +28,12 @@ export class BusinessSigninComponent implements OnInit {
       return;
     } else {
       var loginval = this.bLoginForm.value
-      this.makeapi.login(loginval.email, loginval.password).then(UserCredential => {
-        
-        if (UserCredential) {          
+      this.makeapi.login(loginval.email, loginval.password).then(UserCredential => {  
+          var bid = UserCredential.user.uid
+          console.log(bid);
+          localStorage.setItem('businessId',JSON.stringify(bid))
           this.router.navigate(['/businesshome'])
           // this.resetForm();
-        }
       }).catch(error => {
         // this.eventautherror.next(error);
         // this.notify.notifyError(error.message)        

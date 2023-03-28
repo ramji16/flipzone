@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-business-list',
@@ -12,7 +13,7 @@ export class BusinessListComponent implements OnInit {
   othersProduct = [];
   productDetails = [];
   filterValue = 'All';
-  constructor() { }
+  constructor(private router : Router ) { }
 
   ngOnInit(): void {
   var electronics = JSON.parse(localStorage.getItem('Electronics'));
@@ -40,6 +41,10 @@ export class BusinessListComponent implements OnInit {
     this.productDetails.push(...this.othersProduct);
   }
   console.log(this.productDetails)
+  }
+  businessadd(category:any){
+    this.router.navigate(['/businessaddform/'],{queryParams:{cat:category}});
+
   }
 
   filter(option : any){
