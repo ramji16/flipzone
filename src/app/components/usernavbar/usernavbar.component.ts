@@ -23,13 +23,13 @@ export class UsernavbarComponent implements OnInit {
     if(data!=null){
       this.check=data
     id=data.user.uid
-    console.log(id)
+    // console.log(id)
     this.makeapi.getItem('Users',id).subscribe(data=>{
-      debugger
+      // debugger
       this.user_details.push(data)
-      console.log(this.user_details)
+      // console.log(this.user_details)
       var fname=this.user_details[0]
-      this.firstletter=fname.ufname[0].toUpperCase()
+      this.firstletter=fname.ufname[0]
     })
     
     }

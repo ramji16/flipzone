@@ -14,7 +14,7 @@ export class BusinessSigninComponent implements OnInit {
 
   ngOnInit(): void {
     this.bLoginForm = this.formBuilder.group({
-      password: ['', Validators.required],
+      Password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
   }
@@ -28,9 +28,10 @@ export class BusinessSigninComponent implements OnInit {
       return;
     } else {
       var loginval = this.bLoginForm.value
-      this.makeapi.login(loginval.email, loginval.password).then(UserCredential => {  
+      this.makeapi.login(loginval.email, loginval.Password).then(UserCredential => {  
           var bid = UserCredential.user.uid
           console.log(bid);
+          localStorage.setItem('bdata',JSON.stringify(UserCredential))
           localStorage.setItem('businessId',JSON.stringify(bid))
           this.router.navigate(['/businesshome'])
           // this.resetForm();
@@ -43,5 +44,5 @@ export class BusinessSigninComponent implements OnInit {
 
   BusinesssignUpNavigate(){
     this.router.navigate(['busniessSignUp']);
-  }
+  }
 }

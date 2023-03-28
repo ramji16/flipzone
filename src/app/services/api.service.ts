@@ -21,7 +21,7 @@ export class ApiService {
     // var tenantId = "TENANT_ID1";
     // var auth = this.Authfire.tenantId    /
     debugger
-    return this.Authfire.createUserWithEmailAndPassword(user.email, user.password)
+    return this.Authfire.createUserWithEmailAndPassword(user.email, user.Password)
   }
  
   //instertuserdata
@@ -42,8 +42,8 @@ export class ApiService {
     return this.Afs.doc(this.filePath).set(registerdata)
   }
   //loginuser
-  login(email, password) {
-    return this.Authfire.signInWithEmailAndPassword(email, password)
+  login(email, Password) {
+    return this.Authfire.signInWithEmailAndPassword(email, Password)
   }
   //getuser
   getUser() {
@@ -66,8 +66,15 @@ export class ApiService {
   }
   // update Function
   updateItem(url, data) {
-    return this.Afs.collection('/' + url).doc('/' + sessionStorage.getItem('id')).update(data)
+    // this.filePath = `Business/${url}`;
+    // return this.Afs.doc(this.filePath).set(data)
+    var id =JSON.parse(localStorage.getItem('businessId'))
+    debugger
+    return this.Afs.collection('/' + url).doc('/' + id).update(data)
   }
+  // updateItem(url, data) {
+  //   return this.Afs.collection('/' + url).doc('/' + sessionStorage.getItem('id')).update(data)
+  // }
   // delete Function
   deleteItem(url, id) {
     return this.Afs.collection('/' + url).doc(id).delete();
