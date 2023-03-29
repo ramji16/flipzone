@@ -32,47 +32,9 @@ export class ProfileComponent implements OnInit {
   em:any
   pn:any
   fl:any;
-  constructor(private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute, private makeapi: ApiService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder,private makeapi: ApiService) { }
   currentDate: any
   ngOnInit(): void {
-    this.currentDate = new Date()
-
-    var id;
-    var data = JSON.parse(localStorage.getItem('user_data'))
-    // console.log(data) 
-    if (data != null) {
-      this.check = data
-      id = data.user.uid
-
-      // console.log(id)
-      this.makeapi.getItem('Users', id).subscribe(data => {
-        this.user_details.push(data)
-        console.log(this.user_details)
-        var user = this.user_details[0]
-        this.fl = user.ufname[0]
-        debugger
-        var getdata = this.profile.value
-        this.pn=(getdata.phoneNumber = user.phoneNumber)
-        this.fn=(getdata.ufname =  user.ufname)
-        this.ln=(getdata.ulname = user.ulname)
-        this.em=(getdata.email = user.email)
-        getdata.ubdate = user.ubdate;
-        getdata.ugender =user.ugender;
-        getdata.uaddress= user.uaddress;
-        this.profile.patchValue(getdata)
-        console.log( this.profile.value)
-
-
-        //this.firstname=user.ufname
-        // this.fletter=user.ufname[0]
-        // this.lastname=user.ulname
-        // this.emailid=user.email;
-        // this.contact=user.phoneNumber;
-        // console.log(this.contact)
-      })
-
-    }
-
     this.profile = this.formBuilder.group({
       uid: [''],
       ufname: new FormControl('', Validators.required),
@@ -82,14 +44,35 @@ export class ProfileComponent implements OnInit {
       ubdate: new FormControl('', Validators.required),
       ugender: new FormControl('', Validators.required),
       uaddress: new FormControl('', Validators.required),
-      usigninPassword: new FormControl('', Validators.required)
     });
-    
-      this.route.queryParams
-        .subscribe(params => {
-          this.umail = params.mail;
-          // console.log(this.paramsObject);
-        });
+    this.currentDate = new Date()
+
+    var id;
+    var data = JSON.parse(localStorage.getItem('user_data'))
+    // console.log(data) 
+    if (data != null) {
+      this.check = data
+      id = data.user.uid
+      // console.log(id)
+      this.makeapi.getItem('Users', id).subscribe(data => {
+        this.user_details.push(data)
+        console.log(this.user_details)
+        var user = this.user_details[0]
+        this.fl = user.ufname[0]
+        this.fn=user.ufname
+        debugger
+        // (getdata.phoneNumber = user.phoneNumber)
+        // (getdata.ufname =  user.ufname)
+        // (getdata.ulname = user.ulname)
+        // (getdata.email = user.email)
+        // getdata.ubdate = user.ubdate;
+        // getdata.ugender =user.ugender;
+        // getdata.uaddress= user.uaddress;
+        this.profile.patchValue(user)
+        console.log( this.profile.value)
+      })
+
+    }
     var data = JSON.parse(localStorage.getItem('userDetails'));
     if (data != null) {
       this.userlist = data
@@ -138,26 +121,20 @@ export class ProfileComponent implements OnInit {
   onSubmit() {
     if (this.profile.invalid) {
       this.profile.markAllAsTouched();
-      var data = JSON.parse(localStorage.getItem('user_data'))
+    }
+    else{
+       var data = JSON.parse(localStorage.getItem('user_data'))
       debugger
       this.userData = data
       console.log(data)
-
-      // var registerdata = this.profile.value
-      // registerdata.uid = this.userData.user.uid
-
       debugger
       // var userCredential
       var registerdatavalue = this.profile.value;
       this.makeapi.insertuserdata(this.userData, registerdatavalue).then(() => {
         debugger
-        // this.router.navigate(['/userhome'])
         alert("Updated successfully")
         window.location.reload();
-        // this.resetForm();
       })
-
-      return
     }
   }
   wishlistnav(str: any) {
