@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 // import * as firebase from 'firebase';
 import { ApiService } from 'src/app/services/api.service';
+import { Observable } from 'rxjs';
 declare var $: any;
 @Component({
   selector: 'app-main-login-component',
@@ -24,7 +25,7 @@ export class MainLoginComponentComponent implements OnInit {
   udata = [];
   id = null;
   flag: boolean = false;
-  // flag1 = true;
+  flag1 :boolean = false;
   temp = null;
   verify: any;
   uLoginForm: FormGroup;
@@ -106,34 +107,21 @@ export class MainLoginComponentComponent implements OnInit {
     var data = JSON.parse(localStorage.getItem('user_data'));
     this.uid = data.user.uid;
     console.log(this.uid);
-    // debugger;
-    this.makeapi.getItem('Users', this.uid).subscribe(data => {
-      this.udata.push(data);
-      console.log(this.udata)
-      debugger
-      if (this.udata[0] != undefined) {
-        var newid = this.udata[0]
-        var newUid = newid.uid;
-        debugger
-        if (this.uid == newUid) {
-          debugger;
-          this.router.navigate(['/userhome']);
-        } 
-        else {
-          debugger;
-          this.router.navigate(['/userSignUp']);
+    this.makeapi.listItem('Users').subscribe(res=>{
+      this.udata=res.map((e:any)=>{
+        const collectiondata = e.payload.doc.data();
+        collectiondata.id =e.payload.doc.id;
+        console.log(collectiondata.id)
+        if(collectiondata.id == this.uid){
+          this.flag1=true
+          console.log(this.flag1)
+          this.router.navigate(['/userhome'])
         }
-      } 
-      else if (this.udata[1] != undefined) {
-        if (this.uid == newUid) {
-          debugger;
-          this.router.navigate(['/userhome']);
-        } 
-      } 
-      else {
-        debugger;
-        this.router.navigate(['/userSignUp']);
-      }
+        else if(this.flag1==false){
+          console.log(this.flag1)
+          this.router.navigate(['/userSignUp'])
+        }
+      });
     });
   }
   home() {
@@ -154,16 +142,19 @@ export class MainLoginComponentComponent implements OnInit {
         debugger;
         localStorage.setItem('user_data', JSON.stringify(response));
         // this.router.navigate(['/userSignUp']);
-        debugger;
         this.userCheck();
+        debugger
         // var id = JSON.parse(localStorage.getItem('user_data'));
         // console.log(id.user.uid)
       });
-  }
-
-  UsersignInNavigate() {
-    // this.businessSignInnav='businessSignIn';
-    this.router.navigate(['userSignUp']);
+      // if(flagcheck==true){
+      //   debugger
+      //   this.router.navigate(['/userhome'])
+      // }
+      // else{
+      //   debugger
+      //   this.router.navigate(['/userSignUp'])
+      // }
   }
   BusinessSignInNavigate() {
     this.router.navigate(['busniessSignIn']);
