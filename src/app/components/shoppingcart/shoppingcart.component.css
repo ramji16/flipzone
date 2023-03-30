@@ -1,49 +1,51 @@
 .body{
-    background-color:white;
+    background-color:#E2F4FB;
     min-height: 100vh;
     height: auto;
 }
-.fa-shield{
-   font-size: 40px;
-   color: darkgreen;
+.bt{
+    background: transparent;
+    border: none;
 }
-.logo{
-    border-bottom: 2px solid rgba(231, 223, 223, 0.608);
+.check-cart{
+    position: relative !important;
+    bottom:43%;
+    border: 1px solid #6029B9;
+    background-color: #6029B9;
+
+}
+input[type=checkbox]{
+    accent-color: #6029B9;
 }
 .items{
     border-right: 2px solid rgba(231, 223, 223, 0.608) !important;
 }
 .box{
-    background-color:white;
+    background-image: linear-gradient(45deg, #6f8faf, #dae7ef);
     border-radius:5px;
-    border:3px solid #F99417;
+    /* border:3px solid #F99417; */
 }
 .box:hover{
   box-shadow: 0 0 10px #ccc;
 }
 .content{
     position: absolute;
-    left:28%;
+    left:38%;
 }
 .size{
     border:none;
-    background-color: darkred;
+    background-color: #6029B9;
     border-radius: 5px;
-    color: azure;
+    color: white;
     font-size: small;
     width:min-content;
     font-weight: 400;
 }
 .order{
-    border:2px solid #DF2E38;
-    background: transparent;
+    background-color: #6029B9;
+    color: white;
     font-weight:500;
     box-shadow: none; 
-}
-.order:hover{
-    background-color:#DF2E38 ;
-    color: white;
-    box-shadow: 0 0 8px #605c5c;
 }
 .order:active{
     transform: translateY(2px);
