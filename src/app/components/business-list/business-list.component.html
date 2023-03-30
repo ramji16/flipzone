@@ -170,7 +170,7 @@
   </div>
 
   <div *ngIf="filterValue == 'All'" class="table-responsive-md ml-5 mr-5 pb-5" style="color: #41118f">
-    <h3>Product Count : {{ productDetails.length }}</h3>
+    <h3>Product Count : {{ product.length }}</h3>
     <table class="table table-hover" border="2">
       <thead class="thead-dark">
         <tr>
@@ -184,7 +184,7 @@
         </tr>
       </thead>
       <tbody class="bg-light">
-        <tr *ngFor="let item of productDetails; let i = index">
+        <tr *ngFor="let item of product; let i = index">
           <td scope="row">{{ i + 1 }}</td>
           <td><img src="{{ item.photo }}" height="100vh" /></td>
           <td>{{ item.productName }}</td>
@@ -195,7 +195,7 @@
         </tr>
       </tbody>
     </table>
-    <div *ngIf="productDetails.length==0" class="mx-auto" style="width: 400px;text-align: center;">
+    <div *ngIf="product.length==0" class="mx-auto" style="width: 400px;text-align: center;">
       <h4>It's Time to Add your Product in Market</h4>
       <div class="dropdown">
         <button

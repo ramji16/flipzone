@@ -28,7 +28,7 @@ export class ApiService {
   filePath: string
   insertbusinessdata(userCredential: firebase.default.auth.UserCredential, registerdata) {
     this.filePath = `Business/${userCredential.user.uid}`;
-    return this.Afs.doc(this.filePath).set(registerdata)
+    return this.Afs.doc(this.filePath).set(registerdata)   
   }
   insertproductdata(UserCredential, registerdata) {
     this.filePath = `Products/${UserCredential}`;
@@ -45,11 +45,18 @@ export class ApiService {
   login(email, Password) {
     return this.Authfire.signInWithEmailAndPassword(email, Password)
   }
+  //add sub collection
+  createsubcollection(userCredential, registerdata){
+    return this.Afs.collection('/Business').doc(userCredential).collection('/product').add(registerdata)
+  }
+  //get sub collection
+  getsubcollection(userCredential){
+    return this.Afs.collection('/Business').doc(userCredential).collection('/product').snapshotChanges()
+  }
   //getuser
   getUser() {
     return this.Authfire.authState;
   }
-
   // list Function
   listItem(url) {
     return this.Afs.collection('/' + url).snapshotChanges();

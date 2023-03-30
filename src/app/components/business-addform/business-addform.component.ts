@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable} from 'rxjs';
+import {finalize } from 'rxjs/operators';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -11,17 +13,21 @@ import { ApiService } from 'src/app/services/api.service';
 export class BusinessAddformComponent implements OnInit {
   productForm: FormGroup;
   productDetails = [];
+  selectedFile: File = null;
+  downloadURL: Observable<string>;
   path : string
   selectedTeam = '';
   category : any;
   selectedCategory = '';
   fashionType = '';
   fashionTop = '';
+  filePath: string
+  fsb;
   constructor(private formBuilder: FormBuilder,private route:ActivatedRoute,private router: Router,private makeApi : ApiService) {}
 
   ngOnInit(): void {
       this.productForm = this.formBuilder.group({
-        uid : [''],
+      uid : [''],
       productName: ['', Validators.required],
       email: ['', [Validators.required,Validators.email]],
       price: ['',Validators.required],
@@ -47,7 +53,6 @@ export class BusinessAddformComponent implements OnInit {
       description:['',Validators.required],
     });
     // var productData = JSON.parse(localStorage.getItem())
-
     this.route.queryParams
       .subscribe(params => {
         this.category = params.cat;
@@ -66,15 +71,6 @@ export class BusinessAddformComponent implements OnInit {
   get add(){
     return this.productForm.controls
   }
-  upload($event){
-    this.path = $event.target.files[0]
-    console.log(this.path)
-    if(this.path!=""){
-      debugger
-      this.makeApi.imageUpload("/files"+Math.random()+this.path,this.path)
-    }
-    debugger
-  }
   onSubmit(){
     debugger
     if(this.productForm.invalid){
@@ -82,17 +78,64 @@ export class BusinessAddformComponent implements OnInit {
       var bid = JSON.parse(localStorage.getItem('businessId'))
       if(bid!= null){
         debugger
+        console.log(this.category)
+        debugger
         var getdata = this.productForm.value
-        var data =  getdata.uid = bid
+         getdata.uid = bid
+         getdata.category = this.category
         // getdata.photo = this.path
-        this.productForm.patchValue(data)
+        this.productForm.patchValue(getdata)
         // console.log(getdata.photo)
-        this.makeApi.insertproductdata(bid,getdata)
+        var data = this.productForm.value
+        debugger
+        this.makeApi.insertproductdata(bid,data)
+        // this.uploadSaveFile()
         this.router.navigate(['/businesslist'])
+         this.makeApi.createsubcollection(bid,data)
         // this.makeApi.imageUpload('product_images',)
       }
     }
   }
+  // onFileSelected(event) {
+  //   var getdata = this.productForm.value
+  //   this.selectedFile = event.target.files[0];
+  //   debugger
+  //   if (event.target.files && this.selectedFile) {
+  //     var reader = new FileReader();
+  //     var imagetype = this.selectedFile.type
+  //     var imagedatatype = imagetype.split("/")
+  //     var img_crt_type = imagedatatype[1]
+  //     if (img_crt_type == "jpeg" || img_crt_type == "jpg" || img_crt_type == "png") {
+  //       reader.readAsDataURL(this.selectedFile);
+  //       reader.onload = () => {
+  //         getdata.photo = reader.result;
+  //         debugger
+  //       }
+  //     }
+  //   }
+  // }
+  // uploadSaveFile() {
+  //   if (this.selectedFile != null) {
+  //     var n = Date.now();
+  //     this.filePath = `product_images/${this.selectedFile.name.split('.')}_${n}`;
+  //     this.makeApi.imageUpload(this.filePath, this.selectedFile).snapshotChanges().pipe(
+  //       finalize(() => {
+  //         this.makeApi.getImage(this.filePath).getDownloadURL().subscribe(url => {
+  //           if (url) {
+  //             this.fsb = url;
+  //             var getform = this.productForm.value
+  //             getform.photo = this.fsb
+  //             this.productForm.patchValue(getform)
+  //             this.onSubmit()
+  //           }
+  //         });
+  //       })
+  //     ).subscribe(url => { });
+  //   } else {
+  //     this.onSubmit()
+  //   }
+
+  // }
   onSelected(value: string): void {
     this.selectedTeam = value;
     debugger;
@@ -120,4 +163,7 @@ export class BusinessAddformComponent implements OnInit {
     console.log(this.productDetails);
     this.router.navigate(['/businesslist'])
   }
+  
 }
+
+

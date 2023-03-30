@@ -35,7 +35,7 @@
           <label>Product Photo :</label>
         </div>
         <div class="col-md-4 col-6 text-center">
-          <input type="file"  class="form-control" formControlName="photo" [ngClass]="{'is-invalid': add.photo.touched && add.photo.errors}" placeholder="Image url" />
+          <input type="file"  class="form-control" [ngClass]="{'is-invalid': add.photo.touched && add.photo.errors}" placeholder="Image url" />
           <span *ngIf="add.photo.errors && add.photo.touched" class="text-danger">Product Photo Required</span>
         </div>
       </div>
