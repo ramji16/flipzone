@@ -54,7 +54,7 @@ const routes: Routes = [
   { path: 'busniessSignUp', component: BusinessSignUpComponent },
   { path: 'busniessSignIn', component: BusinessSigninComponent },
   { path: 'contact', component: UsercontactComponent },
-  { path: 'cart', component:CartComponent}
+  // { path: 'cart', component:CartComponent}
   
 ];
 

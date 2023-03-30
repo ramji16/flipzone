@@ -1,17 +1,17 @@
 [
     {
-        "image":"assets/212.jpg",
-        "pname":"Soccer jersey",
+        "image":"assets/images/shoe.png",
+        "pname":"Sports shoe",
         "ename":"Sold by Flipzone enterprises",
-        "cont": "Sports T-shirt",
+        "cont": "reebok shoe",
         "rupees":"₹500",
         "offer":"₹1000"
     },
     {
-        "image":"assets/dslr.jpg",
-        "pname":"Nikon 500D",
+        "image":"assets/images/iwatch.png",
+        "pname":"Iwatch se",
          "ename":"Sold by Flipzone enterprises",
-        "cont": " nikon 500D 24.2MP avail with gimbal",
+        "cont": " iwatch",
         "rupees":"₹1,00,00",
         "offer":"₹1,10,000"
     }
