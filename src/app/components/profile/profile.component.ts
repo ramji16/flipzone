@@ -106,6 +106,10 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  wishlistnaviagtion(){
+    this.router.navigate(['/wishlist']);
+  }
+
   // update() {
   //   if (this.profile.invalid) {
   //     // 

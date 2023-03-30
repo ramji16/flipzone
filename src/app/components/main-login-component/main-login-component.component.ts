@@ -82,7 +82,7 @@ export class MainLoginComponentComponent implements OnInit {
     firebase
       .auth()
       .signInWithPhoneNumber(phoneNumber, reCaptchaVerifier)
-      .then(async()=>(confirmationResult) => {
+      .then((confirmationResult) => {
         debugger;
         console.log(confirmationResult);
         debugger;
@@ -111,21 +111,15 @@ export class MainLoginComponentComponent implements OnInit {
       this.udata=res.map((e:any)=>{
         const collectiondata = e.payload.doc.data();
         collectiondata.id =e.payload.doc.id;
-        var length=collectiondata.length;
-        var count=1
-        console.log(length)
         console.log(collectiondata.id)
         if(collectiondata.id == this.uid){
           this.flag1=true
           console.log(this.flag1)
           this.router.navigate(['/userhome'])
         }
-        else if(length==count){
+        else if(this.flag1==false){
           console.log(this.flag1)
           this.router.navigate(['/userSignUp'])
-        }
-        else{
-          count=count+1
         }
       });
     });

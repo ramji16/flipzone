@@ -5,6 +5,14 @@ body {
   height: auto;
   background-size: cover;
 }
+.fa-beat{
+  animation-iteration-count: 0!important;
+}
+.fa-beat:active{
+  animation-iteration-count: 2;
+  transition: all 0.2s ease-in-out;
+  color: red;
+}
 .shoppage{
   display: flex;
   flex-direction: row;
