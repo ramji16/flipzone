@@ -4,6 +4,12 @@
   width:20vw;
   border-radius: 20px;
 }
+.wishlist{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+}
 .chip{
   background-color:#DAE7EF;
   height:5vh;

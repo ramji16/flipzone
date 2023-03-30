@@ -1,13 +1,21 @@
 body {
   /* background-image: url("src/assets/images/bg.jpg")!important; */
   background-color: #d5ecf5;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   background-size: cover;
 }
+.shoppage{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: left;
+}
 .cardd {
+  margin-top: 5% ;
   background-image: linear-gradient(45deg, #6f8faf, #dae7ef);
   color: black;
-  height: 60vh;
+  /* height: 60vh; */
   width: 20vw;
   border-radius: 20px;
 }

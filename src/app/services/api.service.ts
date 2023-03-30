@@ -50,6 +50,9 @@ export class ApiService {
     return this.Authfire.authState;
   }
 
+  getsubcollection(userCredential){
+    return this.Afs.collection('/Business').doc(userCredential).collection('/product').snapshotChanges()
+  }
   // list Function
   listItem(url) {
     return this.Afs.collection('/' + url).snapshotChanges();
