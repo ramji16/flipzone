@@ -1,5 +1,8 @@
 <body>
-  <app-usernavbar class="fixed-top" style="background-color: #d5ecf5;"></app-usernavbar>
+  <app-usernavbar
+    class="fixed-top"
+    style="background-color: #d5ecf5"
+  ></app-usernavbar>
   <div class="container pt-5">
     <div class="row pt-5">
       <div class="col-md-2">
@@ -7,7 +10,7 @@
       </div>
       <div class="col-md-10">
         <div class="shoppage">
-          <div *ngFor="let item of cartDetail"  class="col-md-4">
+          <div *ngFor="let item of cartDetail" class="col-md-4">
             <div class="shadow cardd text-center p-2">
               <div class="wishlist d-flex flex-row justify-content-end"></div>
               <img class="mt-4" src="assets/images/laptop.png" height="120vh" />
@@ -16,8 +19,8 @@
               </h4>
               <h5>Price: ${{ item.price }}</h5>
               <div class="mt-2 d-flex flex-row justify-content-between">
-                <h5 class="mr-3 shadow chip pt-1 ml-3">
-                  <i class="fa-regular fa-heart"></i>
+                <h5 class="mr-3 shadow chip pt-1 ml-3" (click)="wishlist(item)">
+                  <i class="fa-solid fa-heart fa-beat"></i>
                 </h5>
                 <h5 class="mr-3 shadow chip pt-1">
                   <i class="fa-solid fa-cart-shopping"></i>

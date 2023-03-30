@@ -91,6 +91,7 @@ export class BusinessAddformComponent implements OnInit {
         this.makeApi.insertproductdata(bid,data)
         // this.uploadSaveFile()
         this.router.navigate(['/businesslist'])
+        console.log(data)
          this.makeApi.createsubcollection(bid,data)
         // this.makeApi.imageUpload('product_images',)
       }
