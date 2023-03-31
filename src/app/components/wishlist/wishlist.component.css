@@ -25,5 +25,12 @@ body {
   background-color: #dae7ef;
   height: 5vh;
   width: 5vw;
-  border-radius: 30px;
+  border-radius:30px;
+}
+.button{
+  background-color:#6029B9;
+  color:white;
+  height:50px;
+  border-radius:15px;
+
 }

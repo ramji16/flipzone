@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+
 import { ApiService } from 'src/app/services/api.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-wishlist',
@@ -13,7 +15,9 @@ export class WishlistComponent implements OnInit {
   userid ;
   wishlistid = []
   wishlen: number;
-  constructor(private http: HttpClient, private makeapi: ApiService) {}
+
+  constructor(private router:Router, private makeapi: ApiService) {}
+
 
   ngOnInit(): void {
     this.userid = JSON.parse(localStorage.getItem('user_data'));
@@ -26,7 +30,13 @@ export class WishlistComponent implements OnInit {
     });
     console.log(this.wishlist);
     console.log(this.wishlistid)
+
+   
   }
+  back(){
+    this.router.navigate(['/profile']);
+  }
+
   delete(i) {
     var user = this.wishlistid[i]
     console.log(user)
@@ -34,6 +44,16 @@ export class WishlistComponent implements OnInit {
     alert('Product removed')
     setTimeout(()=>{                           
       window.location.reload()
-  }, 1000);
+    }, 1000);
+  }
+  move_to(){
+     for(let i=0;i<this.wishlist.length;i++){
+      this.makeapi.createordercollection(this.userid.user.uid,this.wishlist[i]);
+     }
+    setTimeout(() => {
+      alert('added to cart succesfully')
+      this.router.navigate(['/cart'])
+    }, 1000);
+
   }
 }

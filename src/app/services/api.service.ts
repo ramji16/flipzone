@@ -66,12 +66,27 @@ export class ApiService {
       .doc(userCredential)
       .collection('/product')
       .add(registerdata);
+
+  }
+  //add sub collection
+  createordercollection(userCredential,registerdata) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/orders')
+      .add(registerdata);
   }
   //delete wishlist collection
   deletewishlistcollection(userCredential, id) {
     return this.Afs.collection('/Users')
       .doc(userCredential)
       .collection('/wishlist')
+      .doc(id)
+      .delete();
+  }
+  deleteordercollection(userCredential, id) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/orders')
       .doc(id)
       .delete();
   }
@@ -83,6 +98,7 @@ export class ApiService {
       .add(registerdata);
   }
 
+
   //get wishlist collection
   getwishlistcollection(userCredential) {
     return this.Afs.collection('/Users')
@@ -91,6 +107,15 @@ export class ApiService {
       .snapshotChanges();
   }
 
+  //get order collection
+  getordercollection(userCredential) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/orders')
+      .snapshotChanges();
+  }
+
+
   //get sub collection
   getsubcollection(userCredential) {
     return this.Afs.collection('/Business')
@@ -98,6 +123,7 @@ export class ApiService {
       .collection('/product')
       .snapshotChanges();
   }
+
   //getuser
   getUser() {
     return this.Authfire.authState;

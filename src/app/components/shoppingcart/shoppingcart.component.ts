@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-shoppingcart',
@@ -9,24 +10,33 @@ import { Component, OnInit } from '@angular/core';
 export class ShoppingcartComponent implements OnInit {
   cartlist=[]
   cartlen:number
-  constructor(private http : HttpClient) { }
+  userid ;
+  quan:any;
+  orderlist=[];
+  orderId=[]
+  constructor(private makeapi:ApiService) { }
 
   ngOnInit(): void {
-    var path = "assets/JSON/cart.json";
-    this.http.get<any>(path).subscribe( data =>
-    {
-    this.cartlist=[]= data;
-    this.cartlen = this.cartlist.length;
-    // console.log(this.products);
+    
+    this.userid = JSON.parse(localStorage.getItem('user_data'));
+    this.makeapi.getordercollection(this.userid.user.uid).subscribe((res) => {
+      debugger;
+      res.map((e: any) => {
+        this.orderlist.push(e.payload.doc.data());
+        this.orderId.push(e.payload.doc.id);
+      });
     });
   }
-  delete(i:any){
-    for (let item=0;item<this.cartlist.length;item++){
-      if(item == i){
-        this.cartlist.splice(i,1);
-      }
-    }
-    // localStorage.setItem('scartlist',JSON.stringify(this.cartlist));
+  quantity(quantity){
+    this.quan=quantity
   }
-
+  delete(i) {
+    var user = this.orderId[i]
+    console.log(user)
+    this.makeapi.deleteordercollection(this.userid.user.uid,user)
+    alert('Product removed')
+    setTimeout(()=>{                           
+      window.location.reload()
+    }, 1000);
+  }
 }
