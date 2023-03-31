@@ -1,6 +1,40 @@
-.nav-tabs{
-    color:grey;
+.productView{
+    background-color:#DAE7EF;
+    background-size: cover;
+    min-height: 100vh;
 }
-a{
+.product-img{
+    background-color:#6F8FAF;
+}
+.chip{
+    background-color:transparent;
+    border:2px solid black;
+    height:5vh;
+    width: 100px;
+    border-radius:30px;
+}
+.cont-heading{
     color:black;
+}
+.chip-option{
+    background-color: #6029B9;
+    color:white;
+    height:5vh;
+    width: 100px;
+    border-radius:30px;
+    border:2px solid black;
+}
+.chip-unslected{
+    background-color: transparent;
+    color:black;
+    height:5vh;
+    border:2px solid black;
+    width: 100px;
+    border-radius:30px;
+}
+.button{
+    background-color:#6029B9;
+    color:white;
+    height:50px;
+    border-radius:15px;
 }
