@@ -40,6 +40,7 @@ import { DataService } from './services/data.service';
 import { ApiService } from './services/api.service';
 import {firebase} from '../environments/firebase';
 import { NgOtpInputModule } from 'ng-otp-input';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { NgOtpInputModule } from 'ng-otp-input';
     UsercontactComponent,
     WalletComponent,
     BusinessChangepasswordComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,

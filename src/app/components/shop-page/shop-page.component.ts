@@ -69,6 +69,7 @@ export class ShopPageComponent implements OnInit {
     this.makeapi.createwishlistcollection(userid.user.uid,data)
     alert('Product added to Wishlist')
   }
+
   order(data){
     var userid = JSON.parse(localStorage.getItem('user_data'))
     console.log(userid.user.uid)
@@ -76,4 +77,5 @@ export class ShopPageComponent implements OnInit {
     this.makeapi.createordercollection(userid.user.uid,data)
     alert('Product added to order')
   }
+
 }
