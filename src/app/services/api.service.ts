@@ -105,10 +105,6 @@ export class ApiService {
       .snapshotChanges();
   }
 
-  //get sub collection
-  getsubcollection(userCredential){
-    return this.Afs.collection('/Business').doc(userCredential).collection('/product').snapshotChanges()
-  }
   //getuser
   getUser() {
     return this.Authfire.authState;

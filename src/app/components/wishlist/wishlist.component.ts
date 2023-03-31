@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
 
@@ -17,13 +16,16 @@ export class WishlistComponent implements OnInit {
   constructor(private router:Router, private makeapi: ApiService) {}
 
   ngOnInit(): void {
-    var path = "assets/JSON/wishlist.json";
-    this.http.get<any>(path).subscribe( data =>
-    {
-    this.wishlist=[]= data;
-    this.wishlen = this.wishlist.length;
-    // console.log(this.products);
+    this.userid = JSON.parse(localStorage.getItem('user_data'));
+    this.makeapi.getwishlistcollection(this.userid.user.uid).subscribe((res) => {
+      debugger;
+      res.map((e: any) => {
+        this.wishlist.push(e.payload.doc.data());
+        this.wishlistid.push(e.payload.doc.id);
+      });
     });
+    console.log(this.wishlist);
+    console.log(this.wishlistid)
    
   }
   back(){
