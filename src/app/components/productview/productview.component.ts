@@ -10,19 +10,31 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ProductviewComponent implements OnInit {
   product=[];
-  productDetails=[];
-  data;
+  productDetails:any;
   cartlist=[];
-  paramsObject: any = {};
   collectiondata=[];
+  productname;
+  price
+  description;
+  category;
+  tag;
+  photo: any;
   constructor(private makeapi:ApiService,private router:Router,private route:ActivatedRoute,private http:HttpClient) {}
  
   ngOnInit(): void {
     this.route.queryParams
       .subscribe(params => {
-          this.paramsObject=params.item
+          this.productDetails=JSON.parse(params.item)
+          if(this.productDetails!=null){
+            console.log(this.productDetails.category)
+          }
           debugger
-          console.log(Object.entries(this.paramsObject))
+        this.productname=this.productDetails.productName
+        this.price=this.productDetails.price
+       this.description=this.productDetails.description
+       this.category=this.productDetails.category
+       this.tag=this.productDetails.tag
+       this.photo=this.productDetails.photo
       });
       // this.data_create() 
     // var path = "assets/JSON/cartdetail.json";
@@ -70,4 +82,12 @@ export class ProductviewComponent implements OnInit {
   //     });
   //     console.log(this.productDetails);
   // }
+  order(){
+    var userid = JSON.parse(localStorage.getItem('user_data'))
+    console.log(userid.user.uid)
+    console.log(this.productDetails)
+    this.makeapi.createordercollection(userid.user.uid,this.productDetails)
+    alert('Product added to order')
+  }
+
 }
