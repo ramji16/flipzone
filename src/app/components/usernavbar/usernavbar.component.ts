@@ -37,4 +37,7 @@ export class UsernavbarComponent implements OnInit {
   profile(){
     this.router.navigate(['/profile']);
   }
+  cart(){
+    this.router.navigate(['/cart']);
+  }
 }

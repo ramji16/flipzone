@@ -43,12 +43,68 @@ export class ApiService {
   }
   //loginuser
   login(email, Password) {
-    return this.Authfire.signInWithEmailAndPassword(email, Password)
+    return this.Authfire.signInWithEmailAndPassword(email, Password);
   }
   //add sub collection
-  createsubcollection(userCredential, registerdata){
-    return this.Afs.collection('/Business').doc(userCredential).collection('/product').add(registerdata)
+  createsubcollection(userCredential, registerdata) {
+    return this.Afs.collection('/Business')
+      .doc(userCredential)
+      .collection('/product')
+      .add(registerdata);
   }
+  //add sub collection
+  createordercollection(userCredential,registerdata) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/orders')
+      .add(registerdata);
+  }
+  //delete wishlist collection
+  deletewishlistcollection(userCredential, id) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/wishlist')
+      .doc(id)
+      .delete();
+  }
+  deleteordercollection(userCredential, id) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/orders')
+      .doc(id)
+      .delete();
+  }
+  //add wishlist collection
+  createwishlistcollection(userCredential, registerdata) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/wishlist')
+      .add(registerdata);
+  }
+
+  //get wishlist collection
+  getwishlistcollection(userCredential) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/wishlist')
+      .snapshotChanges();
+  }
+  //get order collection
+  getordercollection(userCredential) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/orders')
+      .snapshotChanges();
+  }
+
+  //get sub collection
+  getsubcollection(userCredential) {
+    return this.Afs.collection('/Business')
+      .doc(userCredential)
+      .collection('/product')
+      .snapshotChanges();
+  }
+
   //get sub collection
   getsubcollection(userCredential){
     return this.Afs.collection('/Business').doc(userCredential).collection('/product').snapshotChanges()

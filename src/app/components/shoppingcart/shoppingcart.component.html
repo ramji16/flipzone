@@ -18,25 +18,27 @@
     <div class="container">
         <div class="row">
             <div class="p-3 col-7 items">
-               <div class="p-2 col-12 mt-2 d-flex flex-row justify-content-between box" *ngFor="let items of cartlist;let i = index">
-                 <div>
-                    <img src={{items.image}} alt="" height="150px" width="150px">
+                <div class="ml-1 d-flex flex-row justify-content-between" style="text-transform: uppercase;">
+                    <div style="display: flex;">
+                        <input type="checkbox" class="check" checked="checked">
+                        <small class="ml-2"><b>2 items selected</b></small>
+                    </div>
+                    <!-- <div>
+                        <button class="bt" style="text-transform: uppercase;"><small><b>remove</b></small></button>
+                        <button class="bt" style="text-transform: uppercase;"><small><b>move to wishlist</b></small></button>
+                    </div> -->
+                </div> 
+               <div class="p-2 col-12 mt-3 d-flex flex-row justify-content-between box " *ngFor="let item of orderlist; let i = index">
+                <div>
+                     <input type="checkbox" class="check-cart mr-2"checked="checked">
+                    <img src={{item.image}} alt="" height="120vh">
                  </div>
                  <div class="content" style="line-height: 20px;">
-                    <span><b>{{items.pname}}</b></span><br>
-                    <small>{{items.cont}}</small><br>
-                    <small class="text-muted">{{items.ename}}</small><br>
-                    <select class="p-1 col-4 size">
-                        <option value="0">Size</option>
-                        <option value="1">S</option>
-                        <option value="2">M</option>
-                        <option value="3">L</option>
-                        <option value="4">XL</option>
-                        <option value="5">XXL</option>
-                        <option value="6">XXXL</option>
-                    </select>
-                    <select class="p-1 ml-3 col-4 size">
-                        <option value="0">Qty</option>
+                    <span><b>{{item.brandName}}</b></span><br>
+                    <small>{{item.tag}}</small><br>
+                    <small class="text-muted">{{item.productName}}</small><br>
+                    <select #quantity (change)="quantity(quantity.value)" class="p-1 mt-1 col-12 size">
+                        <option default>Quantity</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -45,8 +47,8 @@
                         <option value="6">6</option>
                     </select><br>
                     <div class="mt-3">
-                        <span class="text-success"><b>{{items.rupees}}</b></span>
-                        <small class="ml-2 text-muted"><del>{{items.offer}}</del></small>
+                        <span class="text-black"><b>${{item.price}}</b></span>
+                        <small class="ml-2 text-muted"><del>{{item.offer}}</del></small>
                     </div>
                  </div>
                  <div>

@@ -62,4 +62,18 @@ export class ShopPageComponent implements OnInit {
   cartview() {
     this.router.navigate(['cart']);
   }
+  wishlist(data){
+    var userid = JSON.parse(localStorage.getItem('user_data'))
+    console.log(userid.user.uid)
+    console.log(data)
+    this.makeapi.createwishlistcollection(userid.user.uid,data)
+    alert('Product added to Wishlist')
+  }
+  order(data){
+    var userid = JSON.parse(localStorage.getItem('user_data'))
+    console.log(userid.user.uid)
+    console.log(data)
+    this.makeapi.createordercollection(userid.user.uid,data)
+    alert('Product added to order')
+  }
 }
