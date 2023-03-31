@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+
 
 @Component({
   selector: 'app-shoppingcart',
@@ -17,7 +19,7 @@ export class ShoppingcartComponent implements OnInit {
   orderlength: any;
   amount = [];
   totalamount = 0 ;
-  constructor(private makeapi: ApiService) {}
+  constructor(private makeapi: ApiService,private router:Router) {}
 
   ngOnInit(): void {
     this.userid = JSON.parse(localStorage.getItem('user_data'));
@@ -39,6 +41,7 @@ export class ShoppingcartComponent implements OnInit {
     this.orderlist[i].quantity = quantity
     console.log(amt);
     var amont = this.quan * Number(amt);
+    this.orderlist[i].customers=this.userid.user.uid
     this.orderlist[i].price = amont
     if (this.amount[i] == null) {
       this.amount.push(amont);
@@ -60,6 +63,10 @@ export class ShoppingcartComponent implements OnInit {
       this.makeapi.createbordercollection(this.userid.user.uid,this.orderlist[i])
       this.makeapi.createproductordercollection(this.orderlist[i].uid,this.orderlist[i])
     }
+    debugger
+    setTimeout(() => {
+      this.router.navigate(['/orders'])
+    },1000);
   }
 
   delete(i) {

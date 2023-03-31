@@ -56,8 +56,9 @@ export class ShopPageComponent implements OnInit {
     
     
   }
-  productview(ind: number) {
-    this.router.navigate(['/productview'], { queryParams: { index: ind } });
+  productview(ind:any) {
+    console.log(ind)
+    this.router.navigate(['/productview'], {queryParams:{item:ind}});
   }
   cartview() {
     this.router.navigate(['cart']);

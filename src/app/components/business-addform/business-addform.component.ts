@@ -23,6 +23,7 @@ export class BusinessAddformComponent implements OnInit {
   fashionTop = '';
   filePath: string;
   fsb;
+  bmail;
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
@@ -31,9 +32,12 @@ export class BusinessAddformComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    var bid=JSON.parse(localStorage.getItem('bdata'))
+    this.bmail=bid.user.email
     this.productForm = this.formBuilder.group({
       uid: [''],
       productName: ['', Validators.required],
+      customers:['',Validators.required],
       quantity : ['',Validators.required],
       email: ['', [Validators.required, Validators.email]],
       price: ['', Validators.required],
@@ -87,6 +91,7 @@ export class BusinessAddformComponent implements OnInit {
         var getdata = this.productForm.value;
         getdata.uid = bid;
         getdata.category = this.category;
+        getdata.email= this.bmail;
         // getdata.photo = this.path
         this.productForm.patchValue(getdata);
         // console.log(getdata.photo)
@@ -107,6 +112,7 @@ export class BusinessAddformComponent implements OnInit {
         })
         // this.makeApi.imageUpload('product_images',)
       }
+      alert('Product has been Added successfully')
     }
   }
   // selectedFile: File = null;

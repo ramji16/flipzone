@@ -12,7 +12,6 @@ import { BusinessOrderComponent } from './components/business-order/business-ord
 import { BusinessProfileComponent } from './components/business-profile/business-profile.component';
 import { BusinessSignUpComponent } from './components/business-sign-up/business-sign-up.component';
 import { BusinessSigninComponent } from './components/business-signin/business-signin.component';
-import { CartComponent } from './components/cart/cart.component';
 import { MainLoginComponentComponent } from './components/main-login-component/main-login-component.component';
 import { MyordersComponent } from './components/myorders/myorders.component';
 import { ProductviewComponent } from './components/productview/productview.component';
@@ -54,8 +53,6 @@ const routes: Routes = [
   { path: 'busniessSignUp', component: BusinessSignUpComponent },
   { path: 'busniessSignIn', component: BusinessSigninComponent },
   { path: 'contact', component: UsercontactComponent },
-  // { path: 'cart', component:CartComponent}
-  
 ];
 
 @NgModule({
