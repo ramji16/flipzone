@@ -57,8 +57,7 @@ export class ShopPageComponent implements OnInit {
     
   }
   productview(ind:any) {
-    console.log(ind)
-    this.router.navigate(['/productview'], {queryParams:{item:ind}});
+    this.router.navigate(['/productview'], {queryParams:{item:JSON.stringify(ind)}});
   }
   cartview() {
     this.router.navigate(['cart']);
@@ -76,7 +75,7 @@ export class ShopPageComponent implements OnInit {
     console.log(userid.user.uid)
     console.log(data)
     this.makeapi.createordercollection(userid.user.uid,data)
-    alert('Product added to order')
+    alert('Product added to cart')
   }
 
 }
