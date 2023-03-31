@@ -109,6 +109,9 @@ export class ProfileComponent implements OnInit {
   wishlistnaviagtion(){
     this.router.navigate(['/wishlist']);
   }
+  ordersnaviagtion(){
+    this.router.navigate(['/orders']);
+  }
 
   // update() {
   //   if (this.profile.invalid) {

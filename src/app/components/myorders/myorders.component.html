@@ -1,28 +1,48 @@
-<div class="orders">
-    <table class="table">
-        <tr>
+<body>
+  <!-- <app-usernavbar class="fixed-top" style="background-color: #d5ecf5;"></app-usernavbar> -->
+  <div class="d-flex flex-row pt-5">
+    <h3 class="ml-3" (click)="back()">
+      <i class="fa-sharp fa-solid fa-arrow-left"></i>
+    </h3>
+    <div class="text-center mx-auto" style="width: 200px">
+      <h2>Orders Placed</h2>
+    </div>
+    <!-- <div>
+        <button (click)="move_to()" class="mr-3 btn button">Add to Cart &nbsp;<i class="fa-solid fa-cart-shopping"></i></button>
+      </div> -->
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="orders mx-auto" style="width: 1000px;">
+        <table class="table">
+          <tr>
             <th>S.no</th>
             <th>Product Image</th>
             <th>Model</th>
+            <th>Quantity</th>
             <th>Price</th>
             <th>Date of order</th>
             <th>Date of delivery</th>
-        </tr>
-        <tr>
-            <td class="pt-4">1</td>
-            <td><img src="assets/images/laptop.png" height="80vh"></td>
-            <td class="pt-3">Macbook Air 2020 (8GB 256GB)</td>
-            <td class="pt-3">2000$</td>
-            <td class="pt-3">{{time}}</td>
-            <td class="pt-3">{{time}}</td>
-        </tr>
-        <tr>
+          </tr>
+          <tr *ngFor="let item of order; let i = index">
+            <td class="pt-4">{{ i + 1 }}</td>
+            <td class="text-center"><img src="{{ item.photo }}" height="80vh" /></td>
+            <td class="pt-3">{{ item.brandName }}{{ item.productName }}</td>
+            <td class="pt-3">{{ item.quantity }}</td>
+            <td class="pt-3">{{ item.price }}</td>
+            <td class="pt-3">{{ time }}</td>
+            <td class="pt-3">{{ dtime }}</td>
+          </tr>
+          <!-- <tr>
             <td class="pt-4">2</td>
             <td><img src="assets/images/iwatch.png" height="80vh"></td>
             <td class="pt-3">Apple watch Ultra(8GB 256GB)</td>
             <td class="pt-3">899$</td>
             <td class="pt-3">{{time}}</td>
             <td class="pt-3">{{time}}</td>
-        </tr>
-    </table>
-</div>
+        </tr> -->
+        </table>
+      </div>
+    </div>
+  </div>
+</body>

@@ -23,7 +23,7 @@
           style="border-top: 2px solid #d5cabd"
         >
           <i class="ml-2 mt-3 pt-1 fa-solid fa-bag-shopping"></i>
-          <p class="ml-4 mt-3" (click)="wishlistnav('order')">My Orders</p>
+          <p class="ml-4 mt-3" (click)="ordersnaviagtion()">My Orders</p>
         </div>
         <div
           class="mt-2 mb-2 d-flex flex-row"
@@ -32,12 +32,12 @@
           <i class="ml-2 mt-3 pt-1 fa-solid fa-wallet"></i>
           <p class="ml-4 mt-3" (click)="wishlistnav('wallet')">Wallet</p>
         </div>
-        <div class="mb-2 d-flex flex-row">
+        <!-- <div class="mb-2 d-flex flex-row">
           <i class="ml-2 mt-1 pt-1 fa-solid fa-lock"></i>
           <p class="ml-4 mt-1" (click)="wishlistnav('password')">
             Change Password
           </p>
-        </div>
+        </div> -->
         <div
           class="mt-2 mb-2 d-flex flex-row"
           style="border-top: 2px solid #d5cabd"
@@ -52,7 +52,7 @@
         </div>
         <div class="cardd shadow">
           <!-- <app-wishlist *ngIf="wishlist == 'wishlist'"></app-wishlist> -->
-          <app-myorders *ngIf="wishlist == 'order'"></app-myorders>
+          <!-- <app-myorders *ngIf="wishlist == 'order'"></app-myorders> -->
           <app-changepassword
             *ngIf="wishlist == 'password'"
           ></app-changepassword>

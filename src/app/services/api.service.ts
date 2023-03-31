@@ -1,3 +1,4 @@
+import { query } from '@angular/animations';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
@@ -72,6 +73,13 @@ export class ApiService {
   createordercollection(userCredential,registerdata) {
     return this.Afs.collection('/Users')
       .doc(userCredential)
+      .collection('/cart')
+      .add(registerdata);
+  }
+  //add sub collection
+  createbordercollection(userCredential,registerdata) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
       .collection('/orders')
       .add(registerdata);
   }
@@ -86,7 +94,7 @@ export class ApiService {
   deleteordercollection(userCredential, id) {
     return this.Afs.collection('/Users')
       .doc(userCredential)
-      .collection('/orders')
+      .collection('/cart')
       .doc(id)
       .delete();
   }
@@ -99,6 +107,7 @@ export class ApiService {
   }
 
 
+
   //get wishlist collection
   getwishlistcollection(userCredential) {
     return this.Afs.collection('/Users')
@@ -107,11 +116,32 @@ export class ApiService {
       .snapshotChanges();
   }
 
+  createproductordercollection(userCredential,data) {
+    return this.Afs.collection('/Business')
+      .doc(userCredential)
+      .collection('/orders')
+      .add(data)
+  }
+
+  getboredercollection(userCredential) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/orders')
+      .snapshotChanges();
+  }
+
+  getproductordercollection(userCredential) {
+    return this.Afs.collection('/Business')
+      .doc(userCredential)
+      .collection('/orders')
+      .snapshotChanges();
+  }
+
   //get order collection
   getordercollection(userCredential) {
     return this.Afs.collection('/Users')
       .doc(userCredential)
-      .collection('/orders')
+      .collection('/cart')
       .snapshotChanges();
   }
 

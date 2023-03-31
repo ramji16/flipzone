@@ -1,42 +1,74 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 
-
 @Component({
   selector: 'app-shoppingcart',
   templateUrl: './shoppingcart.component.html',
-  styleUrls: ['./shoppingcart.component.css']
+  styleUrls: ['./shoppingcart.component.css'],
 })
 export class ShoppingcartComponent implements OnInit {
-  cartlist=[]
-  cartlen:number
-  userid ;
-  quan:any;
-  orderlist=[];
-  orderId=[]
-  constructor(private makeapi:ApiService) { }
+  cartlist = [];
+  cartlen: number;
+  userid;
+  quan: number;
+  orderlist = [];
+  orderId = [];
+  amountlength: number;
+  orderlength: any;
+  amount = [];
+  totalamount = 0 ;
+  constructor(private makeapi: ApiService) {}
 
   ngOnInit(): void {
-    
     this.userid = JSON.parse(localStorage.getItem('user_data'));
     this.makeapi.getordercollection(this.userid.user.uid).subscribe((res) => {
       debugger;
       res.map((e: any) => {
         this.orderlist.push(e.payload.doc.data());
         this.orderId.push(e.payload.doc.id);
+        console.log(this.orderlist.length);
+        this.orderlength = this.orderlist.length;
       });
     });
+    debugger;
   }
-  quantity(quantity){
-    this.quan=quantity
+  quanti(quantity, i) {
+    this.quan = Number(quantity);
+    console.log(typeof this.quan);
+    var amt = this.orderlist[i].price;
+    this.orderlist[i].quantity = quantity
+    console.log(amt);
+    var amont = this.quan * Number(amt);
+    this.orderlist[i].price = amont
+    if (this.amount[i] == null) {
+      this.amount.push(amont);
+    } else if (this.amount[i] != null) {
+      this.amount[i] = amont;
+    }
+    this.amountlength = this.amount.length;
+    console.log(this.amount);
+    this.totalamount = 0
+    for(let j = 0 ; j<this.amount.length;j++){
+      this.totalamount = this.totalamount + this.amount[j]
+      debugger
+      console.log(this.totalamount)
+    }
+    // this.amount = quantity * amount
   }
+  placeorder(){
+    for(let i =0 ; i<this.orderlist.length;i++){
+      this.makeapi.createbordercollection(this.userid.user.uid,this.orderlist[i])
+      this.makeapi.createproductordercollection(this.orderlist[i].uid,this.orderlist[i])
+    }
+  }
+
   delete(i) {
-    var user = this.orderId[i]
-    console.log(user)
-    this.makeapi.deleteordercollection(this.userid.user.uid,user)
-    alert('Product removed')
-    setTimeout(()=>{                           
-      window.location.reload()
+    var user = this.orderId[i];
+    console.log(user);
+    this.makeapi.deleteordercollection(this.userid.user.uid, user);
+    alert('Product removed');
+    setTimeout(() => {
+      window.location.reload();
     }, 1000);
   }
 }

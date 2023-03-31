@@ -34,6 +34,7 @@ export class BusinessAddformComponent implements OnInit {
     this.productForm = this.formBuilder.group({
       uid: [''],
       productName: ['', Validators.required],
+      quantity : ['',Validators.required],
       email: ['', [Validators.required, Validators.email]],
       price: ['', Validators.required],
       photo: ['', Validators.required],
@@ -95,7 +96,7 @@ export class BusinessAddformComponent implements OnInit {
         // this.uploadSaveFile()
         this.router.navigate(['/businesslist'])
         console.log(data)
-         this.makeApi.createsubcollection(bid,data)
+        //  this.makeApi.createsubcollection(bid,data)
        
         this.makeApi.createsubcollection(bid, data).then(data=>{
           debugger

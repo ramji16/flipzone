@@ -8,7 +8,7 @@
           <label>Product Name :</label>
         </div>
         <div class="col-md-4 col-6 text-center">
-          <input type="text" class="form-control" formControlName="productName" pattern="^[a-zA-z- ']+$" [ngClass]="{'is-invalid': add.productName.touched && add.productName.errors}" placeholder="Product Name"/>
+          <input type="text" class="form-control" formControlName="productName"  [ngClass]="{'is-invalid': add.productName.touched && add.productName.errors}" placeholder="Product Name"/>
           <span *ngIf="add.productName.errors && add.productName.touched" class="text-danger">Name Required</span>
         </div>
       <!-- </div>
