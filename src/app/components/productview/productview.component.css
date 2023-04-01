@@ -6,6 +6,12 @@
 .product-img{
     background-color:#6F8FAF;
 }
+.min-vh-80{
+    min-height:40vh;
+}
+.color-button{
+    border-radius: 50% !important;
+}
 .chip{
     background-color:transparent;
     border:2px solid black;
@@ -17,20 +23,40 @@
     color:black;
 }
 .chip-option{
-    background-color: #6029B9;
-    color:white;
+    background-color: #b3478c;
     height:5vh;
-    width: 100px;
-    border-radius:30px;
-    border:2px solid black;
+    width: 30px;
+    border-radius:50%;
 }
 .chip-unslected{
-    background-color: transparent;
-    color:black;
+    background-color: #ffa764;
+    border-radius:50%;
     height:5vh;
-    border:2px solid black;
-    width: 100px;
-    border-radius:30px;
+    width: 30px;
+}
+.chip-unslected1{
+    background-color: #3de68b;
+    border-radius:50%;
+    height:5vh;
+    width: 30px;
+}
+.chip-unslected2{
+    background-color: #a11f2a;
+    border-radius:50%;
+    height:5vh;
+    width: 30px;
+}
+.chip-unslected3{
+    background-color: #1e62c0;
+    border-radius:50%;
+    height:5vh;
+    width: 30px;
+}
+.chip-unslected4{
+    background-color: #ffbf00;
+    border-radius:50%;
+    height:5vh;
+    width: 30px;
 }
 .button{
     background-color:#6029B9;

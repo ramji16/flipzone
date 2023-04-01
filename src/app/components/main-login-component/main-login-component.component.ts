@@ -146,7 +146,10 @@ export class MainLoginComponentComponent implements OnInit {
         debugger
         // var id = JSON.parse(localStorage.getItem('user_data'));
         // console.log(id.user.uid)
-      });
+      }).catch((err)=>{
+        alert("please verify your OTP")
+        window.location.reload()
+      })
       // if(flagcheck==true){
       //   debugger
       //   this.router.navigate(['/userhome'])
