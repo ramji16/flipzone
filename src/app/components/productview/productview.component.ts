@@ -19,9 +19,14 @@ export class ProductviewComponent implements OnInit {
   category;
   tag;
   photo: any;
+  colors: string[] = [
+    '#b3478c', '#1e62c0', '#ffa764', '#3de68b', '#a11f2a', '#ffbf00'
+  ];
+  selectedColor
   constructor(private makeapi:ApiService,private router:Router,private route:ActivatedRoute,private http:HttpClient) {}
  
   ngOnInit(): void {
+   this. selectedColor = this.colors[0];
     this.route.queryParams
       .subscribe(params => {
           this.productDetails=JSON.parse(params.item)
