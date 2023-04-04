@@ -7,6 +7,12 @@ a {
 .dropdown-item:hover {
   color: #41118f !important;
 }
+a:hover{
+ border-bottom: 2px solid #41118f;
+}
+button:hover{
+  border-bottom: 2px solid #41118f;
+}
 .dropdown-menu {
   transition: ease-in-out !important;
   background-color: #41118f !important;

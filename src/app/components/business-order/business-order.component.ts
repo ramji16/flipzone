@@ -18,6 +18,10 @@ export class BusinessOrderComponent implements OnInit {
   constructor(private router: Router,private makeapi: ApiService) { }
 
   ngOnInit(): void {
+     this.getList()
+  }
+  
+  getList(){
     var today = new Date(this.date);
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
@@ -26,14 +30,13 @@ export class BusinessOrderComponent implements OnInit {
     this.bid = JSON.parse(localStorage.getItem('businessId'));
     this.makeapi.getproductordercollection(this.bid).subscribe((res) => {
       debugger;
+      this.orders = [];
       res.map((e: any) => {
         this.orders.push(e.payload.doc.data());
         this.orderid.push(e.payload.doc.id);
       });
     });
-    console.log(this.orders);
-    console.log(this.orderid)
+    // console.log(this.orders);
+    // console.log(this.orderid)
   }
-  
-
 }

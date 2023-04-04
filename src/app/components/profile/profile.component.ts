@@ -61,13 +61,7 @@ export class ProfileComponent implements OnInit {
         this.fl = user.ufname[0]
         this.fn=user.ufname
         debugger
-        // (getdata.phoneNumber = user.phoneNumber)
-        // (getdata.ufname =  user.ufname)
-        // (getdata.ulname = user.ulname)
-        // (getdata.email = user.email)
-        // getdata.ubdate = user.ubdate;
-        // getdata.ugender =user.ugender;
-        // getdata.uaddress= user.uaddress;
+        
         this.profile.patchValue(user)
         console.log( this.profile.value)
       })
