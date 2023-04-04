@@ -20,26 +20,26 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mx-auto" style="width: 430px; text-align: center; font-size: 20px">
+    <ul class="navbar-nav mx-auto p-2" style="width: 430px; text-align: center; font-size: 20px">
       <li class="nav-item">
         <a class="nav-link" routerLink="/businesshome">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/businesslist">Product List</a>
+        <a class="nav-link" routerLink="/businesslist">Product list</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="/businessorder">Orders List</a>
+        <a class="nav-link" routerLink="/businessorder">Orders list</a>
       </li>
-      <li>
+      <li class=" ">
         <div class="dropdown">
           <button
-            class="btn m-1"
-            style="background-color: #41118f; color: #dbf2fb; font-size: large"
+            class="btn mt-1"
+            style="color: #41118f; font-size:19.1px;font-weight: 400;"
             type="button"
             data-toggle="dropdown"
             aria-expanded="false"
           >
-            Add Product
+            Add roduct
           </button>
           <div class="dropdown-menu">
             <a class="dropdown-item" (click)="businessadd('Fashion')"

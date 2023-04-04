@@ -22,16 +22,7 @@ export class ShoppingcartComponent implements OnInit {
   constructor(private makeapi: ApiService,private router:Router) {}
 
   ngOnInit(): void {
-    this.userid = JSON.parse(localStorage.getItem('user_data'));
-    this.makeapi.getordercollection(this.userid.user.uid).subscribe((res) => {
-      debugger;
-      res.map((e: any) => {
-        this.orderlist.push(e.payload.doc.data());
-        this.orderId.push(e.payload.doc.id);
-        console.log(this.orderlist.length);
-        this.orderlength = this.orderlist.length;
-      });
-    });
+    this.getList()
     debugger;
   }
   quanti(quantity, i) {
@@ -72,10 +63,26 @@ export class ShoppingcartComponent implements OnInit {
   delete(i) {
     var user = this.orderId[i];
     console.log(user);
-    this.makeapi.deleteordercollection(this.userid.user.uid, user);
-    alert('Product removed');
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
+    this.makeapi.deleteordercollection(this.userid.user.uid, user).then(data=>{
+      alert('Product removed');
+      this.getList()
+    })
+    
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 1000);
+  }
+  getList(){
+    this.userid = JSON.parse(localStorage.getItem('user_data'));
+    this.makeapi.getordercollection(this.userid.user.uid).subscribe((res) => {
+      debugger;
+      this.orderlist=[]
+      res.map((e: any) => {
+        this.orderlist.push(e.payload.doc.data());
+        this.orderId.push(e.payload.doc.id);
+        console.log(this.orderlist.length);
+        this.orderlength = this.orderlist.length;
+      });
+    });
   }
 }

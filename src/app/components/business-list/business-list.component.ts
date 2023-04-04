@@ -20,14 +20,9 @@ export class BusinessListComponent implements OnInit {
   constructor(private makeapi:ApiService,private router : Router ) { }
 
   ngOnInit(): void {
-    this.bid=JSON.parse(localStorage.getItem('businessId'))
-    this.makeapi.getsubcollection(this.bid).subscribe(res=>{
-      var details=res.map((e:any)=>{
-         this.product.push(e.payload.doc.data()); 
-         this.productid.push(e.payload.doc.id);
-      });
-      console.log(this.product)
-    });
+    
+    this.getList();
+
     
   var electronics = JSON.parse(localStorage.getItem('Electronics'));
   var fashion = JSON.parse(localStorage.getItem('Fashion'));
@@ -59,7 +54,16 @@ export class BusinessListComponent implements OnInit {
     this.router.navigate(['/businessaddform/'],{queryParams:{cat:category}});
 
   }
-
+  getList(){
+    var bid=JSON.parse(localStorage.getItem('businessId'))
+    this.makeapi.getsubcollection(bid).subscribe(res=>{
+      this.product=[];
+      var details=res.map((e:any)=>{
+         this.product.push(e.payload.doc.data()); 
+      });
+      console.log(this.product)
+    });
+  }
   filter(option : any){
     this.filterValue = option;
     console.log(this.filterValue);

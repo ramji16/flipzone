@@ -69,6 +69,11 @@ export class ApiService {
       .add(registerdata);
 
   }
+  //Blog comment
+  createBlog(data) {
+    return this.Afs.collection('/Blog')
+      .add(data)
+  }
   //add sub collection
   createordercollection(userCredential,registerdata) {
     return this.Afs.collection('/Users')
@@ -112,6 +117,15 @@ export class ApiService {
       .collection('/wishlist')
       .add(registerdata);
   }
+
+
+
+
+  getcommentcollection() {
+    return this.Afs.collection('/Blog')
+      .snapshotChanges();
+  }
+
   //get wishlist collection
   getwishlistcollection(userCredential) {
     return this.Afs.collection('/Users')
@@ -182,6 +196,12 @@ export class ApiService {
     return this.Afs.collection('/' + url)
       .doc(id)
       .valueChanges();
+  }
+  getuserItem(url, id) {
+    // sessionStorage.setItem('id', id);
+    return this.Afs.collection('/Users')
+      .doc(id)
+      .get();
   }
   // update Function
   updateItem(url, data) {

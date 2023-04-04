@@ -51,6 +51,9 @@ export class UserHomeComponentComponent implements OnInit {
   //   }
   // }
  }
+ shop(){
+  this.router.navigate(['/shopping'])
+ }
  redirect(){
   this.router.navigate(['/aboutus'])
  }
