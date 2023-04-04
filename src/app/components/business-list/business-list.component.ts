@@ -14,12 +14,15 @@ export class BusinessListComponent implements OnInit {
   othersProduct = [];
   productDetails = [];
   product=[]
+  productid=[];
   filterValue = 'All';
+  bid;
   constructor(private makeapi:ApiService,private router : Router ) { }
 
   ngOnInit(): void {
     
     this.getList();
+
     
   var electronics = JSON.parse(localStorage.getItem('Electronics'));
   var fashion = JSON.parse(localStorage.getItem('Fashion'));
@@ -65,5 +68,10 @@ export class BusinessListComponent implements OnInit {
     this.filterValue = option;
     console.log(this.filterValue);
   }
-
+  removeItem(i:any){
+    this.makeapi.deletesubcollection(this.bid,this.productid[i]).then(()=>{
+      alert("Removed Successfully")
+      window.location.reload();
+    })
+  }
 }

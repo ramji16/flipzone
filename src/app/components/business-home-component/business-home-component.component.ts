@@ -15,7 +15,9 @@ export class BusinessHomeComponentComponent implements OnInit {
   ordersArray = []
   customer;
   customerArray = []
-
+  profit=0;
+  netprofit=0;
+  livecustomers=new Set();
   constructor(private router : Router,private makeapi:ApiService) { }
 
   ngOnInit(): void {
@@ -29,12 +31,22 @@ export class BusinessHomeComponentComponent implements OnInit {
     });
     this.makeapi.getproductordercollection(bid).subscribe(res=>{
       var details=res.map((e:any)=>{
-         this.ordersArray.push(e.payload.doc.data()); 
+         this.ordersArray.push(e.payload.doc.data());
+         this.customerArray.push(e.payload.doc.id); 
       });
+      for(let i=0;i<this.customerArray.length;i++){
+        if(this.ordersArray[i].customers!="" && this.ordersArray[i].customers!=undefined){
+          this.livecustomers.add(this.ordersArray[i].customers)
+        }
+        this.profit=this.profit + Number(this.ordersArray[i].price)
+        debugger
+      }
+      this.netprofit=this.profit*(25/100)
       console.log(this.ordersArray)
       this.orders = this.ordersArray.length
+      this.customer=this.livecustomers.size
+      console.log(this.livecustomers)
     });
-    
   }
 
   businessorder(){
