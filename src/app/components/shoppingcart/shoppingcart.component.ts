@@ -18,12 +18,11 @@ export class ShoppingcartComponent implements OnInit {
   amountlength: number;
   orderlength: any;
   amount = [];
-  totalamount = 0 ;
+  totalamount :Number;
   constructor(private makeapi: ApiService,private router:Router) {}
 
   ngOnInit(): void {
     this.getList()
-    debugger;
   }
   quanti(quantity, i) {
     this.quan = Number(quantity);
@@ -33,7 +32,7 @@ export class ShoppingcartComponent implements OnInit {
     console.log(amt);
     var amont = this.quan * Number(amt);
     this.orderlist[i].customers=this.userid.user.uid
-    this.orderlist[i].price = amont
+     this.orderlist[i].price = amont
     if (this.amount[i] == null) {
       this.amount.push(amont);
     } else if (this.amount[i] != null) {
@@ -54,10 +53,9 @@ export class ShoppingcartComponent implements OnInit {
       this.makeapi.createbordercollection(this.userid.user.uid,this.orderlist[i])
       this.makeapi.createproductordercollection(this.orderlist[i].uid,this.orderlist[i])
     }
-    debugger
-    setTimeout(() => {
-      this.router.navigate(['/orders'])
-    },1000);
+  }
+  navigation(){
+    this.router.navigate(['/orders'])
   }
 
   delete(i) {
