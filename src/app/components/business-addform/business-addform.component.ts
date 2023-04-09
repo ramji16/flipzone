@@ -20,7 +20,10 @@ export class BusinessAddformComponent implements OnInit {
   category: any;
   selectedCategory = '';
   fashionType = '';
+  electronicType = '';
   fashionTop = '';
+  gender = '';
+  connectivity='';
   filePath: string;
   fsb;
   bmail;
@@ -32,25 +35,35 @@ export class BusinessAddformComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    var bid=JSON.parse(localStorage.getItem('bdata'))
-    this.bmail=bid.user.email
+    var bid = JSON.parse(localStorage.getItem('bdata'));
+    this.bmail = bid.user.email;
     this.productForm = this.formBuilder.group({
       uid: [''],
       productName: ['', Validators.required],
-      customers:['',Validators.required],
-      quantity : ['',Validators.required],
+      customers: ['', Validators.required],
+      connectivity: ['', Validators.required],
+      power : ['', Validators.required],
+      quantity: ['', Validators.required],
+      capacity : ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       price: ['', Validators.required],
       photo: ['', Validators.required],
+      battery: ['', Validators.required],
       discount: ['', Validators.required],
       category: ['', Validators.required],
       lowerPrice: ['', Validators.required],
       brandName: ['', Validators.required],
       modelNumber: ['', Validators.required],
       fashionType: ['', Validators.required],
+      electronicType: ['', Validators.required],
       material: ['', Validators.required],
+      displayInch: ['', Validators.required],
       height: ['', Validators.required],
       weight: ['', Validators.required],
+      ram: ['', Validators.required],
+      storage: ['', Validators.required],
+      processor: ['', Validators.required],
+      camera: ['', Validators.required],
       breadth: ['', Validators.required],
       gender: ['', Validators.required],
       dressSize: ['', Validators.required],
@@ -91,7 +104,7 @@ export class BusinessAddformComponent implements OnInit {
         var getdata = this.productForm.value;
         getdata.uid = bid;
         getdata.category = this.category;
-        getdata.email= this.bmail;
+        getdata.email = this.bmail;
         // getdata.photo = this.path
         this.productForm.patchValue(getdata);
         // console.log(getdata.photo)
@@ -99,53 +112,58 @@ export class BusinessAddformComponent implements OnInit {
         debugger;
         // this.makeApi.insertproductdata(bid, data);
         // this.uploadSaveFile()
-        this.router.navigate(['/businesslist'])
-        console.log(data)
+        this.router.navigate(['/businesslist']);
+        console.log(data);
         //  this.makeApi.createsubcollection(bid,data)
-       
-        this.makeApi.createsubcollection(bid, data).then(data=>{
-          debugger
-          this.router.navigate(['/businesslist']);
-          console.log(data);
-        }).catch(error =>{
 
-        })
+        this.makeApi
+          .createsubcollection(bid, data)
+          .then((data) => {
+            debugger;
+            this.router.navigate(['/businesslist']);
+            console.log(data);
+          })
+          .catch((error) => {});
         // this.makeApi.imageUpload('product_images',)
       }
-      alert('Product has been Added successfully')
+      alert('Product has been Added successfully');
     }
   }
   // selectedFile: File = null;
   // downloadURL: Observable<string>;
-  getValue
+  getValue;
   onFileSelected(event) {
     this.selectedFile = event.target.files[0];
-    debugger
+    debugger;
     if (event.target.files && this.selectedFile) {
       var reader = new FileReader();
-      var imagetype = this.selectedFile.type
-      var imagedatatype = imagetype.split("/")
-      var img_crt_type = imagedatatype[1]
-      if (img_crt_type == "jpeg" || img_crt_type == "jpg" || img_crt_type == "png") {
+      var imagetype = this.selectedFile.type;
+      var imagedatatype = imagetype.split('/');
+      var img_crt_type = imagedatatype[1];
+      if (
+        img_crt_type == 'jpeg' ||
+        img_crt_type == 'jpg' ||
+        img_crt_type == 'png'
+      ) {
         reader.readAsDataURL(this.selectedFile);
         reader.onload = () => {
-          
           // this.getValue = reader.result;
           // debugger
-        }
+        };
       }
     }
   }
-  
-        
+
   /**save images**/
   // filePath: string;
   uploadSaveFile() {
-    debugger
+    debugger;
     if (this.selectedFile != null) {
-      debugger
+      debugger;
       var n = Date.now();
-      this.filePath = `product_images/${this.selectedFile.name.split('.')}_${n}`;
+      this.filePath = `product_images/${this.selectedFile.name.split(
+        '.'
+      )}_${n}`;
       this.makeApi
         .imageUpload(this.filePath, this.selectedFile)
         .snapshotChanges()
@@ -160,7 +178,7 @@ export class BusinessAddformComponent implements OnInit {
                   var getform = this.productForm.value;
                   getform.photo = this.fsb;
                   this.productForm.patchValue(getform);
-                  debugger
+                  debugger;
                   this.onSubmit();
                 }
               });
@@ -168,7 +186,7 @@ export class BusinessAddformComponent implements OnInit {
         )
         .subscribe((url) => {});
     } else {
-      this.onSubmit()
+      this.onSubmit();
     }
   }
   /**delete Image**/
@@ -187,10 +205,25 @@ export class BusinessAddformComponent implements OnInit {
     debugger;
     console.log(this.fashionType);
   }
+  onElectronicType(value: string): void {
+    this.electronicType = value;
+    debugger;
+    console.log(this.electronicType);
+  }
   onFashionTopSize(value: string): void {
     this.fashionTop = value;
     debugger;
     console.log(this.fashionTop);
+  }
+  onGender(value: string): void {
+    this.gender = value;
+    debugger;
+    console.log(this.gender);
+  }
+  onConnectivity(value: string): void {
+    this.connectivity = value;
+    debugger;
+    console.log(this.connectivity);
   }
   onProductValues() {
     var getdata = this.productForm.value;

@@ -37,6 +37,7 @@ export class MainLoginComponentComponent implements OnInit {
   uid: any;
   check: any;
   otp: any;
+  count = 1;
   showOtpComponent = true;
   @ViewChild('ngOtpInput', { static: false })
   ngOtpInput: any;
@@ -118,8 +119,11 @@ export class MainLoginComponentComponent implements OnInit {
           this.router.navigate(['/userhome'])
         }
         else if(this.flag1==false){
+          this.count +=1
           console.log(this.flag1)
-          this.router.navigate(['/userSignUp'])
+          if(this.count == collectiondata.length){
+            this.router.navigate(['/userSignUp'])
+          }
         }
       });
     });
