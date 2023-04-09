@@ -67,7 +67,17 @@ export class ApiService {
       .doc(userCredential)
       .collection('/product')
       .add(registerdata);
-
+  }
+  //add sub collection for wallet
+  createwalletcollection(userCredential,data){
+    return this.Afs.collection('/Users').doc(userCredential).collection('/wallet').add(data)
+  }
+  //get sub collection for wallet
+  getwalletcollection(userCredential) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/wallet')
+      .snapshotChanges();
   }
   //Blog comment
   createBlog(data) {
@@ -117,10 +127,6 @@ export class ApiService {
       .collection('/wishlist')
       .add(registerdata);
   }
-
-
-
-
   getcommentcollection() {
     return this.Afs.collection('/Blog')
       .snapshotChanges();

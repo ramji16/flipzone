@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from 'src/app/services/api.service';
 import { Router } from '@angular/router';
-
+declare var $ :any
 
 @Component({
   selector: 'app-wishlist',
@@ -50,10 +50,10 @@ export class WishlistComponent implements OnInit {
      for(let i=0;i<this.wishlist.length;i++){
       this.makeapi.createordercollection(this.userid.user.uid,this.wishlist[i]);
      }
-    setTimeout(() => {
-      alert('added to cart succesfully')
-      this.router.navigate(['/cart'])
-    }, 1000);
-
+   
+    //  $('#staticBackdrop').modal('hide')
+  }
+  navigation(){
+    this.router.navigate(['/cart'])
   }
 }

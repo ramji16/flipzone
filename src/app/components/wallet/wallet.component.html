@@ -4,24 +4,39 @@
 </div>
 <div class=" d-flex flex-row justify-content-center">
     <div class="mr-5 cardd shadow p-2 mt-3 mb-3">
-        <h6 (click)="cardActivate()"><b>credit card</b></h6>
+        <h6 class="pt-2" (click)="cardActivate()"><b>credit card</b></h6>
     </div>
     <div class="ml-5 cardd shadow p-2 mt-3 mb-3">
-        <h6 (click)="cardActivate()"><b>debit card</b></h6>
+        <h6 class="pt-2" (click)="amount_card()"><b>Add amount</b></h6>
     </div>
 </div>
 <div *ngIf="flag==true" class="mt-3 d-flex flex-column">
-    <div class="ml-2 mr-2 m-3">
-        <input type="text" class="form-control" placeholder="card number">
-    </div>
-    <div class="m-3 ml-2 mr-2 d-flex flex-row">
-        <input type="text" class="form-control col-md-6 mr-1 " placeholder="first name">
-        <input type="text" class="form-control col-md-6 ml-1" placeholder="last name">
-    </div>
-    <div class="m-3 ml-2 mr-2 d-flex flex-row">
-        <input type="text" class="form-control col-md-6 mr-1" placeholder="Expiry Date MM/YYYY">
-        <input type="text" class="form-control col-md-4 ml-1" placeholder="cvv">
-        <i class="col-md-2 mt-2 text-center fa-solid fa-question"></i>
-    </div>
-    <button class="btn button mt-2 ml-5 mr-5 mb-2">Add To Wallet</button>
+    <form [formGroup]="Userwallet">
+        <div class="ml-2 mr-2 m-3">
+            <input formControlName="cardno" type="text" class="form-control" placeholder="card number" >
+        </div>
+        <div class="m-3 ml-2 mr-2 d-flex flex-row">
+            <input formControlName="firstName" type="text" class="form-control col-md-6 mr-1 " placeholder="first name">
+            <input formControlName="lastName" type="text" class="form-control col-md-6 ml-1" placeholder="last name">
+        </div>
+        <div class="m-3 ml-2 mr-2 d-flex flex-row">
+            <input formControlName="expirydate" type="text" class="form-control col-md-6 mr-1" placeholder="Expiry Date MM/YYYY">
+            <input formControlName="cvv" type="password" class="form-control col-md-4 ml-1" placeholder="cvv">
+            <i class="col-md-2 mt-2 text-center fa-solid fa-question"></i>
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+            <button (click)="saveWallet()" class="btn button mt-2 ml-5 mr-5 mb-2">Save Card</button>
+        </div>
+    </form>
+</div>
+<!--amount space-->
+<div *ngIf="flag1==true" class="mt-3 d-flex flex-column">
+    <form [formGroup]="Userwallet">
+        <div class="ml-2 mr-2 m-3">
+            <input formControlName="amount" type="text" class="form-control" placeholder="Enter the Amount" >
+        </div>
+        <div class="d-flex flex-row justify-content-center">
+            <button (click)="add_amount()" class="btn button mt-2 ml-5 mr-5 mb-2">Add to Wallet</button>
+        </div>
+    </form>
 </div>

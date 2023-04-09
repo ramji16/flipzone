@@ -133,8 +133,8 @@ export class ProfileComponent implements OnInit {
       var registerdatavalue = this.profile.value;
       this.makeapi.insertuserdata(this.userData, registerdatavalue).then(() => {
         debugger
-        alert("Updated successfully")
-        window.location.reload();
+        // alert("Updated successfully")
+        // window.location.reload();
       })
     }
   }
