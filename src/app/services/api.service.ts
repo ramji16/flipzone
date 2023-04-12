@@ -203,11 +203,11 @@ export class ApiService {
       .doc(id)
       .valueChanges();
   }
-  getuserItem(url, id) {
+  getuserItem(id) {
     // sessionStorage.setItem('id', id);
     return this.Afs.collection('/Users')
       .doc(id)
-      .get();
+      .valueChanges();
   }
   // update Function
   updateItem(url, data) {

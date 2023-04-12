@@ -12,6 +12,7 @@ export class ShoppingcartComponent implements OnInit {
   cartlist = [];
   cartlen: number;
   userid;
+  user_detail=[]
   quan: number;
   orderlist = [];
   orderId = [];
@@ -48,10 +49,30 @@ export class ShoppingcartComponent implements OnInit {
     }
     // this.amount = quantity * amount
   }
+  getprofile(){
+    this.makeapi.getuserItem(this.userid.user.uid).subscribe((data)=>{
+      debugger
+      this.user_detail.push(data)
+      console.log(this.user_detail)
+    })
+    this.placeorder()
+  }
   placeorder(){
-    for(let i =0 ; i<this.orderlist.length;i++){
-      this.makeapi.createbordercollection(this.userid.user.uid,this.orderlist[i])
-      this.makeapi.createproductordercollection(this.orderlist[i].uid,this.orderlist[i])
+    this.getprofile()
+    debugger
+    if(this.user_detail.length!=0){
+      debugger
+      if(this.user_detail[0].uaddress!=""){
+        debugger
+        for(let i =0 ; i<this.orderlist.length;i++){
+          this.makeapi.createbordercollection(this.userid.user.uid,this.orderlist[i])
+          this.makeapi.createproductordercollection(this.orderlist[i].uid,this.orderlist[i])
+        }
+      }
+      else{
+        alert('Address Required')
+        this.router.navigate(['/profile'])
+      }
     }
   }
   navigation(){
