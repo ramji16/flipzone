@@ -20,20 +20,27 @@ export class ShoppingcartComponent implements OnInit {
   orderlength: any;
   amount = [];
   totalamount :Number;
+  modal_check=false
   constructor(private makeapi: ApiService,private router:Router) {}
 
   ngOnInit(): void {
     this.getList()
+    this.getprofile()
   }
-  quanti(quantity, i) {
+  quanti(event, i) {
+    var quantity=event.target.value
+    debugger
     this.quan = Number(quantity);
-    console.log(typeof this.quan);
+    console.log(typeof (this.quan));
     var amt = this.orderlist[i].price;
+    console.log(amt,'amt')
     this.orderlist[i].quantity = quantity
-    console.log(amt);
-    var amont = this.quan * Number(amt);
+    var amont=0
+    amont = this.quan * Number(amt);
+    debugger
     this.orderlist[i].customers=this.userid.user.uid
-     this.orderlist[i].price = amont
+    //  this.orderlist[i].price = amont
+     console.log(this.orderlist[i].price)
     if (this.amount[i] == null) {
       this.amount.push(amont);
     } else if (this.amount[i] != null) {
@@ -50,23 +57,29 @@ export class ShoppingcartComponent implements OnInit {
     // this.amount = quantity * amount
   }
   getprofile(){
-    this.makeapi.getuserItem(this.userid.user.uid).subscribe((data)=>{
+    debugger
+    this.makeapi.getuserItem(this.userid.user.uid).subscribe(data=>{
       debugger
-      this.user_detail.push(data)
-      console.log(this.user_detail)
+        this.user_detail.push(data)
+        console.log(this.user_detail)
     })
-    this.placeorder()
   }
   placeorder(){
-    this.getprofile()
     debugger
     if(this.user_detail.length!=0){
       debugger
       if(this.user_detail[0].uaddress!=""){
-        debugger
+        if(this.user_detail[0].uwallet>=this.totalamount){
+          debugger
         for(let i =0 ; i<this.orderlist.length;i++){
           this.makeapi.createbordercollection(this.userid.user.uid,this.orderlist[i])
           this.makeapi.createproductordercollection(this.orderlist[i].uid,this.orderlist[i])
+          }
+          this.modal_check=true
+        }
+        else{
+          alert('Insufficient Amount')
+          this.router.navigate(['/profile'])
         }
       }
       else{
