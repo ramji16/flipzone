@@ -2,6 +2,7 @@ body{
     min-height: 100vh;
     height: auto;
     background-color: #E2F4FB;
+    scroll-behavior: smooth;
 }
 p{
     font-family:'roboto';
@@ -12,4 +13,26 @@ p{
     color:white;
     height:50px;
     border-radius:15px;
+}
+
+.fashion{
+    background-image: url('src/assets/images/t-shirt.jpg');
+    height:50vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+ 
+}
+.elec{
+    background-image: url('src/assets/images/electronics.jpg');
+    height:50vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+@media only screen and (max-width:800px){
+    .elec{
+        order:1
+    }
+    .econt{
+        order:2
+    }
 }

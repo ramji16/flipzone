@@ -45,4 +45,7 @@ export class BusinessSigninComponent implements OnInit {
   BusinesssignUpNavigate(){
     this.router.navigate(['busniessSignUp']);
   }
+back(){
+  this.router.navigate(['mainlogin']);
+}
 }

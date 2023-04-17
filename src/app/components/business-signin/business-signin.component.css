@@ -12,6 +12,11 @@
     background-color:#D7EFFB;
     height:100vh;
   }
+  .smalls{
+    background-color:#D7EFFB;
+    height: auto;
+    min-height: 100vh;
+  }
   .cont-heading{
     color:#2888A9;
   }
@@ -31,3 +36,11 @@
     height:50px;
     border-radius:15px;
   }
+.notemsg{
+    color: white;
+    background-color: #6029B9;
+    position:absolute;
+    left:3em;
+    top:13em;
+    border-radius: 15px;
+}

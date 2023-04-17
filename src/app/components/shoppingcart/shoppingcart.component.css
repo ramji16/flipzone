@@ -7,6 +7,10 @@
     background: transparent;
     border: none;
 }
+/* .del{
+    position: absolute;
+    right:-4em;
+} */
 .check-cart{
     position: relative !important;
     bottom:43%;
@@ -30,7 +34,7 @@ input[type=checkbox]{
 }
 .content{
     position: absolute;
-    left:38%;
+    left:42%;
 }
 .size{
     border:none;

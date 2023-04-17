@@ -21,6 +21,11 @@
 .cardd{
   padding:6em;
 }
+@media only screen and (max-width:400px){
+  .cardd{
+    padding:3em;
+  }
+}
 input{
   height:50px;
   border-radius:15px;

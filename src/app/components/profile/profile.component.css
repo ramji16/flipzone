@@ -1,15 +1,25 @@
 .profile{
     background-color:#D0E9F4;
-    height: 100vh;
+    height:auto;
+    min-height: 100vh;
     background-size:cover;
-}
-.gender{
-    padding-right: 45px;
+    scroll-behavior: smooth;
 }
 .cardd{
     background-color:#6F8FAF;
     color:white;
     border-radius:20px;
+}
+.b{
+    border: none;
+    background:transparent;
+    position: absolute;
+    right:19px;
+    top:25px;
+}
+.fa-bars{
+ font-size:1.5em;
+ color:white;
 }
 .profile-icon{
     background-color:#D5CABD;
@@ -29,4 +39,6 @@ input{
     color:white;
     height:50px;
     border-radius:15px;
+}p{
+    cursor:pointer;
 }

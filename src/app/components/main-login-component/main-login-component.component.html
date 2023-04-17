@@ -1,45 +1,48 @@
 <div class="container-fluid">
-  <div class="row">
+  <!--   <div class="row"> -->
     <app-usernavbar class="fixed-top"></app-usernavbar>
-    <div class="col-6 main-back"></div>
-    <div class="col-6 main-back-2 text-center">
-      <div class="cardd d-flex flex-column justify-content-center min-vh-90">
-        <h1 class="cont-heading">Log in</h1>
-        <form *ngIf="flag == false" [formGroup]="uLoginForm">
-          <input
-            type="text"
-            formControlName="phoneNumber"
-            class="mt-3 p-3 form-control"
-            placeholder="Phone"
-          />
-          <button
-            type="submit"
-            (click)="getOTP()"
-            class="mt-3 btn button form-control"
-          >
-            Get OTP
-          </button>
-          <div id="sign-in-button"></div>
-        </form>
-        <div *ngIf="flag == true">
-          <ng-otp-input
-            (onInputChange)="otpcheck($event)"
-            [config]="config"
-          ></ng-otp-input>
-          <button
-            type="submit"
-            (click)="home()"
-            class="mt-3 btn button form-control"
-          >
-            verify OTP
-          </button>
-          <div id="sign-in-button"></div>
+    <div class="row">
+      <div class="col-lg-6 col-sm-12 main-back d-none d-sm-block d-lg-block"></div>
+      <div class="col-lg-6 col-sm-12 main-back-2 text-center">
+        <div class="cardd d-flex flex-column justify-content-center min-vh-90">
+          <h1 class="cont-heading">Log in</h1>
+          <form *ngIf="flag == false" [formGroup]="uLoginForm">
+            <input
+              type="text"
+              formControlName="phoneNumber"
+              class="mt-3 p-3 form-control"
+              placeholder="Phone"
+            />
+            <button
+              type="submit"
+              (click)="getOTP()"
+              class="mt-3 btn button form-control"
+            >
+              Get OTP
+            </button>
+            <div id="sign-in-button"></div>
+          </form>
+          <div *ngIf="flag == true">
+            <ng-otp-input
+              (onInputChange)="otpcheck($event)"
+              [config]="config"
+            ></ng-otp-input>
+            <button
+              type="submit"
+              (click)="home()"
+              class="mt-3 btn button form-control"
+            >
+              verify OTP
+            </button>
+            <div id="sign-in-button"></div>
+          </div>
+          <p class="cont-heading">
+            For Business
+            <a class="text-primary" (click)="BusinessSignInNavigate()">Sign in</a>
+          </p>
         </div>
-        <p class="cont-heading">
-          For Business
-          <a class="text-primary" (click)="BusinessSignInNavigate()">Sign in</a>
-        </p>
       </div>
     </div>
-  </div>
+   
+  <!-- </div> -->
 </div>

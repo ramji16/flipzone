@@ -10,29 +10,21 @@ declare var $ :any
   styleUrls: ['./wishlist.component.css'],
 })
 export class WishlistComponent implements OnInit {
-  wishlist = [];
+  wishlist=[]
   collectiondata = [];
   userid ;
-  wishlistid = []
+  wishlistid=[]
   wishlen: number;
 
   constructor(private router:Router, private makeapi: ApiService) {}
 
 
   ngOnInit(): void {
-    this.userid = JSON.parse(localStorage.getItem('user_data'));
-    this.makeapi.getwishlistcollection(this.userid.user.uid).subscribe((res) => {
-      debugger;
-      res.map((e: any) => {
-        this.wishlist.push(e.payload.doc.data());
-        this.wishlistid.push(e.payload.doc.id);
-      });
-    });
-    console.log(this.wishlist);
-    console.log(this.wishlistid)
-
-   
+    // this.wishlistid.set();
+    // this.wishlist.set()
+    this.getlist()
   }
+  
   back(){
     this.router.navigate(['/profile']);
   }
@@ -40,11 +32,25 @@ export class WishlistComponent implements OnInit {
   delete(i) {
     var user = this.wishlistid[i]
     console.log(user)
-    this.makeapi.deletewishlistcollection(this.userid.user.uid,user)
-    alert('Product removed')
-    setTimeout(()=>{                           
-      window.location.reload()
-    }, 1000);
+    this.makeapi.deletewishlistcollection(this.userid.user.uid,user).then(data=>{
+      alert('Product removed');
+      this.getlist()
+    })
+    
+    // setTimeout(()=>{                           
+    //   window.location.reload()
+    // }, 1000);
+  }
+  getlist(){
+    this.userid = JSON.parse(localStorage.getItem('user_data'));
+    this.makeapi.getwishlistcollection(this.userid.user.uid).subscribe((res) => {
+      debugger;
+      this.wishlist=[]
+      res.map((e: any) => {
+        this.wishlist.push(e.payload.doc.data());
+        this.wishlistid.push(e.payload.doc.id);
+      });
+    });
   }
   move_to(){
      for(let i=0;i<this.wishlist.length;i++){

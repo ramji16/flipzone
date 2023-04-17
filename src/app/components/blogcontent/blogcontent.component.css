@@ -2,6 +2,7 @@ body{
     background-color:#E2F4FB ;
     min-height: 100vh;
     height: auto;
+    scroll-behavior: smooth;
 }
 p,.comment-box{
     font-family:'roboto';
@@ -13,10 +14,17 @@ p,.comment-box{
     height:50px;
     border-radius:15px;
 }
+.fashion{
+    background-image: url('src/assets/images/t-shirt.jpg');
+    height:50vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+ 
+}
 .cbox{
     border-radius: 30px !important;
     overflow-y: scroll;
-    height:55vh;
+    height:50vh;
 }
 .profile{
     color:white;

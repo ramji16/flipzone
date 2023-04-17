@@ -119,6 +119,9 @@ export class ProfileComponent implements OnInit {
   get add() {
     return this.profile.controls
   }
+  refresh(){
+    window.location.reload();
+  }
   onSubmit() {
     if (this.profile.invalid) {
       this.profile.markAllAsTouched();

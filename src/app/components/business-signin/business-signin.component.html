@@ -1,43 +1,61 @@
 <div class="container-fluid">
-  <div class="row">
-    <!-- <app-business-navbar class="fixed-top"></app-business-navbar> -->
-    <div class="col-6 business-main-back"></div>
-    <div class="col-6 main-back-2 text-center">
-      <div class="cardd d-flex flex-column justify-content-center min-vh-90">
-        <h1 class="cont-heading">Sign in</h1>
-        <form [formGroup]="bLoginForm">
-        <input
-          type="text"
-          formControlName="email"
-          class="mt-4 p-3 form-control"
-          placeholder="Business Email"
-        />
-        <span
-          *ngIf="add.email.errors && add.email.touched"
-          class="text-danger"
-          >Email ID Required</span
-        ><br />
-        <input
-          type="password"
-          class="mt-3 p-3 form-control"
-          formControlName="Password"
-          pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
-          placeholder="Password"
-        />
-        <span
-            *ngIf="add.Password.errors && add.Password.touched"
+  <div class="d-none d-sm-block d-lg-block d-md-none">
+    <div class="row">
+      <!-- <app-business-navbar class="fixed-top"></app-business-navbar> -->
+      <div class="col-6 business-main-back"></div>
+      <div class="col-6 main-back-2 text-center">
+        <div class="cardd d-flex flex-column justify-content-center min-vh-90">
+          <h1 class="cont-heading">Sign in</h1>
+          <form [formGroup]="bLoginForm">
+          <input
+            type="text"
+            formControlName="email"
+            class="mt-4 p-3 form-control"
+            placeholder="Business Email"
+          />
+          <span
+            *ngIf="add.email.errors && add.email.touched"
             class="text-danger"
-            >Password Required</span
+            >Email ID Required</span
           ><br />
-        <button type="submit" (click)="signInBtn()" class="mt-3 btn button form-control">Sign In</button>
-      </form>
-        <a class="mt-4">Forget Password?</a>
-        <p class="cont-heading">
-          Don't have an account?
-          <a class="text-primary" (click)="BusinesssignUpNavigate()">Sign up</a>
-        </p>
-        <!-- <p class="cont-heading">For Business <a class="text-primary" (click)="UsersignInNavigate()">Sign in</a></p> -->
+          <input
+            type="password"
+            class="mt-3 p-3 form-control"
+            formControlName="Password"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
+            placeholder="Password"
+          />
+          <span
+              *ngIf="add.Password.errors && add.Password.touched"
+              class="text-danger"
+              >Password Required</span
+            ><br />
+          <button type="submit" (click)="signInBtn()" class="mt-3 btn button form-control">Sign In</button>
+        </form>
+          <a class="mt-4">Forget Password?</a>
+          <p class="cont-heading">
+            Don't have an account?
+            <a class="text-primary" (click)="BusinesssignUpNavigate()">Sign up</a>
+          </p>
+          <!-- <p class="cont-heading">For Business <a class="text-primary" (click)="UsersignInNavigate()">Sign in</a></p> -->
+        </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="smalls d-sm-block d-lg-none d-md-block">
+  <div>
+    <i class="fa-sharp fa-solid fa-arrow-left ml-3 mt-3" style="color: #6029B9;font-size: 2em;" (click)="back()"></i>
+  </div>
+  <div class="row">
+    <div class="notemsg justify-content-center col-9 p-3 m-auto">
+      <div class="text-center mr-4">
+        <i class="fa-solid fa-circle-exclamation fa-beat" style="font-size: 2em;"></i>
+      </div>
+      <h4 class="mt-2">This page is not available in mobiles phones and tablets.Please open with Computer</h4>
+      <!-- <div class="text-center mr-4">
+        <button class="btn col-5" style="background-color:#6029B9;color: aliceblue;border-radius: 20px;" (click)="back()">Back</button>
+      </div>  -->
+  </div>
   </div>
 </div>
