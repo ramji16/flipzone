@@ -172,6 +172,22 @@
                       >Address Required</span
                     > -->
                   </div>
+                  <div class="ml-auto mr-5">
+                    <label class="pl-1">Wallet Amount</label>
+                    <input
+                      type="text"
+                      placeholder="Wallet"
+                      formControlName="uwallet"
+                      class="form-control"
+                      readonly
+                      
+                    />
+                    <!-- <span
+                      *ngIf="add.umobile.errors && add.umobile.touched"
+                      class="text-danger"
+                      >Phone Number Required</span
+                    > -->
+                  </div>
                 </div>
                 <div class="d-flex flex-row justify-content-center">
                   <button data-toggle="modal" data-target="#staticBackdrop" type="submit" (click)="onSubmit()"  class="btn button mb-3">
