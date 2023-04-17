@@ -1,8 +1,9 @@
 <div class="container-fluid">
+  <app-usernavbar class="fixed-top"></app-usernavbar>
   <div class="row">
-    <app-usernavbar class="fixed-top"></app-usernavbar>
-    <div class="col-6 main-back min-vh-100" style="height: auto;"></div>
-    <div class="col-6 main-back-2 text-center min-vh-100" style="height: auto;">
+    
+    <div class="col-lg-6 col-sm-12 main-back min-vh-100  d-none d-sm-block d-lg-block" style="height: auto;"></div>
+    <div class="col-lg-6 col-sm-12 main-back-2 text-center min-vh-100" style="height: auto;">
       <div class="cardd d-flex flex-column justify-content-center min-vh-100">
         <h1 class="cont-heading">Register Now</h1>
         <form [formGroup]="uSigninForm">

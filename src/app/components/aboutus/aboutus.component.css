@@ -1,14 +1,14 @@
 .blogs{
     background-color:#D0E9F4;
-    background-size:cover;
     height:auto;
+    min-height: 100vh;
 }
-.min-vh-50{
+/* .min-vh-50{
     height: 80vh;
 }
 .min-vw-50{
     width: 50vw;
-}
+} */
 p{
     font-family:'PT Serif', serif;
     font-weight: bold;
@@ -17,4 +17,26 @@ p{
 .brand-section{
     background-image:linear-gradient(45deg,#6F8FAF,#DAE7EF);
     border-radius: 30px;
+}
+.im1{
+    height: 500px;
+    width: 500px;
+    margin-top: 30px;
+}
+.im2{
+    height: 300px;
+    width: 500px;
+    margin-top: 30px;
+}
+@media only screen and (max-width:430px){
+    .im1{
+        height: 300px;
+        width: 300px;
+        margin-top: 30px;
+    }
+    .im2{
+        height: 300px;
+        width: 300px;
+        margin-top: 30px;   
+    }
 }
