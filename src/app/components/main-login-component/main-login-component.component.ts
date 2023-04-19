@@ -49,15 +49,34 @@ export class MainLoginComponentComponent implements OnInit {
     placeholder: '',
     inputStyles: { width: '50px', height: '50px' },
   };
+
+  mobileMedia:any =window.matchMedia("(max-width:430px)")
+  largemedia:any=window.matchMedia("(min-width:420px)")
   constructor(
     private makeapi: ApiService,
     private formBuilder: FormBuilder,
-    private router: Router
-  ) {}
+    private router: Router,
+  ) {
+    
+  }
   ngOnInit(): void {
     this.uLoginForm = this.formBuilder.group({
       phoneNumber: ['', Validators.required],
     });
+    this.otpresposive();
+  }
+  otpresposive(){
+    if( this.mobileMedia.matches){
+      this.config = {
+        allowNumbersOnly: true,
+        length: 6,
+        isPasswordInput: false,
+        disableAutoFocus: false,
+        placeholder: '',
+        inputStyles: { width: '25px', height: '25px' },
+      };
+    
+    }
   }
   get add() {
     return this.uLoginForm.controls;

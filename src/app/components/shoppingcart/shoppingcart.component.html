@@ -11,20 +11,54 @@
                         <small class="ml-2"><b>{{orderlength}} items selected</b></small>
                     </div>
                 </div> 
-
-               <div class="p-2 col-12 mt-3 d-flex flex-row justify-content-between box " *ngFor="let item of orderlist; let i = index">
-                <div class="row justify-content-between">
-                    <div class="col-3">
-                        <div >
-                            <div class="d-flex flex-row">
-                                <input type="checkbox" class="check-cart" style="position: absolute;top:-3.2em" checked="checked">
-                                <img src={{item.photo}} class="ml-3" alt="" height="120vh">
+            <!--FOR MIDDLE SCREEN AND LARGE SCREEN  -->
+               <div class="d-none d-sm-block d-lg-block">
+                <div class="p-2 col-12 mt-3 d-flex flex-row justify-content-between box " *ngFor="let item of orderlist; let i = index">
+                    <div class="row justify-content-between">
+                        <div class="col-3">
+                            <div >
+                                <div class="d-flex flex-row">
+                                    <input type="checkbox" class="check-cart" style="position: absolute;top:-3.2em" checked="checked">
+                                    <img src={{item.photo}} class="ml-3" alt="" height="120vh">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-7 content" style="line-height: 20px;">
-                        <div class="d-flex flex-row justify-content-between">
-                            <div>
+                        <div class="col-7 content" style="line-height: 20px;">
+                            <div class="d-flex flex-row justify-content-between">
+                                <div>
+                                    <span><b>{{item.brandName}}</b></span><br>
+                                     <small>{{item.tag}}</small><br>
+                                     <small class="text-muted">{{item.productName}}</small><br>
+                                     <select #quantity (change)="quanti(quantity.value,i)" class="p-1 mt-1 col-12 size">
+                                        <option value="0">Quantity</option>
+                                        <option default value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                    </select><br>
+                                    <span class="mt-3 text-black"><b>₹{{item.price}}</b></span>
+                                </div>
+                                <div>
+                                    <div class="del">
+                                        <p><i class="fa-sharp fa-solid fa-xmark" (click)="delete(i)"></i></p>
+                                     </div>
+                                </div>
+                            </div>
+                         </div>
+                    </div>                  
+                   </div>
+               </div>
+               <div class="d-sm-block d-md-none d-lg-none">
+                    <div class="row p-2">
+                        <div class="col-sm-12 box mt-3 p-2" *ngFor="let item of orderlist; let i = index">
+                            <div class="d-flex flex-row justify-content-between" >
+                                <input type="checkbox" class="check-cart" style="position: absolute;top:-3.2em" checked="checked">
+                                <img src={{item.photo}} class="ml-3" alt="" height="120vh">
+                                <p><i class="fa-sharp fa-solid fa-xmark" (click)="delete(i)"></i></p>
+                            </div>
+                            <div class="text-center mt-3">
                                 <span><b>{{item.brandName}}</b></span><br>
                                  <small>{{item.tag}}</small><br>
                                  <small class="text-muted">{{item.productName}}</small><br>
@@ -39,19 +73,11 @@
                                 </select><br>
                                 <span class="mt-3 text-black"><b>₹{{item.price}}</b></span>
                             </div>
-                            <div>
-                                <div class="del">
-                                    <p><i class="fa-sharp fa-solid fa-xmark" (click)="delete(i)"></i></p>
-                                 </div>
-                            </div>
                         </div>
-                     </div>
-                </div>
-                 
-                 
+                    </div>
                </div>
             </div>
-            <div class="p-3 mt-4 col-lg-5 col-sm-12" style="position: relative;top:10.3px;">
+            <div class="p-2  col-lg-5 col-sm-12 placeorder">
                 <div class="p-3 box">
                     <div class="d-flex flex-row justify-content-between">
                         <div>

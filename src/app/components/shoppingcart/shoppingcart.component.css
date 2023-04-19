@@ -36,6 +36,11 @@ input[type=checkbox]{
     position: absolute;
     left:42%;
 }
+@media only screen and (min-width:800px){
+    .placeorder{
+       margin-top: 2.7em;
+    }
+} 
 .size{
     border:none;
     background-color: #6029B9;

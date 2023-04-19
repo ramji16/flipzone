@@ -2,7 +2,7 @@
   <!--   <div class="row"> -->
     <app-usernavbar class="fixed-top"></app-usernavbar>
     <div class="row">
-      <div class="col-lg-6 col-sm-12 main-back d-none d-sm-block d-lg-block"></div>
+      <div class="col-lg-6 col-sm-12 main-back d-none d-sm-block d-md-none d-lg-block"></div>
       <div class="col-lg-6 col-sm-12 main-back-2 text-center">
         <div class="cardd d-flex flex-column justify-content-center min-vh-90">
           <h1 class="cont-heading">Log in</h1>
@@ -26,6 +26,7 @@
             <ng-otp-input
               (onInputChange)="otpcheck($event)"
               [config]="config"
+              class="votp"
             ></ng-otp-input>
             <button
               type="submit"
