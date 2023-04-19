@@ -16,17 +16,37 @@ p{
 }
 
 .fashion{
-    background-image: url('src/assets/images/t-shirt.jpg');
+    background-image: url('src/assets/images/fas.png');
     height:50vh;
     background-repeat: no-repeat;
     background-size:cover;
  
 }
 .elec{
-    background-image: url('src/assets/images/electronics.jpg');
+    background-image: url('src/assets/images/electro.png');
     height:50vh;
     background-repeat: no-repeat;
     background-size:cover;
+}
+.furnitures{
+    background-image: url('src/assets/images/furnitures.png');
+    height:50vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+ 
+}
+.menacc{
+    background-image: url('src/assets/images/menacc.jpg');
+    height:50vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+.womenacc{
+    background-image: url('src/assets/images/womenacc.png');
+    height:50vh;
+    background-repeat: no-repeat;
+    background-size:cover;
+ 
 }
 @media only screen and (max-width:800px){
     .elec{
