@@ -26,8 +26,9 @@
             <ng-otp-input
               (onInputChange)="otpcheck($event)"
               [config]="config"
-              class="votp"
+              class="d-none d-sm-block d-lg-block"
             ></ng-otp-input>
+            <input placeholder="OTP"  (change)="otpcheck($event)" class="d-sm-block d-md-none d-lg-none mt-3 p-3 form-control">
             <button
               type="submit"
               (click)="home()"
