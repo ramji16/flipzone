@@ -11,6 +11,7 @@ export class WalletComponent implements OnInit {
   flag = false;
   flag1 = false;
   card_details = [];
+  order_details = []
   card_number = [];
   card_id = [];
   user_details = [];
@@ -105,6 +106,19 @@ export class WalletComponent implements OnInit {
         console.log(this.card_details);
         console.log(this.card_id)
         this.card_number = this.card_details
+        debugger
+    });
+    this.makeapi.getordercollection(this.uid).subscribe((res) => {
+      debugger;
+      this.card_details=[]
+      res.map((e: any) => {
+        this.order_details.push(e.payload.doc.data());
+        // this.card_id.push(e.payload.doc.id);
+        debugger;
+      });
+        console.log(this.order_details);
+        // console.log(this.card_id)
+        // this.card_number = this.card_details
         debugger
     });
   }
