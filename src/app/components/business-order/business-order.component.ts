@@ -11,6 +11,8 @@ export class BusinessOrderComponent implements OnInit {
   bid
   orders=[];
   orderid = [];
+  userid = []
+  userdetails = []
   date=new Date();
 
   time;
@@ -28,15 +30,48 @@ export class BusinessOrderComponent implements OnInit {
     var yyyy = today.getFullYear();
     this.time = dd + '/' + mm + '/' + yyyy;
     this.bid = JSON.parse(localStorage.getItem('businessId'));
+    this.get_orders();
+    // console.log(this.orderid)
+
+  }
+  get_orders(){
     this.makeapi.getproductordercollection(this.bid).subscribe((res) => {
       debugger;
       this.orders = [];
       res.map((e: any) => {
         this.orders.push(e.payload.doc.data());
         this.orderid.push(e.payload.doc.id);
+        console.log(this.orders)
+        this.makeapi.getuserItem(this.orders[0].uid).subscribe(res => {
+          this.userdetails.push(res)
+          debugger
+        })
+        console.log(this.userdetails)
       });
+      debugger
+      // this.get_userid();
     });
-    // console.log(this.orders);
-    // console.log(this.orderid)
+    debugger
+  }
+  get_userid(){
+    debugger
+    for(let i=0;i<this.orders.length;i++){
+      this.userid.push(this.orders[i].uid)
+    }
+    this.get_userdata();
+    console.log(this.userid)
+  }
+  get_userdata(){
+    debugger
+    for(let i= 0;i<this.userid.length;i++){
+      debugger
+      // console.log(this.userid[i])
+      var uid = this.userid[i]
+      this.makeapi.getuserItem(uid).subscribe((res) => {
+        this.userdetails.push(res)
+        debugger
+      })
+      console.log(this.userdetails)
+    }
   }
 }
