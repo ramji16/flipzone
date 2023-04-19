@@ -1,7 +1,5 @@
-<body>
-  <!-- <app-usernavbar class="fixed-top" style="background-color: #d5ecf5;"></app-usernavbar> -->
-
-  <div class="d-flex flex-row justify-content-between pt-5">
+<div class="body">
+  <div class="d-flex flex-row justify-content-between pt-3 align-items-center">
     <h3 class="ml-3" (click)="back()"><i class="fa-sharp fa-solid fa-arrow-left"></i></h3>
     <div class="text-center">
       <h2>Wishlist</h2>
@@ -10,36 +8,30 @@
       <button data-toggle="modal" data-target="#staticBackdrop" (click)="move_to()" class="mr-3 btn button">Add to Cart &nbsp;<i class="fa-solid fa-cart-shopping"></i></button>
     </div>
   </div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12 pt-5">
-
-        <div class="wishlist">
-          <div *ngFor="let item of wishlist; let i = index" class="col-md-4 mt-2">
-            <div class="shadow cardd text-center p-2">
-              <div class="wishlist d-flex flex-row justify-content-end"></div>
-
-              <img class="mt-4" src={{item.photo}} height="120vh" />
-
-              <h4 class="mt-3">
-                {{ item.brandName }}&nbsp;{{ item.productName }}
-              </h4>
-              <h5>Price: ${{ item.price }}</h5>
-              <div class="mt-2 d-flex flex-row justify-content-between">
-                <h5 class="mr-3 shadow chip pt-1 ml-3" (click)="delete(i)">
-                  <i class="fa-solid fa-heart fa-beat text-danger"></i>
-                </h5>
-                <h5 class="mr-3 shadow chip pt-1">
-                  <i class="fa-solid fa-cart-shopping"></i>
-                </h5>
-              </div>
-            </div>
-          </div>
+  
+  <!-- WISHLIST -->
+  <div class="container mt-3">
+    <div class="row m-auto justify-content-around">
+      <div *ngFor="let item of wishlist; let i = index" class="col-lg-3 col-md-5 col-sm-12 m-2 cardd text-center">
+        <img class="mt-4" src={{item.photo}} height="120vh" />
+  
+        <h4 class="mt-3">
+          {{ item.brandName }}&nbsp;{{ item.productName }}
+        </h4>
+        <h5>Price: ${{ item.price }}</h5>
+        <div class="mt-2 d-flex flex-row justify-content-between">
+          <h5 class="mr-3 shadow chip p-2 ml-3" (click)="delete(i)">
+            <i class="fa-solid fa-heart fa-beat text-danger"></i>
+          </h5>
+          <h5 class="mr-3 shadow chip p-2">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </h5>
         </div>
       </div>
     </div>
   </div>
-</body>
+
+</div>
 
 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog  modal-dialog-centered">

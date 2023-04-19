@@ -22,6 +22,12 @@ export class MyordersComponent implements OnInit {
   constructor(private router:Router, private makeapi: ApiService) { }
 
   ngOnInit(): void {
+    this.getlist()
+  }
+  back(){
+    this.router.navigate(['/profile']);
+  }
+  getlist(){
     var today = new Date(this.date);
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
@@ -39,16 +45,14 @@ export class MyordersComponent implements OnInit {
     this.userid = JSON.parse(localStorage.getItem('user_data'));
     this.makeapi.getboredercollection(this.userid.user.uid).subscribe((res) => {
       debugger;
+      this.order=[]
       res.map((e: any) => {
         this.order.push(e.payload.doc.data());
         this.orderid.push(e.payload.doc.id);
       });
     });
-    console.log(this.order);
-    console.log(this.orderid)
-  }
-  back(){
-    this.router.navigate(['/profile']);
+    // console.log(this.order);
+    // console.log(this.orderid)
   }
 
 }
