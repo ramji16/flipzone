@@ -203,11 +203,25 @@ export class ApiService {
       .doc(id)
       .valueChanges();
   }
-  getuserItem(url, id) {
+  getuserItem(id) {
     // sessionStorage.setItem('id', id);
     return this.Afs.collection('/Users')
       .doc(id)
-      .get();
+      .valueChanges();
+  }
+  //update sub collection for wallet
+  updatewalletcollection(userCredential,id,data) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .collection('/wallet')
+      .doc('/' + id)
+      .update(data);
+  }
+   //update sub collection for wallet
+   updatewallet(userCredential,data) {
+    return this.Afs.collection('/Users')
+      .doc(userCredential)
+      .update(data);
   }
   // update Function
   updateItem(url, data) {

@@ -44,6 +44,7 @@ export class ProfileComponent implements OnInit {
       ubdate: new FormControl('', Validators.required),
       ugender: new FormControl('', Validators.required),
       uaddress: new FormControl('', Validators.required),
+      uwallet: new FormControl('', Validators.required),
     });
     this.currentDate = new Date()
 

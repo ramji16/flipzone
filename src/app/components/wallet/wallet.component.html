@@ -1,6 +1,6 @@
 <div class="wallet d-flex flex-column text-center pt-3">
     <h2>Payment</h2>
-    <h4>aathireguraj@gmail.com</h4>
+    <!-- <h4>aathireguraj@gmail.com</h4> -->
 </div>
 <div class=" row justify-content-around">
     <div class="cardd shadow p-2 mt-3 mb-3">
@@ -31,9 +31,19 @@
 </div>
 <!--amount space-->
 <div *ngIf="flag1==true" class="mt-3 d-flex flex-column">
-    <form [formGroup]="Userwallet">
+    <form [formGroup]="wallet">
+        <div class="d-flex flex-row justify-content-center">
+            <div class="dropdown">
+                <button class="btn button dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                  Cards
+                </button>
+                <div class="dropdown-menu">
+                  <a *ngFor="let item of card_number;let i = index"  class="dropdown-item" (click)="card_num(i)">{{item.cardno}}</a>
+                </div>
+              </div>
+        </div>
         <div class="ml-2 mr-2 m-3">
-            <input formControlName="amount" type="text" class="form-control" placeholder="Enter the Amount" >
+            <input formControlName="amt" type="number" class="form-control" placeholder="Enter the Amount" >
         </div>
         <div class="d-flex flex-row justify-content-center">
             <button (click)="add_amount()" class="btn button mt-2 ml-5 mr-5 mb-2">Add to Wallet</button>
