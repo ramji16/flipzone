@@ -19,12 +19,15 @@ body {
   flex-wrap: wrap;
   justify-content: left;
 }
+.end-height{
+  height:10vh;
+}
 .cardd {
   margin-top: 5% ;
   background-image: linear-gradient(45deg, #6f8faf, #dae7ef);
   color: black;
-  /* height: 60vh; */
-  width: 20vw;
+  height:50vh;
+  width:20vw;
   border-radius: 20px;
 }
 .chip {

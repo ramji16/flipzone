@@ -5,25 +5,25 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-business-order',
   templateUrl: './business-order.component.html',
-  styleUrls: ['./business-order.component.css']
+  styleUrls: ['./business-order.component.css'],
 })
 export class BusinessOrderComponent implements OnInit {
-  bid
-  orders=[];
+  bid;
+  orders = [];
   orderid = [];
-  userid = []
-  userdetails = []
-  date=new Date();
+  userid = [];
+  userdetails = [];
+  date = new Date();
 
   time;
 
-  constructor(private router: Router,private makeapi: ApiService) { }
+  constructor(private router: Router, private makeapi: ApiService) {}
 
   ngOnInit(): void {
-     this.getList()
+    this.getList();
   }
-  
-  getList(){
+
+  getList() {
     var today = new Date(this.date);
     var dd = today.getDate();
     var mm = today.getMonth() + 1;
@@ -32,46 +32,46 @@ export class BusinessOrderComponent implements OnInit {
     this.bid = JSON.parse(localStorage.getItem('businessId'));
     this.get_orders();
     // console.log(this.orderid)
-
   }
-  get_orders(){
+  get_orders() {
     this.makeapi.getproductordercollection(this.bid).subscribe((res) => {
-      debugger;
       this.orders = [];
       res.map((e: any) => {
         this.orders.push(e.payload.doc.data());
         this.orderid.push(e.payload.doc.id);
-        console.log(this.orders)
-        this.makeapi.getuserItem(this.orders[0].uid).subscribe(res => {
-          this.userdetails.push(res)
-          debugger
-        })
-        console.log(this.userdetails)
+        console.log(this.orders, 'orders list');
       });
-      debugger
-      // this.get_userid();
+
+      this.get_userid();
     });
-    debugger
   }
-  get_userid(){
-    debugger
-    for(let i=0;i<this.orders.length;i++){
-      this.userid.push(this.orders[i].uid)
+  get_userid() {
+    for (let i = 0; i < this.orders.length; i++) {
+      this.userid.push(this.orders[i].customers);
     }
     this.get_userdata();
-    console.log(this.userid)
+    console.log(this.userid);
   }
-  get_userdata(){
-    debugger
-    for(let i= 0;i<this.userid.length;i++){
-      debugger
+  get_userdata() {
+    this.userdetails = [];
+    for (let i = 0; i < this.userid.length; i++) {
       // console.log(this.userid[i])
-      var uid = this.userid[i]
-      this.makeapi.getuserItem(uid).subscribe((res) => {
-        this.userdetails.push(res)
-        debugger
-      })
-      console.log(this.userdetails)
+      var uid = this.userid[i];
+      this.makeapi.getuserItem(uid).subscribe((resp) => {
+        this.userdetails.push(resp);
+        this.gettable();
+      });
     }
+  }
+  gettable() {
+    debugger;
+    for (let i = 0; i < this.userdetails.length; i++) {
+      var ptable = this.userdetails[i];
+      debugger;
+      this.orders[i].ufname = ptable.ufname;
+      this.orders[i].uaddress = ptable.uaddress;
+      debugger;
+    }
+    console.log(this.orders, 'orders-list-mod');
   }
 }
