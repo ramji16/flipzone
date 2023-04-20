@@ -21,6 +21,8 @@ export class ShoppingcartComponent implements OnInit {
   amount = [];
   totalamount :Number;
   modal_check=false
+  insufamt=false
+  uadd=false
   constructor(private makeapi: ApiService,private router:Router) {}
 
   ngOnInit(): void {
@@ -68,8 +70,8 @@ export class ShoppingcartComponent implements OnInit {
     debugger
     if(this.user_detail.length!=0){
       debugger
-      if(this.user_detail[0].uaddress!=""){
-        if(this.user_detail[0].uwallet>=this.totalamount){
+      if(this.user_detail[0].uwallet>=this.totalamount){
+        if(this.user_detail[0].uaddress!=""){
           debugger
         for(let i =0 ; i<this.orderlist.length;i++){
           this.makeapi.createbordercollection(this.userid.user.uid,this.orderlist[i])
@@ -78,13 +80,13 @@ export class ShoppingcartComponent implements OnInit {
           this.modal_check=true
         }
         else{
-          alert('Insufficient Amount')
-          this.router.navigate(['/profile'])
+          debugger
+          this.uadd=true
         }
       }
       else{
-        alert('Address Required')
-        this.router.navigate(['/profile'])
+        debugger
+        this.insufamt=true
       }
     }
   }
@@ -116,5 +118,8 @@ export class ShoppingcartComponent implements OnInit {
         this.orderlength = this.orderlist.length;
       });
     });
+  }
+  navigation_amt(){
+    this.router.navigate(['/profile'])
   }
 }

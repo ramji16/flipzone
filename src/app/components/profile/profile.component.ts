@@ -125,10 +125,22 @@ export class ProfileComponent implements OnInit {
   }
   onSubmit() {
     if (this.profile.invalid) {
+      var data = JSON.parse(localStorage.getItem('user_data'))
+      debugger
+      this.userData = data
+      console.log(data)
+      debugger
+      // var userCredential
+      var registerdatavalue = this.profile.value;
+      this.makeapi.insertuserdata(this.userData, registerdatavalue).then(() => {
+        debugger
+        // alert("Updated successfully")
+        // window.location.reload();
+      })
       this.profile.markAllAsTouched();
     }
     else{
-       var data = JSON.parse(localStorage.getItem('user_data'))
+      var data = JSON.parse(localStorage.getItem('user_data'))
       debugger
       this.userData = data
       console.log(data)
