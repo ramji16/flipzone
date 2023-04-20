@@ -139,7 +139,7 @@ export class WalletComponent implements OnInit {
       debugger;
       this.makeapi.updatewalletcollection(this.uid,wid,det).then(()=>{
         alert('Amount has been added to the wallet');
+        this.user_wallet()
       });
-      this.user_wallet()
   }
 }
