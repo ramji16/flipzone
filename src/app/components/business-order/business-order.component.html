@@ -11,15 +11,19 @@
                 <th>Quantity</th>
                 <th>Price</th>
                 <th>Date of order</th>
+                <th>Customer Name</th>
+                <th>Delivery Address</th>
                 <!-- <th>Date of delivery</th> -->
               </tr>
-              <tr *ngFor="let item of orders; let i = index">
+              <tr *ngFor="let item of orders;let i = index;">
                 <td class="pt-4">{{ i + 1 }}</td>
                 <td class="text-center"><img src="{{ item.photo }}" height="80vh" /></td>
                 <td class="pt-3">{{ item.brandName }}{{ item.productName }}</td>
                 <td class="pt-3">{{ item.quantity }}</td>
                 <td class="pt-3">{{ item.price }}</td>
                 <td class="pt-3">{{ time }}</td>
+                <td class="pt-3">{{ item.ufname }}</td>
+                <td class="pt-3">{{ item.uaddress }}</td>
                 <!-- <td class="pt-3">{{ dtime }}</td> -->
               </tr>
               <!-- <tr>
