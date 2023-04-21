@@ -5,7 +5,7 @@ import { ApiService } from 'src/app/services/api.service';
 @Component({
   selector: 'app-business-list',
   templateUrl: './business-list.component.html',
-  styleUrls: ['./business-list.component.css']
+  styleUrls: ['./business-list.component.css'],
 })
 export class BusinessListComponent implements OnInit {
   electronicsProduct = [];
@@ -13,65 +13,79 @@ export class BusinessListComponent implements OnInit {
   furnitureProduct = [];
   othersProduct = [];
   productDetails = [];
-  product=[]
-  productid=[];
+  product = [];
+  productid = [];
   filterValue = 'All';
   bid;
-  constructor(private makeapi:ApiService,private router : Router ) { }
+  constructor(private makeapi: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    
     this.getList();
+  }
+  filter_value() {
+    debugger;
+    this.electronicsProduct = []
+    this.fashionProduct = []
+    this.furnitureProduct = []
+    this.othersProduct = []
+    for (let i = 0; i < this.product.length; i++) {
+      debugger;
+      if (this.product[i].category == 'Electronics') {
+        this.electronicsProduct.push(this.product[i]);
+        debugger;
+      }
+      if (this.product[i].category == 'Fashion') {
+        this.fashionProduct.push(this.product[i]);
+        debugger;
+      }
+      if (this.product[i].category == 'Furniture') {
+        this.furnitureProduct.push(this.product[i]);
+        debugger;
+      }
+      if (this.product[i].category == 'Others') {
+        this.othersProduct.push(this.product[i]);
+        debugger;
+      }
+    }
+    console.log(this.fashionProduct);
+    console.log(this.electronicsProduct);
+    console.log(this.furnitureProduct);
+    console.log(this.othersProduct);
+    debugger;
+  }
 
-    
-  var electronics = JSON.parse(localStorage.getItem('Electronics'));
-  var fashion = JSON.parse(localStorage.getItem('Fashion'));
-  var furniture = JSON.parse(localStorage.getItem('Furniture'));
-  var others = JSON.parse(localStorage.getItem('Others'));
-  if(electronics!=null){
-    this.electronicsProduct = electronics
-    this.productDetails.push(...this.electronicsProduct);
-    // console.log(this.productDetails)
-  }
-  if(fashion!=null){
-    this.fashionProduct = fashion
-    // console.log(this.fashionProduct)
-    this.productDetails.push(...this.fashionProduct);
-  }
-  if(furniture!=null){
-    this.furnitureProduct = furniture
-    // console.log(this.furnitureProduct)
-    this.productDetails.push(...this.furnitureProduct);
-  }
-  if(others!=null){
-    this.othersProduct = others
-    // console.log(this.othersProduct)
-    this.productDetails.push(...this.othersProduct);
-  }
-  console.log(this.productDetails)
-  }
-  businessadd(category:any){
-    this.router.navigate(['/businessaddform/'],{queryParams:{cat:category}});
-
-  }
-  getList(){
-    var bid=JSON.parse(localStorage.getItem('businessId'))
-    this.makeapi.getsubcollection(bid).subscribe(res=>{
-      this.product=[];
-      var details=res.map((e:any)=>{
-         this.product.push(e.payload.doc.data()); 
-      });
-      console.log(this.product)
+  businessadd(category: any) {
+    this.router.navigate(['/businessaddform/'], {
+      queryParams: { cat: category },
     });
   }
-  filter(option : any){
+  getList() {
+    var bid = JSON.parse(localStorage.getItem('businessId'));
+    this.bid = bid
+    console.log(this.bid)
+    debugger;
+    this.makeapi.getsubcollection(bid).subscribe((res) => {
+      this.product = [];
+      var details = res.map((e: any) => {
+        this.product.push(e.payload.doc.data());
+        this.productid.push(e.payload.doc.id)
+      });
+      console.log(this.product);
+      console.log(this.productid)
+      debugger;
+      this.filter_value();
+    });
+  }
+  filter(option: any) {
     this.filterValue = option;
     console.log(this.filterValue);
   }
-  removeItem(i:any){
-    this.makeapi.deletesubcollection(this.bid,this.productid[i]).then(()=>{
-      alert("Removed Successfully")
+  removeItem(i: any) {
+    var bid = JSON.parse(localStorage.getItem('businessId'));
+    this.makeapi.deletesubcollection(bid, this.productid[i]).then(() => {
+      debugger
+      alert('Removed Successfully');
       window.location.reload();
-    })
+    });
   }
 }

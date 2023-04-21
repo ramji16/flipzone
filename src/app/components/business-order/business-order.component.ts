@@ -30,6 +30,7 @@ export class BusinessOrderComponent implements OnInit {
     var yyyy = today.getFullYear();
     this.time = dd + '/' + mm + '/' + yyyy;
     this.bid = JSON.parse(localStorage.getItem('businessId'));
+    debugger;
     this.get_orders();
     // console.log(this.orderid)
   }
@@ -41,7 +42,7 @@ export class BusinessOrderComponent implements OnInit {
         this.orderid.push(e.payload.doc.id);
         console.log(this.orders, 'orders list');
       });
-
+      debugger;
       this.get_userid();
     });
   }
@@ -49,16 +50,19 @@ export class BusinessOrderComponent implements OnInit {
     for (let i = 0; i < this.orders.length; i++) {
       this.userid.push(this.orders[i].customers);
     }
+    debugger;
     this.get_userdata();
     console.log(this.userid);
   }
   get_userdata() {
     this.userdetails = [];
+    debugger
     for (let i = 0; i < this.userid.length; i++) {
       // console.log(this.userid[i])
       var uid = this.userid[i];
       this.makeapi.getuserItem(uid).subscribe((resp) => {
         this.userdetails.push(resp);
+        debugger
         this.gettable();
       });
     }

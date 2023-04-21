@@ -56,6 +56,10 @@ export class ShopPageComponent implements OnInit {
     
     
   }
+  category(event){
+    var category = event.target.value
+    console.log(category)
+  }
   productview(ind:any) {
     this.router.navigate(['/productview'], {queryParams:{item:JSON.stringify(ind)}});
   }

@@ -160,6 +160,7 @@ export class ProfileComponent implements OnInit {
     }
     else if (str == "profile") {
       this.wishlist = str;
+      location.reload()
     }
     else if (str == "order") {
       this.wishlist = str
