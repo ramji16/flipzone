@@ -3,7 +3,15 @@
     <i class="fa fa-filter" aria-hidden="true"></i>FILTER
   </div>
   <div class="sidebar">
-    <h6>GENDER</h6>
+    <h6>CATEGORY</h6>
+    <div class="checklist">
+      <!-- <input type="checkbox" (click)="category($event)" value="Fashion" />&nbsp;Fashion <br />
+      <input type="checkbox" (click)="category($event)" value="Electronics" />&nbsp;Electronics <br />
+      <input type="checkbox" (click)="category($event)" value="Furniture" />&nbsp;Furniture <br />
+      <input type="checkbox" (click)="category($event)" value="Others" />&nbsp;Others <br />
+    </div> -->
+    <div *ngIf="">
+      <h6>GENDER</h6>
     <div class="checklist">
       <input type="checkbox" value="male" />&nbsp;MALE <br />
       <input type="checkbox" value="female" />&nbsp;FEMALE <br />
@@ -31,6 +39,7 @@
       <input type="checkbox" value="" />&nbsp;Up to 30%<br />
       <input type="checkbox" value="" />&nbsp;Up to 40%<br />
       <input type="checkbox" value="" />&nbsp;Up to 50%<br />
+    </div>
     </div>
   </div>
 </div>

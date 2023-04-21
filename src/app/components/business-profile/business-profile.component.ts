@@ -22,7 +22,10 @@ export class BusinessProfileComponent implements OnInit {
   check:any;
   buser_details=[]
   bcn:any;
+  busiid;
+  walletamount :Number;
   bon:any;
+  orders = []
   be:any;
   bm:any;
   buserData:any;
@@ -69,6 +72,7 @@ export class BusinessProfileComponent implements OnInit {
       // password:['']
     });
   }
+  
   back(){
     this.router.navigate(['/businesshome'],{queryParams:{mail:this.umail}});
   }

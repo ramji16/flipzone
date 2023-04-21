@@ -1,137 +1,231 @@
 <section class="body">
-    <app-usernavbar></app-usernavbar>
-    <!--LOGO-->
-    <div class="container">
-        <div class="row">
-            <div class="p-3 col-lg-7 col-sm-12 items">
-                <div class="ml-1 d-flex flex-row justify-content-between" style="text-transform: uppercase;">
-                    <div style="display: flex;">
-                        <input type="checkbox" class="check" checked="checked">
-                        <small class="ml-2"><b>{{orderlength}} items selected</b></small>
-                    </div>
-                </div> 
-                <!-- FOR LARGE SCREEN AND MOBILE VIEW -->
-                <div class="d-none d-sm-block d-lg-block">
-                    <div class="p-2 col-12 mt-3 d-flex flex-row justify-content-between box " *ngFor="let item of orderlist; let i = index">
-                        <div class="d-flex flex-row justify-content-between" >
-                            <div><input type="checkbox" class=" mr-2"checked="checked"></div>
-                            <div><img src={{item.photo}} alt="" height="120vh"></div> 
-                         </div>
-                         <div class="content" style="line-height: 20px;">
-                            <span><b>{{item.brandName}}</b></span><br>
-                            <small>{{item.tag}}</small><br>
-                            <small class="text-muted">{{item.productName}}</small><br>
-                            <select #quantity (change)="quanti($event,i)" class="p-1 mt-1 col-12 size">
-                                <option value="0">Quantity</option>
-                                <option default value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select><br>
-                            <div class="mt-3">
-                                <span class="text-black"><b>₹{{item.price}}</b></span>
-        
-                            </div>
-                         </div>
-                         <div>
-                            <p><i class="fa-sharp fa-solid fa-xmark" (click)="delete(i)"></i></p>
-                         </div>
-                       </div>
-                </div>
-                <!-- MObile screen only -->
-                <div class="d-sm-block d-md-none d-lg-none">
-                    <div class="p-2 col-12 mt-3 box " *ngFor="let item of orderlist; let i = index">
-                        <div class="row">   
-                            <!-- Mobile screen check box,image and delete -->
-                            <div class="col-sm-12">
-                                <div class="d-flex flex-row justify-content-between">
-                                    <div><input type="checkbox" class="mr-2"checked="checked" style="position: absolute;"></div>
-                                    <div><img src={{item.photo}} alt="" height="120vh"></div>
-                                    <div><p><i class="fa-sharp fa-solid fa-xmark" (click)="delete(i)"></i></p></div>      
-                                </div>
-                            </div>
-                            <!-- MObile screen content -->
-                            <div class="col-sm-12">
-                                <div class="text-center mt-2" style="line-height: 20px;">
-                                    <span><b>{{item.brandName}}</b></span><br>
-                                    <small>{{item.tag}}</small><br>
-                                    <small class="text-muted">{{item.productName}}</small><br>
-                                    <select #quantity (change)="quanti($event,i)" class="p-1 mt-1 col-12 size">
-                                        <option value="0">Quantity</option>
-                                        <option default value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                    </select><br>
-                                    <div class="mt-3">
-                                        <span class="text-black"><b>₹{{item.price}}</b></span>
-                                    </div>
-                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-              
+  <app-usernavbar></app-usernavbar>
+  <!--LOGO-->
+  <div class="container">
+    <div class="row">
+      <div class="p-3 col-lg-7 col-sm-12 items">
+        <div
+          class="ml-1 d-flex flex-row justify-content-between"
+          style="text-transform: uppercase"
+        >
+          <div style="display: flex">
+            <input type="checkbox" class="check" checked="checked" />
+            <small class="ml-2"
+              ><b>{{ orderlength }} items selected</b></small
+            >
+          </div>
+        </div>
+        <!-- FOR LARGE SCREEN AND MOBILE VIEW -->
+        <div class="d-none d-sm-block d-lg-block">
+          <div
+            class="p-2 col-12 mt-3 d-flex flex-row justify-content-between box"
+            *ngFor="let item of orderlist; let i = index"
+          >
+            <div class="d-flex flex-row justify-content-between">
+              <div>
+                <input type="checkbox" class="mr-2" checked="checked" />
+              </div>
+              <div><img src="{{ item.photo }}" alt="" height="120vh" /></div>
             </div>
-            <div class="p-3 col-lg-5 col-sm-12" style="margin-top: 2.3em;">
-                <div class="p-3 box">
-                    <div class="d-flex flex-row justify-content-between">
-                        <div>
-                            <span><b>PRICE DETAILS items</b></span><br>
-                            <span>Total MRP</span><br>
-                            <!-- <span>Discount</span><br> -->
-                            <span>Number of items</span><br>
-                            <span>Convienience fee</span><br>
-                        </div>
-                        <div>
-                            <span class="d-none">Nothing</span><br>
-                            <span class="">₹{{totalamount}}</span><br>
-                            <!-- <span></span><br> -->
-                            <span style="position: absolute;right:7%;">{{orderlength}}</span><br>
-                            <small><del>₹200</del> FREE</small><br>
-                        </div>
-                    </div><br>
-                    <div class="d-flex flex-row justify-content-between">
-                        <div><span>Total amount </span></div>
-                        <div><span>₹{{totalamount}}</span></div>
-                    </div><br>
-                    <div><button data-toggle="modal" data-target="#staticBackdrop" class="btn col-12 order" (click)="placeorder()">PLACE ORDER</button></div>
-                </div>
+            <div class="content" style="line-height: 20px">
+              <span
+                ><b>{{ item.brandName }}</b></span
+              ><br />
+              <small>{{ item.tag }}</small
+              ><br />
+              <small class="text-muted">{{ item.productName }}</small
+              ><br />
+              <select
+                #quantity
+                (change)="quanti($event, i)"
+                class="p-1 mt-1 col-12 size"
+              >
+                <option value="0">Quantity</option>
+                <option default value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option></select
+              ><br />
+              <div class="mt-3">
+                <span class="text-black"
+                  ><b>₹{{ item.price }}</b></span
+                >
+              </div>
             </div>
+            <div>
+              <p>
+                <i class="fa-sharp fa-solid fa-xmark" (click)="delete(i)"></i>
+              </p>
+            </div>
+          </div>
         </div>
-    </div>
-</section>
-
- <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog  modal-dialog-centered">
-      <div style="background-color:#d0e9f4;" class="modal-content p-3">
-        <div class="">
+        <!-- MObile screen only -->
+        <div class="d-sm-block d-md-none d-lg-none">
+          <div
+            class="p-2 col-12 mt-3 box"
+            *ngFor="let item of orderlist; let i = index"
+          >
+            <div class="row">
+              <!-- Mobile screen check box,image and delete -->
+              <div class="col-sm-12">
+                <div class="d-flex flex-row justify-content-between">
+                  <div>
+                    <input
+                      type="checkbox"
+                      class="mr-2"
+                      checked="checked"
+                      style="position: absolute"
+                    />
+                  </div>
+                  <div>
+                    <img src="{{ item.photo }}" alt="" height="120vh" />
+                  </div>
+                  <div>
+                    <p>
+                      <i
+                        class="fa-sharp fa-solid fa-xmark"
+                        (click)="delete(i)"
+                      ></i>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <!-- MObile screen content -->
+              <div class="col-sm-12">
+                <div class="text-center mt-2" style="line-height: 20px">
+                  <span
+                    ><b>{{ item.brandName }}</b></span
+                  ><br />
+                  <small>{{ item.tag }}</small
+                  ><br />
+                  <small class="text-muted">{{ item.productName }}</small
+                  ><br />
+                  <select
+                    #quantity
+                    (change)="quanti($event, i)"
+                    class="p-1 mt-1 col-12 size"
+                  >
+                    <option value="0">Quantity</option>
+                    <option default value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option></select
+                  ><br />
+                  <div class="mt-3">
+                    <span class="text-black"
+                      ><b>₹{{ item.price }}</b></span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div *ngIf="modal_check==true" class="modal-body text-center">
-            <h3><i class="fa-solid fa-circle-check fa-bounce"></i></h3>
-            <h4>Order placed successfully</h4>
-        </div>
-        <div *ngIf="insufamt==true" class="modal-body text-center">
-            <h3><i class="fa-solid fa-circle-check fa-bounce"></i></h3>
-            <h4>Insufficient Amount in the wallet</h4>
-        </div>
-        <div *ngIf="uadd==true" class="modal-body text-center">
-            <h3><i class="fa-solid fa-circle-check fa-bounce"></i></h3>
-            <h4>Update your Address</h4>
-        </div>
-        <div *ngIf="modal_check==true" class="text-center">
-          <button (click)="navigation()" type="button" class="btn button" data-dismiss="modal">Close</button>
-        </div>
-        <div *ngIf="insufamt==true" class="text-center">
-            <button (click)="navigation_amt()" type="button" class="btn button" data-dismiss="modal">Close</button>
-        </div>
-        <div *ngIf="uadd==true" class="text-center">
-            <button (click)="navigation_amt()" type="button" class="btn button" data-dismiss="modal">Close</button>
+      </div>
+      <div class="p-3 col-lg-5 col-sm-12" style="margin-top: 2.3em">
+        <div class="p-3 box">
+          <div class="d-flex flex-row justify-content-between">
+            <div>
+              <span><b>PRICE DETAILS items</b></span
+              ><br />
+              <span>Total MRP</span><br />
+              <!-- <span>Discount</span><br> -->
+              <span>Number of items</span><br />
+              <span>Convienience fee</span><br />
+            </div>
+            <div>
+              <span class="d-none">Nothing</span><br />
+              <span class="">₹{{ totalamount }}</span
+              ><br />
+              <!-- <span></span><br> -->
+              <span style="position: absolute; right: 7%">{{
+                orderlength
+              }}</span
+              ><br />
+              <small><del>₹200</del> FREE</small><br />
+            </div>
+          </div>
+          <br />
+          <div class="d-flex flex-row justify-content-between">
+            <div><span>Total amount </span></div>
+            <div>
+              <span>₹{{ totalamount }}</span>
+            </div>
+          </div>
+          <br />
+          <div>
+            <button
+              data-toggle="modal"
+              data-target="#staticBackdrop"
+              class="btn col-12 order"
+              (click)="placeorder()"
+            >
+              PLACE ORDER
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div> 
+  </div>
+</section>
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-backdrop="static"
+  data-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div style="background-color: #d0e9f4" class="modal-content p-3">
+      <div class=""></div>
+      <div *ngIf="modal_check == true" class="modal-body text-center">
+        <h3><i class="fa-solid fa-circle-check fa-bounce"></i></h3>
+        <h4>Order placed successfully</h4>
+      </div>
+      <div *ngIf="insufamt == true" class="modal-body text-center">
+        <h3><i class="fa-solid fa-circle-check fa-bounce"></i></h3>
+        <h4>Insufficient Amount in the wallet</h4>
+      </div>
+      <div *ngIf="uadd == true" class="modal-body text-center">
+        <h3><i class="fa-solid fa-circle-check fa-bounce"></i></h3>
+        <h4>Update your Address</h4>
+      </div>
+      <div *ngIf="modal_check == true" class="text-center">
+        <button
+          (click)="navigation()"
+          type="button"
+          class="btn button"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+      <div *ngIf="insufamt == true" class="text-center">
+        <button
+          (click)="navigation_amt()"
+          type="button"
+          class="btn button"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+      <div *ngIf="uadd == true" class="text-center">
+        <button
+          (click)="navigation_amt()"
+          type="button"
+          class="btn button"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

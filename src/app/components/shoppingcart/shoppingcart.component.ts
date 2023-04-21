@@ -15,6 +15,7 @@ export class ShoppingcartComponent implements OnInit {
   user_detail=[]
   quan: number;
   orderlist = [];
+  udata
   orderId = [];
   amountlength: number;
   orderlength: any;
@@ -64,6 +65,7 @@ export class ShoppingcartComponent implements OnInit {
       debugger
         this.user_detail.push(data)
         console.log(this.user_detail)
+        this.udata = this.user_detail[0]
     })
   }
   placeorder(){
@@ -76,7 +78,9 @@ export class ShoppingcartComponent implements OnInit {
         for(let i =0 ; i<this.orderlist.length;i++){
           this.makeapi.createbordercollection(this.userid.user.uid,this.orderlist[i])
           this.makeapi.createproductordercollection(this.orderlist[i].uid,this.orderlist[i])
+          debugger
           }
+          this.wallet_change()
           this.modal_check=true
         }
         else{
@@ -89,6 +93,14 @@ export class ShoppingcartComponent implements OnInit {
         this.insufamt=true
       }
     }
+  }
+  wallet_change(){
+    debugger
+    this.udata.uwallet = this.udata.uwallet - Number(this.totalamount)
+    console.log(this.udata.uwallet)
+    this.makeapi.insertuserdata(this.userid, this.udata).then(() => {
+      console.log('Wallet update');
+    });
   }
   navigation(){
     this.router.navigate(['/orders'])
