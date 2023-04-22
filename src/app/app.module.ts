@@ -41,7 +41,9 @@ import { ApiService } from './services/api.service';
 import {firebase} from '../environments/firebase';
 import { NgOtpInputModule } from 'ng-otp-input';
 import { CartComponent } from './components/cart/cart.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +85,10 @@ import { CartComponent } from './components/cart/cart.component';
     AngularFireModule.initializeApp(firebase),
     AngularFireAuthModule ,
     AngularFireStorageModule,
-    NgOtpInputModule
+    NgOtpInputModule,
+    BrowserAnimationsModule,
+    MatRadioModule,
+    MatCheckboxModule
   ],
   providers: [
     DataService, ApiService
