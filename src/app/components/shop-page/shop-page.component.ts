@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
@@ -11,12 +12,16 @@ import { ApiService } from 'src/app/services/api.service';
 export class ShopPageComponent implements OnInit {
   cartDetail = [];
   cartlist = [];
+  Gender:FormGroup
   collectiondata = [];
-
+  category_value='all';
+  filter_value=[];
+  temp=[]
+  male:boolean=false
+  female:boolean=false
   constructor(
     private makeapi: ApiService,
     private router: Router,
-    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -52,13 +57,20 @@ export class ShopPageComponent implements OnInit {
     else{
       debugger
       this.data_store();
-    }
-    
-    
+    } 
   }
-  category(event){
-    var category = event.target.value
-    console.log(category)
+  category(event:any){
+  this.filter_value=[]
+   this.category_value = event
+    console.log(this.category_value)
+      if(this.category_value!='all'){
+        for(let i=0;i<this.cartDetail.length;i++){
+          if(this.category_value==this.cartDetail[i].category){
+            this.filter_value.push(this.cartDetail[i])
+          }
+        }
+      }
+    console.log(this.filter_value)
   }
   productview(ind:any) {
     this.router.navigate(['/productview'], {queryParams:{item:JSON.stringify(ind)}});
@@ -81,5 +93,16 @@ export class ShopPageComponent implements OnInit {
     this.makeapi.createordercollection(userid.user.uid,data)
     alert('Product added to cart')
   }
-
+  filter(event,gen){
+    console.log(event.checked,gen)
+      if(event.checked==true){
+        for(let j=0;j<this.filter_value.length;j++){
+          debugger
+          if (gen==this.filter_value[j].gender){
+            this.temp.push(this.filter_value[j])
+          }
+        }
+        console.log(this.temp)
+      }
+  }
 }
