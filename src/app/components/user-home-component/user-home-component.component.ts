@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-user-home-component',
@@ -12,9 +13,14 @@ export class UserHomeComponentComponent implements OnInit {
   upass:any;
   firstletter:any;
   paramsObject: any;
-  constructor(private router:Router,private route:ActivatedRoute) { }
+  constructor(private router:Router,private route:ActivatedRoute, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    this.spinner.show()
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 3000);
   //   this.route.queryParams
   //     .subscribe(params => {
   //       this.paramsObject = params.mail;

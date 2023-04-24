@@ -44,6 +44,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { NgxSpinnerModule } from "ngx-spinner";
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +89,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     NgOtpInputModule,
     BrowserAnimationsModule,
     MatRadioModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    NgxSpinnerModule
   ],
   providers: [
     DataService, ApiService
