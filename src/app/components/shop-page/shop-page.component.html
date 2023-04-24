@@ -16,63 +16,99 @@
             <div class="checklist">
               <!-- <input type="radio" (change)="category($event)" value="{{cat}}" />&nbsp;{{cat}} <br /> -->
               <mat-radio-group aria-label="Select an option">
-                <mat-radio-button (click)="category('all')" value="all">All</mat-radio-button><br>
-                <mat-radio-button (click)="category('Fashion')" value="Fashion">Fashion</mat-radio-button><br>
-                <mat-radio-button (click)="category('Furniture')" value="Furnitures">Furnitures</mat-radio-button><br>
-                <mat-radio-button (click)="category('Electronics')" value="Electronics">Electronics</mat-radio-button><br>
-                <mat-radio-button (click)="category('Others')" value="Others">Others</mat-radio-button><br>
+                <mat-radio-button (click)="category('all')" value="all"
+                  >All</mat-radio-button
+                ><br />
+                <mat-radio-button (click)="category('Fashion')" value="Fashion"
+                  >Fashion</mat-radio-button
+                ><br />
+                <mat-radio-button
+                  (click)="category('Furniture')"
+                  value="Furnitures"
+                  >Furnitures</mat-radio-button
+                ><br />
+                <mat-radio-button
+                  (click)="category('Electronics')"
+                  value="Electronics"
+                  >Electronics</mat-radio-button
+                ><br />
+                <mat-radio-button (click)="category('Others')" value="Others"
+                  >Others</mat-radio-button
+                ><br />
               </mat-radio-group>
             </div>
             <div>
-            <div *ngIf="category_value=='Fashion'">
-              <h6>GENDER</h6>
-              <section class="checklist">
-                <p><mat-checkbox (change)="filter($event,'Male')">Male</mat-checkbox></p>
-                <p><mat-checkbox (change)="filter($event,'Female')">Female</mat-checkbox></p>
-              </section>
-            </div>
-            <div *ngIf="category_value=='Fashion' || category_value=='Electronics'|| category_value=='Furniture'|| category_value=='Others'">
-              <h6>PRICE RANGE</h6>
-            <div class="checklist">
-              <input type="checkbox" value="" />&nbsp;Up to 5000<br />
-              <input type="checkbox" value="" />&nbsp;Up to 4000<br />
-              <input type="checkbox" value="" />&nbsp;Up to 3000<br />
-              <input type="checkbox" value="" />&nbsp;Up to 2000<br />
-              <input type="checkbox" value="" />&nbsp;Up to 1000<br />
-            </div>
-            </div>
-            <h6>BRAND</h6>
-            <div class="checklist">
-              <input type="checkbox" value="" />&nbsp;BRAND 1<br />
-              <input type="checkbox" value="" />&nbsp;BRAND 2<br />
-              <input type="checkbox" value="" />&nbsp;BRAND 3<br />
-              <input type="checkbox" value="" />&nbsp;BRAND 4<br />
-              <input type="checkbox" value="" />&nbsp;BRAND 5<br />
-            </div>
+              <div *ngIf="category_value == 'Fashion' ||
+              category_value == 'Electronics' ||
+              category_value == 'Furniture' ||
+              category_value == 'Others'">
+                <h6>Type</h6>
+                <div *ngFor="let item of tag_name" class="checklist">
+                  <p>
+                    <mat-radio-button style="text-transform: capitalize;" value="{{item}}" (change)="category2(item)"
+                      >{{item}}</mat-radio-button
+                    >
+                  </p>
+                  <!-- <p>
+                    <mat-checkbox (change)="filter($event, 'Female')"
+                      >Female</mat-checkbox
+                    >
+                  </p> -->
+                </div>
+              </div>
+              <div
+                *ngIf="
+                  category_value == 'Fashion' ||
+                  category_value == 'Electronics' ||
+                  category_value == 'Furniture' ||
+                  category_value == 'Others' &&
+                  brand_name != null
+                "
+              >
+                <h6>BRAND</h6>
+                <div *ngFor="let item of brand_name" class="checklist">
+                  <p>
+                    <mat-checkbox (change)="filter($event,item)"
+                      >{{item}}</mat-checkbox
+                    >
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="col-md-10">
-        <div class="shoppage" *ngIf="category_value=='all'">
-          <div *ngFor="let item of cartDetail;" class="col-md-4">
+        <div class="shoppage" *ngIf="category_value == 'all'">
+          <div *ngFor="let item of cartDetail" class="col-md-4">
             <div class="shadow cardd text-center p-2">
               <div class="wishlist d-flex flex-row justify-content-end"></div>
-              <img class="mt-4" (click)="productview(item)" src={{item.photo}} height="120vh" />
+              <img
+                class="mt-4"
+                (click)="productview(item)"
+                src="{{ item.photo }}"
+                height="120vh"
+              />
               <h4 class="mt-3">
-                {{ item.brandName }}&nbsp;{{ item.productName }}<br>
-                {{item.warrantyDate}} <br>
-                <br>
+                {{ item.brandName }}&nbsp;{{ item.productName }}<br />
+                {{ item.warrantyDate }} <br />
+                <br />
                 Price: ${{ item.price }}
               </h4>
               <!-- <h5></h5> -->
               <div class="end-height d-flex flex-column justify-content-end">
                 <div class="mt-2 d-flex flex-row justify-content-between">
-                  <h5 class="mr-3 shadow chip pt-1 ml-3" (click)="wishlist(item)">
+                  <h5
+                    class="mr-3 shadow chip pt-1 ml-3"
+                    (click)="wishlist(item)"
+                  >
                     <i class="fa-solid fa-heart fa-beat"></i>
                   </h5>
                   <h5 class="mr-3 shadow chip pt-1">
-                    <i class="fa-solid fa-cart-shopping" (click)="order(item)"></i>
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      (click)="order(item)"
+                    ></i>
                   </h5>
                 </div>
               </div>
@@ -80,31 +116,122 @@
           </div>
         </div>
         <!--filter_value-->
-        <div class="shoppage" *ngIf="filter_value!=null">
-          <div *ngFor="let item of filter_value;" class="col-md-4">
+        <div
+          class="shoppage"
+          *ngIf="filter_value != null && temp_checked != true"
+        >
+          <div *ngFor="let item of filter_value" class="col-md-4">
             <div class="shadow cardd text-center p-2">
               <div class="wishlist d-flex flex-row justify-content-end"></div>
-              <img class="mt-4" (click)="productview(item)" src={{item.photo}} height="120vh" />
+              <img
+                class="mt-4"
+                (click)="productview(item)"
+                src="{{ item.photo }}"
+                height="120vh"
+              />
               <h4 class="mt-3">
-                {{ item.brandName }}&nbsp;{{ item.productName }}<br>
-                {{item.warrantyDate}} <br>
-                <br>
+                {{ item.brandName }}&nbsp;{{ item.productName }}<br />
+                {{ item.warrantyDate }} <br />
+                <br />
                 Price: ${{ item.price }}
               </h4>
               <!-- <h5></h5> -->
               <div class="end-height d-flex flex-column justify-content-end">
                 <div class="mt-2 d-flex flex-row justify-content-between">
-                  <h5 class="mr-3 shadow chip pt-1 ml-3" (click)="wishlist(item)">
+                  <h5
+                    class="mr-3 shadow chip pt-1 ml-3"
+                    (click)="wishlist(item)"
+                  >
                     <i class="fa-solid fa-heart fa-beat"></i>
                   </h5>
                   <h5 class="mr-3 shadow chip pt-1">
-                    <i class="fa-solid fa-cart-shopping" (click)="order(item)"></i>
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      (click)="order(item)"
+                    ></i>
                   </h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- filter-2 -->
+        <div class="shoppage" *ngIf="temp!=null && brand_check != true">
+          <div *ngFor="let item of temp" class="col-md-4">
+            <div class="shadow cardd text-center p-2">
+              <div class="wishlist d-flex flex-row justify-content-end"></div>
+              <img
+                class="mt-4"
+                (click)="productview(item)"
+                src="{{ item.photo }}"
+                height="120vh"
+              />
+              <h4 class="mt-3">
+                {{ item.brandName }}&nbsp;{{ item.productName }}<br />
+                {{ item.warrantyDate }} <br />
+                <br />
+                Price: ${{ item.price }}
+              </h4>
+              <!-- <h5></h5> -->
+              <div class="end-height d-flex flex-column justify-content-end">
+                <div class="mt-2 d-flex flex-row justify-content-between">
+                  <h5
+                    class="mr-3 shadow chip pt-1 ml-3"
+                    (click)="wishlist(item)"
+                  >
+                    <i class="fa-solid fa-heart fa-beat"></i>
+                  </h5>
+                  <h5 class="mr-3 shadow chip pt-1">
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      (click)="order(item)"
+                    ></i>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+         <!-- filter-3 -->
+         <div class="shoppage" *ngIf="sort!=null && brand_check == true ">
+          <div *ngFor="let item of sort" class="col-md-4">
+            <div class="shadow cardd text-center p-2">
+              <div class="wishlist d-flex flex-row justify-content-end"></div>
+              <img
+                class="mt-4"
+                (click)="productview(item)"
+                src="{{ item.photo }}"
+                height="120vh"
+              />
+              <h4 class="mt-3">
+                {{ item.brandName }}&nbsp;{{ item.productName }}<br />
+                {{ item.warrantyDate }} <br />
+                <br />
+                Price: ${{ item.price }}
+              </h4>
+              <!-- <h5></h5> -->
+              <div class="end-height d-flex flex-column justify-content-end">
+                <div class="mt-2 d-flex flex-row justify-content-between">
+                  <h5
+                    class="mr-3 shadow chip pt-1 ml-3"
+                    (click)="wishlist(item)"
+                  >
+                    <i class="fa-solid fa-heart fa-beat"></i>
+                  </h5>
+                  <h5 class="mr-3 shadow chip pt-1">
+                    <i
+                      class="fa-solid fa-cart-shopping"
+                      (click)="order(item)"
+                    ></i>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
