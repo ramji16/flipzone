@@ -36,8 +36,8 @@ export class BusinessSigninComponent implements OnInit {
           this.router.navigate(['/businesshome'])
           // this.resetForm();
       }).catch(error => {
-        // this.eventautherror.next(error);
-        // this.notify.notifyError(error.message)        
+        alert("Please check the username and password");
+        window.location.reload()  
       })
     }
   }

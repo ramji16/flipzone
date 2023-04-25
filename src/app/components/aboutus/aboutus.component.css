@@ -28,6 +28,10 @@ p{
     width: 500px;
     margin-top: 30px;
 }
+.vm{
+    border-right:3px solid rgb(0, 0, 0);
+     color: rgb(0, 0, 0);
+}
 @media only screen and (max-width:430px){
     .im1{
         height: 300px;
@@ -38,5 +42,12 @@ p{
         height: 300px;
         width: 300px;
         margin-top: 30px;   
+    }
+    
+
+}
+@media only screen and (max-width:800px){
+    .vm{
+        border: none;
     }
 }

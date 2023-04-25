@@ -25,6 +25,7 @@ import { UserSignUpComponent } from './components/user-sign-up/user-sign-up.comp
 import { UsercontactComponent } from './components/usercontact/usercontact.component';
 import { UsernavbarComponent } from './components/usernavbar/usernavbar.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { BusinessWalletComponent } from './components/business-wallet/business-wallet.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'mainlogin', pathMatch: 'full' },
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'busniessSignUp', component: BusinessSignUpComponent },
   { path: 'busniessSignIn', component: BusinessSigninComponent },
   { path: 'contact', component: UsercontactComponent },
+  { path: 'businesswallet', component: BusinessWalletComponent },
 ];
 
 @NgModule({
