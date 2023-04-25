@@ -6,10 +6,10 @@
         class="col-12 col-md-3 d-flex flex-column justify-content-center min-vh-100"
       >
         <div
-          class="cardd shadow min-vh-40 d-flex flex-column justify-content-center"
+          class="cardd shadow d-flex flex-column justify-content-center"
         >
           <div class="mt-2 d-flex flex-row cardd shadow pl-4">
-            <h3 class="mt-2 profile-icon mr-4 pl-3 pt-2" style="text-transform: uppercase;">{{firstletter}}</h3>
+            <h3 class="mt-2 profile-icon mr-4 pl-4 pt-3" style="text-transform: uppercase;">{{firstletter}}</h3>
             <div class="mt-2">
               <h5>{{bon}}</h5>
               <h6 class="mt-2">{{ date | date:'MMM dd,y' }}</h6>
@@ -19,10 +19,10 @@
             <i class="ml-2 mt-2 fa-solid fa-user"></i>
             <p class="ml-4 mt-1" (click)="wishlistnav('profile')">My Profile</p>
           </div>
-          <!-- <div class="mt-2 d-flex flex-row">
-                            <i class="ml-2 mt-2 fa-solid fa-heart"></i>
-                            <p class="ml-4 mt-1">Wishlist</p>
-                        </div> -->
+          <div class="mt-2 d-flex flex-row">
+            <i class="ml-2 mt-2 fa-solid fa-wallet"></i>
+            <p class="ml-4 mt-1" (click)="wishlistnav('wallet')">Wallet</p>
+          </div>            
           <!-- <div class="mt-2 mb-2 d-flex flex-row" style="border-top:2px solid #D5CABD;">
                             <i class="ml-2 mt-3 pt-1 fa-solid fa-bag-shopping"></i>
                             <p class="ml-4 mt-3">My Orders</p>
@@ -58,6 +58,7 @@
           <app-business-changepassword
           *ngIf="wishlist=='password'"
           ></app-business-changepassword>
+          <app-business-wallet  *ngIf="wishlist=='wallet'"></app-business-wallet>
           <form *ngIf="wishlist=='profile'" [formGroup]="bprofile">
             <div>
               <div class="pl-5 pt-3 d-flex flex-row">

@@ -45,6 +45,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { BusinessWalletComponent } from './components/business-wallet/business-wallet.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +78,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
     WalletComponent,
     BusinessChangepasswordComponent,
     CartComponent,
+    BusinessWalletComponent,
   ],
   imports: [
     BrowserModule,

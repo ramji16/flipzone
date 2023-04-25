@@ -24,38 +24,38 @@
 }
 .chip-option{
     background-color: #b3478c;
-    height:5vh;
+    height:30px;
     width: 30px;
     border-radius:50%;
 }
 .chip-unslected{
     background-color: #ffa764;
     border-radius:50%;
-    height:5vh;
+    height:30px;
     width: 30px;
 }
 .chip-unslected1{
     background-color: #3de68b;
     border-radius:50%;
-    height:5vh;
+    height:30px;
     width: 30px;
 }
 .chip-unslected2{
     background-color: #a11f2a;
     border-radius:50%;
-    height:5vh;
+    height:30px;
     width: 30px;
 }
 .chip-unslected3{
     background-color: #1e62c0;
     border-radius:50%;
-    height:5vh;
+    height:30px;
     width: 30px;
 }
 .chip-unslected4{
     background-color: #ffbf00;
     border-radius:50%;
-    height:5vh;
+    height:30px;
     width: 30px;
 }
 .button{

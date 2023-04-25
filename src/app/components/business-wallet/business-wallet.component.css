@@ -1,0 +1,14 @@
+.cardd{
+    background-image: linear-gradient(to left bottom, #120537, #242361, #334190, #3d62c2, #3d85f6);
+    height:300px;
+    border-radius:20px;
+}
+.card-icon{
+    background-color:whitesmoke;
+    height:53px;
+    width:53px;
+    border-radius: 50%;
+}
+.table{
+    color:white !important;
+}

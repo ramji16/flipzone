@@ -23,7 +23,31 @@
                 </div>
                 <div class="d-flex flex-row mt-4" style="border-bottom:1px solid black;">
                     <h6 class="">Specification</h6>
-                    <div class="ml-3">
+                    <div class="ml-3" *ngIf="category=='Fashion'">
+                        <ul>
+                            <li>{{productDetails.gender}}</li>
+                            <li>{{productDetails.colour}}</li>
+                            <li>{{productDetails.material}}</li>
+                            <li>{{productDetails.size}}</li>
+                        </ul>
+                    </div>
+                    <div class="ml-3" *ngIf="category=='Electronics' || productDetails.electronicType =='Home-Appliances'">
+                        <ul>
+                            <li>{{productDetails.capacity}}</li>
+                            <li>{{productDetails.material}}</li>
+                            <li>{{productDetails.colour}}</li>
+                            <li>{{productDetails.weight}}</li>
+                        </ul>
+                    </div>
+                    <div class="ml-3" *ngIf="category=='Furniture'">
+                        <ul>
+                            <li>{{productDetails.height}}</li>
+                            <li>{{productDetails.material}}</li>
+                            <li>{{productDetails.width}}</li>
+                            <li>{{productDetails.colour}}</li>
+                        </ul>
+                    </div>
+                    <div class="ml-3" *ngIf="category=='Others'">
                         <ul>
                             <li>M2 processor</li>
                             <li>LED Panel</li>
@@ -53,3 +77,4 @@
         </div>
     </div>
 </div>
+<!--fashion-->

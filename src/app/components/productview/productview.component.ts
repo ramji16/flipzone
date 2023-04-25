@@ -34,12 +34,13 @@ export class ProductviewComponent implements OnInit {
             console.log(this.productDetails.category)
           }
           debugger
-        this.productname=this.productDetails.productName
-        this.price=this.productDetails.price
+       this.productname=this.productDetails.productName
+       this.price=this.productDetails.price
        this.description=this.productDetails.description
        this.category=this.productDetails.category
        this.tag=this.productDetails.tag
        this.photo=this.productDetails.photo
+       console.log(this.productDetails.electronicType)
       });
       // this.data_create() 
     // var path = "assets/JSON/cartdetail.json";
