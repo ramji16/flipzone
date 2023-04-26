@@ -25,6 +25,12 @@
   }
   .cardd{
     padding:6em;
+    position: relative;
+  }
+  .sp{
+    position: absolute;
+    bottom:23.6em;
+    right:8em; 
   }
   input{
     height:50px;

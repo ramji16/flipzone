@@ -46,6 +46,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BusinessWalletComponent } from './components/business-wallet/business-wallet.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { BuisnessSellersComponent } from './components/buisness-sellers/buisness-sellers.component';
+import { AdminProductsComponent } from './components/admin-products/admin-products.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
@@ -80,6 +83,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     BusinessChangepasswordComponent,
     CartComponent,
     BusinessWalletComponent,
+    AdminComponent,
+    BuisnessSellersComponent,
+    AdminProductsComponent,
   ],
   imports: [
     BrowserModule,

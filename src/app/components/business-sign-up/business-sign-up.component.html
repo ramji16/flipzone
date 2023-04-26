@@ -64,7 +64,7 @@
             >Phone Number Required</span
           >
           <input
-            type="password"
+           [type]="showpassword ? 'text':'Password'"
             class="mt-2 p-3 form-control"
             formControlName="Password"
             pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
@@ -79,6 +79,8 @@
             class="text-danger"
             >Password Required</span
           >
+          <i (click)="toggleShow()" class="fa-solid fa-eye sp" *ngIf="!showpassword"></i>
+          <i (click)="toggleShow()" class="fa-solid fa-eye-slash sp" *ngIf="showpassword"></i>
           <button
             type="submit"
             (click)="RegisterBtn()"
