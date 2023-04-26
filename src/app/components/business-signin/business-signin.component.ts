@@ -48,4 +48,8 @@ export class BusinessSigninComponent implements OnInit {
 back(){
   this.router.navigate(['mainlogin']);
 }
+forgetpassword(){
+  var verifymail = this.bLoginForm.value
+  this.makeapi.forgetPassword(verifymail.email)
+}
 }
