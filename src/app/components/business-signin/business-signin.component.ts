@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class BusinessSigninComponent implements OnInit {
   bLoginForm: FormGroup;
+  showpassword= false;
   constructor(private makeapi:ApiService,private router:Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -42,6 +43,9 @@ export class BusinessSigninComponent implements OnInit {
     }
   }
 
+ toggleShow(){
+  this.showpassword = !this.showpassword;
+ }
   BusinesssignUpNavigate(){
     this.router.navigate(['busniessSignUp']);
   }

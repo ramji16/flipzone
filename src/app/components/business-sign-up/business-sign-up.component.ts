@@ -12,6 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 export class BusinessSignUpComponent implements OnInit {
   bSigninForm!:FormGroup
   newuser = []
+  showpassword= false;
   // eventautherror: any;
   private eventautherror = new BehaviorSubject<string>("");
   eventautherror$ = this.eventautherror.asObservable();
@@ -28,6 +29,9 @@ export class BusinessSignUpComponent implements OnInit {
     });
     
   }
+  toggleShow(){
+    this.showpassword = !this.showpassword;
+   }
   get add(){
     return this.bSigninForm.controls
   }

@@ -10,8 +10,14 @@
 .cont-heading{
     color:#2888A9;
 }
+.sp{
+    position: absolute;
+    bottom:15.5em;
+    right:8em; 
+  }
 .cardd{
     padding:6em;
+    position: relative;
 }
 input{
     height:50px;
