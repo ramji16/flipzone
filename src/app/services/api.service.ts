@@ -203,6 +203,12 @@ export class ApiService {
       .doc(id)
       .valueChanges();
   }
+  forgetPassword(email){
+    return this.Authfire.sendPasswordResetEmail(email).then( () =>{
+      alert('Check your mail')
+    }
+    )
+  }
   getuserItem(id) {
     // sessionStorage.setItem('id', id);
     return this.Afs.collection('/Users')

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-changepassword',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChangepasswordComponent implements OnInit {
 
-  constructor() { }
+  userDetail = []
+  userEmail:string;
+  constructor(private makeApi: ApiService) { }
 
   ngOnInit(): void {
+    this.getDetail()
+  }
+  getDetail(){
+    var bid = JSON.parse(localStorage.getItem('businessId'))
+    debugger
+    this.makeApi.getItem('Business',bid).subscribe(res => {
+      this.userDetail.push(res)
+      debugger
+    })
+    console.log(this.userDetail)
+    this.userEmail = this.userDetail[0].email
+    debugger
   }
 
 }

@@ -12,6 +12,9 @@
             <i class="fa fa-filter" aria-hidden="true"></i>FILTER
           </div>
           <div class="sidebar">
+            <div *ngIf="category_value == 'all' " class="checklist mt-3">
+              <input type="text" name="search" class="searchBar" [(ngModel)]="searchText" placeholder="Search Here">
+            </div>
             <h6>CATEGORY</h6>
             <div class="checklist">
               <!-- <input type="radio" (change)="category($event)" value="{{cat}}" />&nbsp;{{cat}} <br /> -->
@@ -80,7 +83,7 @@
       </div>
       <div class="col-md-10">
         <div class="shoppage" *ngIf="category_value == 'all'">
-          <div *ngFor="let item of cartDetail" class="col-md-4">
+          <div *ngFor="let item of cartDetail | filter:searchText" class="col-md-4">
             <div class="shadow cardd text-center p-2">
               <div class="wishlist d-flex flex-row justify-content-end"></div>
               <img
