@@ -124,7 +124,7 @@ export class BusinessProfileComponent implements OnInit {
       this.wishlist=str
     }
     else if(str=='password'){
-      this.wishlist=str
+      this.makeapi.forgetPassword(this.buser_details[0].email)
     }
     else if (str=='wallet'){
       this.wishlist=str

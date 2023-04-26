@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipe } from 'ng2-search-filter/src/ng2-filter.pipe';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -11,6 +13,7 @@ import { ApiService } from 'src/app/services/api.service';
   styleUrls: ['./shop-page.component.css'],
 })
 export class ShopPageComponent implements OnInit {
+  searchText : any
   cartDetail = [];
   cartlist = [];
   Gender: FormGroup;
