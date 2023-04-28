@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainLoginComponentComponent } from './components/main-login-component/main-login-component.component';
@@ -47,9 +47,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BusinessWalletComponent } from './components/business-wallet/business-wallet.component';
 import { AdminComponent } from './components/admin/admin.component';
-
 import { BuisnessSellersComponent } from './components/buisness-sellers/buisness-sellers.component';
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,8 +98,10 @@ import { AdminProductsComponent } from './components/admin-products/admin-produc
     NgOtpInputModule,
     BrowserAnimationsModule,
     MatRadioModule,
+    FormsModule,
     MatCheckboxModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    Ng2SearchPipeModule
   ],
   providers: [
     DataService, ApiService

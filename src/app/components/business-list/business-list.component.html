@@ -128,6 +128,7 @@
           <th scope="col">Brand</th>
           <th scope="col">Price</th>
           <th scope="col">Stocks</th>
+          <th scope="col">Edit</th>
         </tr>
       </thead>
       <tbody class="bg-light">
@@ -139,6 +140,11 @@
           <td>{{ item.brandName }}</td>
           <td>{{ item.price }}</td>
           <td>{{ item.stocks }}</td>
+          <td>
+            <button type="submit" (click)="removeItem(i)" class="btn btn-danger">
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -164,6 +170,7 @@
           <th scope="col">Brand</th>
           <th scope="col">Price</th>
           <th scope="col">Stocks</th>
+          <th scope="col">Edit</th>
         </tr>
       </thead>
       <tbody class="bg-light">
@@ -175,6 +182,11 @@
           <td>{{ item.brandName }}</td>
           <td>{{ item.price }}</td>
           <td>{{ item.stocks }}</td>
+          <td>
+            <button type="submit" (click)="removeItem(i)" class="btn btn-danger">
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
