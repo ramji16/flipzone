@@ -34,7 +34,11 @@ export class BusinessSigninComponent implements OnInit {
           console.log(bid);
           localStorage.setItem('bdata',JSON.stringify(UserCredential))
           localStorage.setItem('businessId',JSON.stringify(bid))
-          this.router.navigate(['/businesshome'])
+          if(loginval.email == 'admin@gmail.com' && loginval.Password == 'Admin@123'){
+            this.router.navigate(['/adminpage'])
+          }else{
+            this.router.navigate(['/businesshome'])
+          }
           // this.resetForm();
       }).catch(error => {
         alert("Please check the username and password");

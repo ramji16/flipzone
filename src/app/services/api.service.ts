@@ -49,6 +49,11 @@ export class ApiService {
     return this.Afs.doc(this.filePath).set(registerdata);
   }
   //instertcustomerdata
+  insertquerydata(registerdata) {
+    return this.Afs.collection('/Admin')
+      .add(registerdata);
+  }
+  //instertcustomerdata
   insertuserdata(
     userCredential: firebase.default.auth.UserCredential,
     registerdata
