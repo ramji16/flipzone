@@ -36,7 +36,7 @@ export class UsercontactComponent implements OnInit {
     console.log(personal);
     console.log(personal.product.productName);
     this.makeApi.insertquerydata(personal).then( () => {
-      alert('Query passed')
+      // alert('Query passed')
     })
   }
 }

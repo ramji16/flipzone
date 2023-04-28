@@ -11,9 +11,12 @@
     color:#2888A9;
 }
 .sp{
+    position: relative;
+  }
+.sp i{
     position: absolute;
-    bottom:15.5em;
-    right:8em; 
+    bottom: 1em;
+    right:2em;
   }
 .cardd{
     padding:6em;
