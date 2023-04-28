@@ -21,8 +21,8 @@
                 </div>
             </div>
             <div>
-                <div class="row mt-2 p-4" *ngFor = "let item of cartDetail.slice(0,3)">
-                    <div class="col-lg-3 col-sm-12 shadow cardd text-center ">
+                <div class="row  p-4 justify-content-around" >
+                    <div class="col-lg-3 col-sm-12 mt-3 shadow cardd text-center "*ngFor = "let item of cartDetail.slice(0,3)">
                         <img
                         class="mt-4"
                         (click)="productview(item)"
@@ -50,31 +50,13 @@
                               (click)="order(item)"
                             ></i>
                           </h5>
-                    </div>
-                    <!-- <div class="mt-3 col-lg-3 col-sm-12 shadow cardd text-center ">   
-                            <img class="mt-2 p-2" src="assets/images/laptop.png" height="120vh">
-                            <h4>Apple MacBook Air 2021 (8GB 256GB)</h4>
-                            <h5 class="mt-3">Price: $1500</h5>
-                            <div class="mt-5 d-flex flex-row justify-content-between">
-                                <h5 class="ml-3 p-3 rounded-pill shadow d-flex flex-column justify-content-center chip"><i class="fa-regular fa-heart"></i></h5>
-                                <h5 class="mr-3 p-3 rounded-pill shadow d-flex flex-column justify-content-center  chip"><i class="fa-solid fa-cart-shopping"></i></h5>
-                            </div>
-                    </div>
-                    <div class="mt-3 col-lg-3 col-sm-12 shadow cardd text-center ">
-                            <img class="mt-2 " src="assets/images/iphone.png" height="120vh">
-                            <h4>Apple Iphone 11 pro (6GB 512GB)</h4>
-                            <h5 class="mt-3">Price: $2000</h5>
-                            <div class="mt-5 d-flex flex-row justify-content-between">
-                                <h5 class="ml-3 p-3 rounded-pill shadow d-flex flex-column justify-content-center chip"><i class="fa-regular fa-heart"></i></h5>
-                                <h5 class="mr-3 p-3 rounded-pill shadow d-flex flex-column justify-content-center  chip"><i class="fa-solid fa-cart-shopping"></i></h5>
-                            </div>
-                    </div> -->
+                        </div>
+                     </div>
+                    </div>   
                 </div>
                 <div class="col-12 mt-4  pb-3">
                     <button class="btn button col-12" (click)="shop()">Shop All Products</button>
                 </div>
-            </div>
-        </div>
             </div>
     <!--About Us-->
     <div class="p-3 aboutus">

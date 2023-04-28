@@ -93,12 +93,13 @@
     <!--ROW-2 -->
     <div class="row p-2 m-auto justify-content-between">
       <!--Sales overview-col-->
-      <div class="col-lg-5 col-12 p-1 mt-3 box w3-hover-shadow w3-animate-left">
+      
+      <div class="col-lg-6 col-12  mt-3 box w3-hover-shadow w3-animate-left">
         <h5 class="p-3"><b>Sales Overview</b></h5>
         <!--cutomer-totalProfit-Transcation-row-->
-        <div class="row p-3">
+        <div class="row p-3 justify-content-between">
           <!--customer-col-->
-          <div class="col-lg-4 col-12 mt-2">
+          <div class="col-lg-3 col-12 mt-2">
             <div class="d-flex flex-row">
               <div class="">
                 <i class="fa-regular fa-user w3-badge p-3" style="background-color: #845ec2;"></i>
@@ -110,7 +111,7 @@
             </div>
           </div>
           <!--profit-col-->
-          <div class="col-lg-4 col-12 mt-2">
+          <div class="col-lg-3 col-12 mt-2">
             <div class="d-flex flex-row">
               <div>
                 <!-- <i
@@ -125,15 +126,10 @@
             </div>
           </div>
           <!--trasnaction-col-->
-          <div class="col-lg-4 col-12 mt-2">
+          <div class="col-lg-3 col-12 mt-2">
             <div class="d-flex flex-row">
               <div>
-                <!-- <i
-                  class="fa-solid fa-money-bill-trend-up "
-                ></i> -->
-                <!-- <i class="far fa-money-check-edit w3-badge w3-red p-3"></i> -->
                 <i class="fas fa-business-time w3-badge p-3" style="background-color: #845ec2;"></i>
-                <!-- <i class="fas fa-money-check-edit-alt"></i> -->
               </div>
               <div style="line-height: 0.5em" class="ml-2 mt-2">
                 <p class="text-muted">₹{{total_amount}}</p>
@@ -144,7 +140,7 @@
         </div>
       </div>
       <!--rating-col-->
-      <div class="col-lg-3 col-12 p-3 mt-3 box w3-animate-zoom w3-hover-shadow">
+      <!-- <div class="col-lg-3 col-12 p-3 mt-3 box w3-animate-zoom w3-hover-shadow">
         <div class="d-flex flex-row justify-content-between">
           <div>
             <h5 class="p-1"><b>Ratings</b></h5>
@@ -166,33 +162,61 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
       <!--session-col-->
-      <div
-        class="col-lg-3 col-12 p-3 mt-3 box w3-animate-right w3-hover-shadow"
+      <div class="col-lg-6 col-12">
+        <div
+        class=" p-3 mt-3 ml-3 box w3-animate-right w3-hover-shadow"
       >
         <div class="d-flex flex-row justify-content-between">
-          <div>
-            <h5 class="p-1"><b>Customers</b></h5>
-            <div class="mb-3" style="width: 90px">
-              <small
-                style="font-size: 10px;background-color: #845ec2;"
-                class="rounded-pill p-2 text-white"
-                >Last month</small
-              >
-            </div>
-            <h5 class="mt-2 text-dark">no.of customers: &nbsp;{{customer}}</h5>
-          </div>
-          <div>
-            <img
-              src="assets/images/peter.png"
-              height="auto"
-              width="150px"
-              style="position: absolute; left: 50%; bottom: 1%"
-            />
-          </div>
+              <div>
+                <h5 class="p-1"><b>Customers</b></h5>
+                <div class="mb-3" style="width: 90px">
+                  <small
+                    style="font-size: 10px;background-color: #845ec2;"
+                    class="rounded-pill p-2 text-white"
+                    >Last month</small
+                  >
+                </div>
+                <h5 class="mt-2 text-dark">no.of customers: &nbsp;{{customer}}</h5>
+              </div>
+              <div class="d-flex flex-row">
+                <div>
+                  <img
+                    src="assets/images/people.png"
+                    height="auto"
+                    width="140px"
+                    style="position: relative; "
+                  />
+                  
+                </div>
+                <div>
+                  <img
+                    src="assets/images/people.png"
+                    height="auto"
+                    width="140px"
+                    style="position: relative; "
+                  />
+                  
+                </div>
+                <div>
+                  <img
+                    src="assets/images/people.png"
+                    height="auto"
+                    width="140px"
+                    style="position: relative; "
+                  />
+                  
+                </div>
+              </div>
+
+         
+      
+          
         </div>
       </div>
+      </div>
+    
     </div>
     <!-- ROW -3 -->
     <div class="row p-2 m-auto justify-content-between">

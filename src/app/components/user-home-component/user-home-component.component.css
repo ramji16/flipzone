@@ -63,11 +63,11 @@
   color:black;
   border-radius: 20px;
 }
-.chip{
-  background-color:#DAE7EF;
-  /* height:5vh;
-  width: 5vw; */
-  width:20%;
+.chip {
+  background-color: #dae7ef;
+  height: 5vh;
+  width: 5vw;
+  border-radius: 30px;
 }
 .aboutus{
   background-color:#6F8FAF;
