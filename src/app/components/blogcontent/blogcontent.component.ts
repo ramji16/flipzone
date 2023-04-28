@@ -32,7 +32,7 @@ export class BlogcontentComponent implements OnInit {
   fn: any
   constructor(private router: Router, private route: ActivatedRoute, private formBuilder: FormBuilder, private http: HttpClient, private makeapi: ApiService) { }
   ngOnInit(): void {
-
+    this.blogs();
     var id;
     var data = JSON.parse(localStorage.getItem('user_data'))
     // console.log(data) 
@@ -54,28 +54,28 @@ export class BlogcontentComponent implements OnInit {
 
     }
     this.getBlog()
-    this.route.queryParams
-      .subscribe(params => {
-        this.ind = +params.index;
-        console.log(this.ind);
-      });
-    var path = "assets/JSON/blogcont.json";
-    this.http.get<any>(path).subscribe(data => {
-      this.content = data;
-      console.log('blogcontent array')
-      console.log(this.content);
-      this.cont = this.content[+this.ind];
-      console.log(this.cont);
-      var getdata = JSON.parse(localStorage.getItem(this.cont.heading + 'com'));
-      if (getdata != null) {
-        this.comments = getdata;
-        console.log(this.comments);
-        // this.content = this.comments
-        this.len = this.comments.length;
-        console.log(this.len)
-        debugger
-      }
-    });
+    // this.route.queryParams
+    //   .subscribe(params => {
+    //     this.ind = +params.index;
+    //     console.log(this.ind);
+    //   });
+    // var path = "assets/JSON/blogcont.json";
+    // this.http.get<any>(path).subscribe(data => {
+    //   this.content = data;
+    //   console.log('blogcontent array')
+    //   console.log(this.content);
+    //   this.cont = this.content[+this.ind];
+    //   console.log(this.cont);
+    //   var getdata = JSON.parse(localStorage.getItem(this.cont.heading + 'com'));
+    //   if (getdata != null) {
+    //     this.comments = getdata;
+    //     console.log(this.comments);
+    //     // this.content = this.comments
+    //     this.len = this.comments.length;
+    //     console.log(this.len)
+    //     debugger
+    //   }
+    // });
     this.consumers = this.formBuilder.group({
       uid: [''],
       customername: [''],
@@ -102,6 +102,13 @@ export class BlogcontentComponent implements OnInit {
     var str = JSON.stringify(this.comments);
     localStorage.setItem((this.cont.heading + 'com'), str);
     console.log(this.comments);
+  }
+  blogs(){
+    this.route.queryParams
+      .subscribe(params => {
+        this.ind = params.index;
+        console.log(this.ind);
+      });
   }
   back() {
     this.router.navigate(['/blogs'], { queryParams: { com: this.len } })
@@ -130,8 +137,6 @@ export class BlogcontentComponent implements OnInit {
       this.comments = []
       res.map((e: any) => {
         this.comments.push(e.payload.doc.data());
-        // this.orderId.push(e.payload.doc.id);
-        console.log(this.comments.length);
         this.commentlength = this.comments.length;
       });     
     });
