@@ -44,6 +44,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { BusinessWalletComponent } from './components/business-wallet/business-wallet.component';
 import { AdminComponent } from './components/admin/admin.component';
@@ -101,7 +102,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     FormsModule,
     MatCheckboxModule,
     NgxSpinnerModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatProgressBarModule
   ],
   providers: [
     DataService, ApiService

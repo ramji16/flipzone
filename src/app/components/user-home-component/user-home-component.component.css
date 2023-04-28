@@ -46,6 +46,11 @@
   height:50px;
   border-radius:15px;
 }
+.shoppage{
+  display: flex;
+  flex-direction:row;
+  justify-content: left;
+}
 .Product-section{
   background-color:#E1EDF2;
 }

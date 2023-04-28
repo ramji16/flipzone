@@ -119,7 +119,7 @@
                 <i class="fas fa-chart-line  w3-badge p-3" style="background-color: #845ec2;"></i>
               </div>
               <div style="line-height: 0.5em" class="ml-2 mt-2">
-                <p class="text-muted"><b>₹{{netprofit}}K</b></p>
+                <p class="text-muted"><b>₹{{netprofit}}</b></p>
                 <p>Profit</p>
               </div>
             </div>
@@ -136,7 +136,7 @@
                 <!-- <i class="fas fa-money-check-edit-alt"></i> -->
               </div>
               <div style="line-height: 0.5em" class="ml-2 mt-2">
-                <p class="text-muted">₹3000K</p>
+                <p class="text-muted">₹{{total_amount}}</p>
                 <p>transaction</p>
               </div>
             </div>
@@ -338,11 +338,11 @@
         </div>
       </div>
       <div
-        class="col-lg-3 co-12 p-1 mt-3 box w3-hover-shadow w3-animate-bottom"
+        class="col-lg-3 col-12 d-flex flex-column justify-content-center p-1 mt-3 box w3-hover-shadow w3-animate-bottom"
       >
         <div class="p-3 " style="color: white;">
-          <h5 class="text-muted" style="line-height: 0.6em;">Total visits</h5>
-          <h4 class=""><b>35.7K</b></h4>
+          <h5 class="text-muted" style="line-height: 0.6em;">Total amount gained</h5>
+          <h4 style="color:yellow;"><b>Rs {{profit}}</b></h4>
         </div>
         <div class="p-2 d-flex flex-row justify-content-between">
           <p>
@@ -354,10 +354,10 @@
                 border-radius: 6px;
               "
             ></i>
-            &nbsp; Mobile
+            &nbsp; Earned
           </p>
           <p>
-            Desktop &nbsp;
+           Spent &nbsp;
             <i
               class="fa-solid fa-desktop p-2"
               style="
@@ -370,24 +370,19 @@
         </div>
         <div class="p-2 d-flex flex-row justify-content-between">
           <div>
-            <h5 class="" style="line-height: 0.6em">47.4%</h5>
-            <p>50,000</p>
+            <h5 class="" style="line-height: 0.6em">{{percent}}%</h5>
+            <p>{{netprofit}}</p>
           </div>
           <div class="text-white">
             <p><small class="w3-round-large w3-blue p-2">Vs</small></p>
           </div>
           <div>
-            <h5 class="" style="line-height: 0.6em">50.2%</h5>
-            <p>50,000</p>
+            <h5 class="" style="line-height: 0.6em">{{other_percent}}%</h5>
+            <p>{{profit}}</p>
           </div>
         </div>
         <div class="p-3">
-          <div class="bg-secondary w3-round-xlarge" style="height: 10px">
-            <div
-              class="bg-warning col-6 w3-round-xlarge"
-              style="height: 10px"
-            ></div>
-          </div>
+          <mat-progress-bar mode="determinate" value={{percent}}></mat-progress-bar>
         </div>
       </div>
       <div class="col-lg-3 co-12 p-1 mt-3 box w3-hover-shadow w3-animate-right">
