@@ -28,9 +28,12 @@
     position: relative;
   }
   .sp{
+    position: relative;
+  }
+.sp i{
     position: absolute;
-    bottom:23.6em;
-    right:8em; 
+    bottom: 1em;
+    right:1em;
   }
   input{
     height:50px;

@@ -18,15 +18,18 @@
             class="text-danger"
             >Email ID Required</span
           ><br />
-          <input
+          <div class="sp">
+            <input
             [type]="showpassword ? 'text':'Password'"
             class="mt-3 p-3 form-control"
             formControlName="Password"
             pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$"
             placeholder="Password"
           />
-          <i (click)="toggleShow()" class="fa-solid fa-eye sp" *ngIf="!showpassword"></i>
-          <i (click)="toggleShow()" class="fa-solid fa-eye-slash sp" *ngIf="showpassword"></i>
+          <i (click)="toggleShow()" class="fa-solid fa-eye " *ngIf="!showpassword"></i>
+          <i (click)="toggleShow()" class="fa-solid fa-eye-slash " *ngIf="showpassword"></i>
+          </div>
+         
           <span
               *ngIf="add.Password.errors && add.Password.touched"
               class="text-danger"
