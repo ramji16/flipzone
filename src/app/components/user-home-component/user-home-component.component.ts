@@ -32,23 +32,40 @@ export class UserHomeComponentComponent implements OnInit {
  shop(){
   this.router.navigate(['/shopping'])
  }
+ productview(ind: any) {
+  this.router.navigate(['/productview'], {
+    queryParams: { item: JSON.stringify(ind) },
+  });
+}
+order(data) {
+  var userid = JSON.parse(localStorage.getItem('user_data'));
+  console.log(userid.user.uid);
+  console.log(data);
+  this.api.createordercollection(userid.user.uid, data);
+  alert('Product added to cart');
+}
+wishlist(data) {
+  var userid = JSON.parse(localStorage.getItem('user_data'));
+  console.log(userid.user.uid);
+  console.log(data);
+  this.api.createwishlistcollection(userid.user.uid, data);
+  alert('Product added to Wishlist');
+}
  redirect(){
   this.router.navigate(['/aboutus'])
  }
  data_store() {
   for (let i = 0; i <= this.collectiondata.length; i++) {
-    debugger;
     this.api.getsubcollection(this.collectiondata[i]).subscribe((res) => {
-      debugger;
       res.map((e: any) => {
         this.cartDetail.push(e.payload.doc.data());
       });
-     
     });
   }
   // console.log(this.cartDetail);
-  this.products = this.cartDetail.slice(0,2)
-  console.log(this.products,"home page products")
+  // this.products = this.cartDetail.slice(0,2)
+  // debugger
+  // console.log(this.products,"home page products")
 }
 data_create() {
   if (this.collectiondata.length == 0) {
