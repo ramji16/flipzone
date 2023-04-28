@@ -38,6 +38,8 @@ export class MainLoginComponentComponent implements OnInit {
   check: any;
   otp: any;
   count = 1;
+  collectiondata = []
+  collectionid = []
   showOtpComponent = true;
   @ViewChild('ngOtpInput', { static: false })
   ngOtpInput: any;
@@ -124,28 +126,37 @@ export class MainLoginComponentComponent implements OnInit {
     this.optfullValue = otp1;
   }
   userCheck() {
+    var temp = []
     var data = JSON.parse(localStorage.getItem('user_data'));
     this.uid = data.user.uid;
     console.log(this.uid);
     this.makeapi.listItem('Users').subscribe(res=>{
       this.udata=res.map((e:any)=>{
-        const collectiondata = e.payload.doc.data();
-        collectiondata.id =e.payload.doc.id;
-        console.log(collectiondata.id)
-        if(collectiondata.id == this.uid){
-          this.flag1=true
-          console.log(this.flag1)
-          this.router.navigate(['/userhome'])
-        }
-        else if(this.flag1==false){
-          this.count +=1
-          console.log(this.flag1)
-          if(this.count == collectiondata.length){
-            this.router.navigate(['/userSignUp'])
-          }
-        }
+        this.collectiondata .push(e.payload.doc.data());
+        temp.push(e.payload.doc.data())
+        this.collectionid .push(e.payload.doc.id);
+        // console.log(this.collectionid.id)
+        console.log(temp.length,"tempvalue")
+
       });
+      this.uservalidcheck()
     });
+  }
+  uservalidcheck(){
+    for(let i=0;i<this.collectionid.length;i++){
+      if(this.collectionid[i] == this.uid){
+        this.flag1=true
+        console.log(this.flag1)
+        this.router.navigate(['/userhome'])
+      }
+      else if(this.flag1==false){
+        this.count +=1
+        console.log(this.flag1)
+        if(this.count == this.collectionid.length){
+          this.router.navigate(['/userSignUp'])
+        }
+      }
+    }
   }
   home() {
     var otp = this.optfullValue;
@@ -184,5 +195,5 @@ export class MainLoginComponentComponent implements OnInit {
   }
   BusinessSignInNavigate() {
     this.router.navigate(['busniessSignIn']);
-  }
+  }
 }

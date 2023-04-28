@@ -67,11 +67,11 @@ export class ProfileComponent implements OnInit {
       id = data.user.uid;
       // console.log(id)
       this.makeapi.getItem('Users', id).subscribe((data) => {
-        this.spinner.show();
-        setTimeout(() => {
-          /** spinner ends after 5 seconds */
-          this.spinner.hide();
-        }, 3000);
+        // this.spinner.show();
+        // setTimeout(() => {
+        //   /** spinner ends after 5 seconds */
+        //   this.spinner.hide();
+        // }, 3000);
         this.user_details.push(data);
         console.log(this.user_details);
         var user = this.user_details[0];
@@ -82,7 +82,7 @@ export class ProfileComponent implements OnInit {
         this.profile.patchValue(user);
         console.log(this.profile.value);
       });
-      this.spinner.hide();
+      // this.spinner.hide();
     }
     var data = JSON.parse(localStorage.getItem('userDetails'));
     if (data != null) {

@@ -31,8 +31,8 @@ export class BlogsComponent implements OnInit {
     console.log(typeof(ind))
     this.router.navigate(['/blogcontent'],{queryParams:{index:ind}});
   }
-  navigate(){
-    this.router.navigate(['/blogcontent']);
+  navigate(no:number){
+    this.router.navigate(['/blogcontent'],{queryParams:{index:no}});
   }
 
   // electronics(){

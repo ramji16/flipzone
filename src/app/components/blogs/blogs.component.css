@@ -16,7 +16,7 @@ p{
 }
 
 .fashion{
-    background-image: url('src/assets/images/fas.png');
+    background-image: url('src/assets/images/t-shirt.jpg');
     height:50vh;
     background-repeat: no-repeat;
     background-size:cover;
@@ -29,14 +29,14 @@ p{
     background-size:cover;
 }
 .furnitures{
-    background-image: url('src/assets/images/furnitures.jpeg');
+    background-image: url('src/assets/images/furnitures.png');
     height:50vh;
     background-repeat: no-repeat;
     background-size:cover;
  
 }
 .menacc{
-    background-image: url('src/assets/images/menacc.jpeg');
+    background-image: url('src/assets/images/menacc.jpg');
     height:50vh;
     background-repeat: no-repeat;
     background-size:cover;
