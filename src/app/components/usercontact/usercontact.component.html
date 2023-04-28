@@ -29,14 +29,14 @@
                 <div class="p-4 text-white">
                    <form [formGroup]="contact">
                    <label for="">Name</label>
-                   <input type="text" class="form-control" formControlName="name" required>
+                   <input type="text" class="form-control" formControlName="cname" required>
                    <label for="">Email</label>
-                   <input type="email" class="form-control" formControlName="email" required>
+                   <input type="email" class="form-control" formControlName="umail" required>
                    <label for="">Phone</label>
                    <input type="tel" class="form-control" formControlName="phone" minlength="10" required>
                    <label for="">Message</label>
                    <textarea cols="30" rows="3" class="form-control" formControlName="message" required></textarea>
-                   <button type="submit" class="btn col-3 text-light mt-3">Send</button>
+                   <button type="submit" (click)="queryMsg()" class="btn col-3 text-light mt-3">Send</button>
                     </form>
                 </div>
             </div>

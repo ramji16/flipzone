@@ -23,7 +23,7 @@
             <th>Price</th>
             <th>Date of order</th>
             <th>Date of delivery</th>
-            <th>Cancellation</th>
+            <th>Complaints</th>
           </tr>
           <tr *ngFor="let item of order; let i = index">
             <td class="pt-4">{{ i + 1 }}</td>
@@ -33,7 +33,7 @@
             <td class="pt-3">{{ item.price }}</td>
             <td class="pt-3">{{ time }}</td>
             <td class="pt-3">{{ dtime }}</td>
-            <td><button class="btn btn-danger">Cancel</button></td>
+            <td><button class="btn btn-danger" (click)="query(i)">Query</button></td>
           </tr>
           <!-- <tr>
             <td class="pt-4">2</td>

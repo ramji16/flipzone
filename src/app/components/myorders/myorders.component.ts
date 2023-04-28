@@ -24,6 +24,11 @@ export class MyordersComponent implements OnInit {
   ngOnInit(): void {
     this.getlist()
   }
+  query(i:any){
+    var queryProduct = this.order[i]
+    console.log(queryProduct)
+    this.router.navigate(['/contact'], { queryParams: queryProduct });
+  }
   back(){
     this.router.navigate(['/profile']);
   }
