@@ -1,138 +1,191 @@
 <div class="body p-3">
+  <div class="col-md-12 d-flex flex-row">
+    <button class="btn" (click)="logout()" style="font-size: 30px">
+      <i class="fa fa-power-off" aria-hidden="true"></i>
+    </button>
+    <div class="text-end ml-auto mt-3"><h4>Profit : ₹ {{profitDetails}}</h4></div>
+  </div>
   <div class="col-md-12 text-center"><h3>Administrator</h3></div>
-  <div class=" col-12  p-3 main shadow">
-   <div class="row justify-content-around">
-     <div class="col-2 card p-1" style="border: 2px solid #dbf2fb;border-radius: 10px;" (click)="admin('customers')" >
-      <div class="d-flex flex-row align-items-center">
-        <div  class="p-2"><img src="assets/images/people.png" alt="" height="50px"></div>
-        <div class="ml-3 "style="line-height:.5em;">
-           <p><b>Customers</b></p>
-           <span>{{customercount}}</span>
+  <div class="col-12 p-3 main shadow">
+    <div class="row justify-content-around">
+      <div
+        class="col-2 card p-1"
+        style="border: 2px solid #dbf2fb; border-radius: 10px"
+        (click)="admin('customers')"
+      >
+        <div class="d-flex flex-row align-items-center">
+          <div class="p-2">
+            <img src="assets/images/people.png" alt="" height="50px" />
+          </div>
+          <div class="ml-3" style="line-height: 0.5em">
+            <p><b>Customers</b></p>
+            <span>{{ customercount }}</span>
+          </div>
         </div>
       </div>
-     </div>
-     <div class="col-2 card p-1" style="border: 2px solid #dbf2fb;border-radius: 10px;" (click)="admin('Business')">
-      <div class="d-flex flex-row align-items-center">
-        <div class="p-2"><img src="assets/images/teamwork.png" alt="" height="50px"></div>
-        <div class="ml-3 "style="line-height:.5em;">
-           <p><b>Sellers</b></p>
-           <span>{{sellercount}}</span>
+      <div
+        class="col-2 card p-1"
+        style="border: 2px solid #dbf2fb; border-radius: 10px"
+        (click)="admin('Business')"
+      >
+        <div class="d-flex flex-row align-items-center">
+          <div class="p-2">
+            <img src="assets/images/teamwork.png" alt="" height="50px" />
+          </div>
+          <div class="ml-3" style="line-height: 0.5em">
+            <p><b>Sellers</b></p>
+            <span>{{ sellercount }}</span>
+          </div>
         </div>
       </div>
-     </div>
-     <div class="col-2 card p-1" style="border: 2px solid #dbf2fb;border-radius: 10px;"(click)="admin('products')">
-      <div class="d-flex flex-row align-items-center">
-        <div class="p-2"><img src="assets/images/prod.png" alt="" height="50px"></div>
-        <div class="ml-3 "style="line-height:.5em;">
-           <p><b>Products</b></p>
-           <span>{{productcount}}</span>
+      <div
+        class="col-2 card p-1"
+        style="border: 2px solid #dbf2fb; border-radius: 10px"
+        (click)="admin('products')"
+      >
+        <div class="d-flex flex-row align-items-center">
+          <div class="p-2">
+            <img src="assets/images/prod.png" alt="" height="50px" />
+          </div>
+          <div class="ml-3" style="line-height: 0.5em">
+            <p><b>Products</b></p>
+            <span>{{ productcount }}</span>
+          </div>
         </div>
       </div>
-     </div>
-     <div class="col-2 card p-1" style="border: 2px solid #dbf2fb;border-radius: 10px;" (click)="admin('query')" >
-      <div class="d-flex flex-row align-items-center">
-        <div  class="p-2"><img src="assets/images/people.png" alt="" height="50px"></div>
-        <div class="ml-3 "style="line-height:.5em;">
-           <p><b>Query</b></p>
-           <span>{{querycount}}</span>
+      <div
+        class="col-2 card p-1"
+        style="border: 2px solid #dbf2fb; border-radius: 10px"
+        (click)="admin('query')"
+      >
+        <div class="d-flex flex-row align-items-center">
+          <div class="p-2">
+            <img src="assets/images/people.png" alt="" height="50px" />
+          </div>
+          <div class="ml-3" style="line-height: 0.5em">
+            <p><b>Query</b></p>
+            <span>{{ querycount }}</span>
+          </div>
         </div>
       </div>
-     </div>
-   </div>
-  </div>
-
-  <div class="col-12  p-3 main shadow mt-4 cont">
-    <div *ngIf="adminpage =='customers'">
-    <div class="m-3">
-      <input type="text" name="searbox" class="searchBar" [(ngModel)]="customersearch" placeholder="search here">
-    </div>
-    <div>
-      <table class="table">
-        <tr style="background-color: #41118f;color: #dbf2fb;">
-          <th>Name</th>
-          <th>E-Mail</th>
-          <th>Address</th>
-          <th>Phone Number</th>
-        </tr>
-        <tr *ngFor="let item of customerdata | filter:customersearch">
-          <td>{{item.ufname}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.uaddress}}</td>
-          <td>{{item.phoneNumber}}</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <div *ngIf="adminpage =='products'">
-    <div class="m-3">
-      <input type="text" name="searbox" class="searchBar" [(ngModel)]="productsearch" placeholder="search here">
-    </div>
-    <div>
-      <table class="table">
-        <tr style="background-color: #41118f;color: #dbf2fb;">
-          <th>Product Name</th>
-          <th>Brand Name</th>
-          <th>Category</th>
-          <th>Type</th>
-          <th>Dealer Mail</th>
-        </tr>
-        <tr *ngFor="let item of productData | filter:productsearch">
-          <td>{{item.productName}}</td>
-          <td>{{item.brandName}}</td>
-          <td>{{item.category}}</td>
-          <td>{{item.tag}}</td>
-          <td>{{item.email}}</td>
-        </tr>
-      </table>
     </div>
   </div>
 
-  <div *ngIf="adminpage =='Business'">
-    <div class="m-3">
-      <input type="text" name="searbox" class="searchBar" [(ngModel)]="sellersearch" placeholder="search here">
+  <div class="col-12 p-3 main shadow mt-4 cont">
+    <div *ngIf="adminpage == 'customers'">
+      <div class="m-3">
+        <input
+          type="text"
+          name="searbox"
+          class="searchBar"
+          [(ngModel)]="customersearch"
+          placeholder="search here"
+        />
+      </div>
+      <div>
+        <table class="table">
+          <tr style="background-color: #41118f; color: #dbf2fb">
+            <th>Name</th>
+            <th>E-Mail</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+          </tr>
+          <tr *ngFor="let item of customerdata | filter : customersearch">
+            <td>{{ item.ufname }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.uaddress }}</td>
+            <td>{{ item.phoneNumber }}</td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div>
-      <table class="table">
-        <tr style="background-color: #41118f;color: #dbf2fb;">
-          <th>Company Name</th>
-          <th>Owner Name</th>
-          <th>Email</th>
-          <th>Phone Number</th>
-        </tr>
-        <tr *ngFor="let item of sellerdata | filter:sellersearch">
-          <td>{{item.bCompanyName}}</td>
-          <td>{{item.bOwnerName}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.bmobile}}</td>
-        </tr>
-      </table>
-    </div>
-  </div>
 
-  <div *ngIf="adminpage =='query'">
-    <div class="m-3">
-      <input type="text" name="searbox" class="searchBar" [(ngModel)]="querysearch" placeholder="search here">
+    <div *ngIf="adminpage == 'products'">
+      <div class="m-3">
+        <input
+          type="text"
+          name="searbox"
+          class="searchBar"
+          [(ngModel)]="productsearch"
+          placeholder="search here"
+        />
+      </div>
+      <div>
+        <table class="table">
+          <tr style="background-color: #41118f; color: #dbf2fb">
+            <th>Product Name</th>
+            <th>Brand Name</th>
+            <th>Category</th>
+            <th>Type</th>
+            <th>Dealer Mail</th>
+          </tr>
+          <tr *ngFor="let item of productData | filter : productsearch">
+            <td>{{ item.productName }}</td>
+            <td>{{ item.brandName }}</td>
+            <td>{{ item.category }}</td>
+            <td>{{ item.tag }}</td>
+            <td>{{ item.email }}</td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div>
-      <table class="table">
-        <tr style="background-color: #41118f;color: #dbf2fb;">
-          <th>Customer Name</th>
-          <th>Customer Mobile</th>
-          <th>Product Name</th>
-          <th>Dealer Email</th>
-          <th>Query Message</th>
-        </tr>
-        <tr *ngFor="let item of queryData | filter:querysearch">
-          <td>{{item.cname}}</td>
-          <td>{{item.phone}}</td>
-          <td>{{item.product.productName}}</td>
-          <td>{{item.product.email}}</td>
-          <td>{{item.message}}</td>
-        </tr>
-      </table>
+
+    <div *ngIf="adminpage == 'Business'">
+      <div class="m-3">
+        <input
+          type="text"
+          name="searbox"
+          class="searchBar"
+          [(ngModel)]="sellersearch"
+          placeholder="search here"
+        />
+      </div>
+      <div>
+        <table class="table">
+          <tr style="background-color: #41118f; color: #dbf2fb">
+            <th>Company Name</th>
+            <th>Owner Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+          </tr>
+          <tr *ngFor="let item of sellerdata | filter : sellersearch">
+            <td>{{ item.bCompanyName }}</td>
+            <td>{{ item.bOwnerName }}</td>
+            <td>{{ item.email }}</td>
+            <td>{{ item.bmobile }}</td>
+          </tr>
+        </table>
+      </div>
     </div>
-  </div>
-    
+
+    <div *ngIf="adminpage == 'query'">
+      <div class="m-3">
+        <input
+          type="text"
+          name="searbox"
+          class="searchBar"
+          [(ngModel)]="querysearch"
+          placeholder="search here"
+        />
+      </div>
+      <div>
+        <table class="table">
+          <tr style="background-color: #41118f; color: #dbf2fb">
+            <th>Customer Name</th>
+            <th>Customer Mobile</th>
+            <th>Product Name</th>
+            <th>Dealer Email</th>
+            <th>Query Message</th>
+          </tr>
+          <tr *ngFor="let item of queryData | filter : querysearch">
+            <td>{{ item.cname }}</td>
+            <td>{{ item.phone }}</td>
+            <td>{{ item.product.productName }}</td>
+            <td>{{ item.product.email }}</td>
+            <td>{{ item.message }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>

@@ -267,4 +267,7 @@ export class ApiService {
   deleteImage(downloadUrl) {
     return this.storage.storage.refFromURL(downloadUrl).delete();
   }
+  signout(){
+    return this.Authfire.signOut()
+  }
 }

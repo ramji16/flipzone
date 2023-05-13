@@ -181,5 +181,12 @@ export class ProfileComponent implements OnInit {
     } else if (str == 'wallet') {
       this.wishlist = str;
     }
+    else if (str == 'logout') {
+      this.makeapi.signout().then(()=>{
+        localStorage.removeItem("user_data")
+        localStorage.removeItem("verificationId")
+        this.router.navigate(['mainlogin'])
+      })
+    }
   }
 }
