@@ -185,6 +185,7 @@ export class ProfileComponent implements OnInit {
       this.makeapi.signout().then(()=>{
         localStorage.removeItem("user_data")
         localStorage.removeItem("verificationId")
+        localStorage.removeItem("pno")
         this.router.navigate(['mainlogin'])
       })
     }

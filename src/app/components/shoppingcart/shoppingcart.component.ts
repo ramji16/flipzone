@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -24,9 +24,12 @@ export class ShoppingcartComponent implements OnInit {
   modal_check=false
   insufamt=false
   uadd=false
-  constructor(private makeapi: ApiService,private router:Router) {}
+  constructor(private makeapi: ApiService,private router:Router,private route:ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params)=>{
+      this.quan=params.quan;
+    });
     this.getList()
     this.getprofile()
   }

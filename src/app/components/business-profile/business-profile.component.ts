@@ -129,5 +129,13 @@ export class BusinessProfileComponent implements OnInit {
     else if (str=='wallet'){
       this.wishlist=str
     }
+    else if (str == 'logout') {
+      this.makeapi.signout().then(()=>{
+        localStorage.removeItem("businessId")
+        localStorage.removeItem("bdata")
+        localStorage.removeItem("pno")
+        this.router.navigate(["mainlogin"])
+      })
+    }
   }
 }

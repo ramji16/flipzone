@@ -25,7 +25,7 @@
         <div *ngIf="check!=null" class=" d-flex flex-column justify-content-center Profile-letter">
           <h6 style="text-transform: uppercase;" class="pt-1" (click)="cart()"><i class="fa-solid fa-cart-shopping"></i></h6>
         </div>
-        <div class="ml-2 d-flex flex-column justify-content-center  cardd-cart" (click)="profile()" style="cursor: pointer;">
+        <div *ngIf="check!=null" class="ml-2 d-flex flex-column justify-content-center  cardd-cart" (click)="profile()" style="cursor: pointer;">
           <h6>Profile</h6>
         </div>
     </div>
