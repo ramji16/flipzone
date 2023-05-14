@@ -19,6 +19,7 @@ export class ProductviewComponent implements OnInit {
   category;
   tag;
   photo: any;
+  quan:any=1;
   colors: string[] = [
     '#b3478c', '#1e62c0', '#ffa764', '#3de68b', '#a11f2a', '#ffbf00'
   ];
@@ -93,7 +94,23 @@ export class ProductviewComponent implements OnInit {
     console.log(userid.user.uid)
     console.log(this.productDetails)
     this.makeapi.createordercollection(userid.user.uid,this.productDetails)
-    alert('Product added to order')
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      alert('Product added to order')
+    }, 3000);
+    this.router.navigate(['/cart'], {
+      queryParams: { quan:this.quan },
+    });
   }
-
+  increment(){
+    this.quan+=1;
+  }
+  decrement(){
+    if(this.quan<=1){
+      this.quan=1
+    }
+    else{
+      this.quan-=1;
+    }
+  }
 }
